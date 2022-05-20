@@ -10,13 +10,7 @@ using UnityEngine.Events;
 
 namespace FishGame.Core
 {
-    /*
-     * Custom Event class for ships data
-     */
-
-    [Serializable]
-    public class PlayFabPlayerShipsEvent : UnityEvent<List<Ship>>  {}
-
+  
     /*
      * Custom Event class for ships data
      */
@@ -29,11 +23,12 @@ namespace FishGame.Core
     {
         
         private const string shipsKey = "ships";
+        private const string mainShipKey = "main_ships";
         private const string levelKey = "level";
         private const string fishKey = "fishes";
 
         
-        [SerializeField] PlayFabPlayerShipsEvent getPlayerShipsSuccessEvent;
+        [SerializeField] PlayFabPlayerShipsListEvent getPlayerShipsSuccessEvent;
         [SerializeField] PlayFabEvent errorEvent;
         [SerializeField] PlayFabEvent successEvent;
 
@@ -64,7 +59,7 @@ namespace FishGame.Core
         {
             if (result.Data != null)
             {
-                List<Ship> playerShips = JsonConvert.DeserializeObject<List<Ship>>(result.Data[shipsKey].Value);
+                List<SerializableShipData> playerShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[shipsKey].Value);
                 getPlayerShipsSuccessEvent?.Invoke(playerShips);
             }
             else
@@ -86,8 +81,9 @@ namespace FishGame.Core
             {
                 Data = new Dictionary<string, string> {
                 { shipsKey,newShipsToJson},
+                {mainShipKey,newShipsToJson },
                 {levelKey,"0" },
-                 {fishKey,"" }
+                {fishKey,"" }
 
 
 

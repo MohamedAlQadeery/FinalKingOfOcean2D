@@ -22,6 +22,8 @@ namespace FishGame.Ships
        [SerializeField] List<SerializableFishData> caughtFishes;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
 
+        // main ships are the ships that is displayed at game scene (maximum 3 ships)
+       [SerializeField] bool isMainShip = false;
         public bool CanFish()
         {
             if (currentHealth <= 0) return false;
@@ -86,6 +88,17 @@ namespace FishGame.Ships
         {
             return fishingDuration;
         }
+
+        public void SetIsMainShip(bool value)
+        {
+            isMainShip = value;
+            dataToJson.isMainShip = value;
+        }
+
+        public string GetShipName()
+        {
+            return shipName;
+        }
     }
 
 
@@ -95,6 +108,7 @@ namespace FishGame.Ships
         public string shipName;
         public int currentCapacity;
         public float currentHealth;
+        public bool isMainShip;
 
 
 
