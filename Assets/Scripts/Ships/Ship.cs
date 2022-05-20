@@ -8,6 +8,7 @@ namespace FishGame.Ships
     [CreateAssetMenu(fileName = "Ship", menuName = "ScriptableObjects/Ships/Create New Ship", order = 0)]
     public class Ship : ScriptableObject
     {
+        [SerializeField] GameObject shipPrefab;
         [SerializeField] SerializableShipData dataToJson;
 
         [SerializeField]  string shipName;
@@ -21,6 +22,8 @@ namespace FishGame.Ships
         [SerializeField] List<Fish> canFishTypes; 
        [SerializeField] List<SerializableFishData> caughtFishes;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
+
+       
 
         // main ships are the ships that is displayed at game scene (maximum 3 ships)
        [SerializeField] bool isMainShip = false;

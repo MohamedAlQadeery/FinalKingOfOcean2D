@@ -25,6 +25,7 @@ namespace FishGame.Sandbox
 
         [SerializeField] List<Ship> newPlayerShips;
 
+      
         public void OnClickRegisterButton()
         {
             string email = registerEmailInputField.text;
@@ -40,7 +41,7 @@ namespace FishGame.Sandbox
             Debug.Log("From Register UI");
             Debug.Log(message);
 
-            List<SerializableShipData> serializablesNewShips = FillSerializableShipList();
+            List<SerializableShipData> serializablesNewShips = FillSerializableMainShipList();
 
             PlayFabPlayerData.Instance.NewPlayerSetup(serializablesNewShips);
 
@@ -52,6 +53,17 @@ namespace FishGame.Sandbox
             List<SerializableShipData> tmpList = new List<SerializableShipData>();
             foreach (Ship ship in newPlayerShips)
             {
+                tmpList.Add(ship.GetDataToJson());
+            }
+
+            return tmpList;
+        }
+        private List<SerializableShipData> FillSerializableMainShipList()
+        {
+            List<SerializableShipData> tmpList = new List<SerializableShipData>();
+            foreach (Ship ship in newPlayerShips)
+            {
+                ship.SetIsMainShip(true);
                 tmpList.Add(ship.GetDataToJson());
             }
 
