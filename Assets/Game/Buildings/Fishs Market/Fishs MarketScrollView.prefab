@@ -516,6 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolsScroll: {fileID: 8905587846896314399}
   fishScroll: {fileID: 8905587848100255184}
+  upgradeButton: {fileID: 0}
 --- !u!1 &2610545125534830744
 GameObject:
   m_ObjectHideFlags: 0
