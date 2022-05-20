@@ -8,6 +8,8 @@ public class FishMarketPanel : MonoBehaviour
     public GameObject toolsScroll;
     public GameObject fishScroll;
     public GameObject upgradeButton;
+    public GameObject toolInfo;
+
     public void FishButton()
     {
         toolsScroll.SetActive(false);
@@ -28,6 +30,18 @@ public class FishMarketPanel : MonoBehaviour
     public void UpgradeCloseButton()
     {
         upgradeButton.SetActive(false);
+    }
+
+    public void ToolInfo()
+    {
+        if (toolInfo.active)
+        {
+            toolInfo.SetActive(false);
+        } 
+        else if (!toolInfo.active)
+        {
+            toolInfo.SetActive(true);
+        }
     }
 
 }
