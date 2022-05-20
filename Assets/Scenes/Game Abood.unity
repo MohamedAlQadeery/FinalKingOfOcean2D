@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0783c4087deee4cb83b54dccef3317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storgePanel: {fileID: 9024221859633574885, guid: 4e535862903e2e34a91afd8660896ea0, type: 3}
+  storgePanel: {fileID: 2533618661720019229, guid: ab97d79e3f25c8345b468fa210b393ac, type: 3}
   storgeButton: {fileID: 1132188036}
   shipsPanel: {fileID: 7816084203175687645, guid: 7b48842667050cd4aa5e791e02f402b2, type: 3}
   shipsButton: {fileID: 1040646677}
