@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 819395574}
   - component: {fileID: 819395575}
   m_Layer: 5
-  m_Name: ShipsUIwe
+  m_Name: ShipsUI
   m_TagString: ShipUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storgePanel: {fileID: 2533618661720019229, guid: ab97d79e3f25c8345b468fa210b393ac, type: 3}
   storgeButton: {fileID: 1132188036}
-  shipsPanel: {fileID: 7816084203175687645, guid: 7b48842667050cd4aa5e791e02f402b2, type: 3}
+  shipsPanel: {fileID: 7816084203175687645, guid: 0ceaf8ffd9f9262499fc32a387ba4fde, type: 3}
   shipsButton: {fileID: 1040646677}
   guildPanel: {fileID: 7816084203175687645, guid: 6c6f0ade6fa88874e8a9dd3f84d0fc60, type: 3}
   guildButton: {fileID: 840592127}
@@ -3920,6 +3920,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910801096323504754}
   m_CullTransparentMesh: 0
+--- !u!4 &2728994501188968608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728994501188968610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2728994501188968610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2728994501188968608}
+  - component: {fileID: 2728994501188968611}
+  m_Layer: 0
+  m_Name: PlayFabShipsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2728994501188968611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728994501188968610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6baa574334930c428919421d50b304e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getShipSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  getMainShipsListEventSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2728994501188968611}
+        m_TargetAssemblyTypeName: FishGame.Core.PlayFabShipData, Assembly-CSharp
+        m_MethodName: GetMainShips
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  getAllShipsListEventSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2728994501188968611}
+        m_TargetAssemblyTypeName: FishGame.Core.PlayFabShipData, Assembly-CSharp
+        m_MethodName: GetAllPlayerShips
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateMainShipsSuccessEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2728994501188968611}
+        m_TargetAssemblyTypeName: FishGame.Core.PlayFabShipData, Assembly-CSharp
+        m_MethodName: GetShip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &8043188717902332061
 CanvasRenderer:
   m_ObjectHideFlags: 0

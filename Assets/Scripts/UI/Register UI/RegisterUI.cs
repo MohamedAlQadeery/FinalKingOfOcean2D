@@ -18,10 +18,11 @@ namespace FishGame.UI
         [SerializeField] TMP_InputField registerPasswordInputField;
         [SerializeField] TMP_InputField registerUserNameInputField;
         [SerializeField] GameObject loginPanel;
+        [SerializeField] GameObject giftRegister;
 
-     
 
-      
+
+
 
         //End of register panel vars
 
@@ -46,8 +47,14 @@ namespace FishGame.UI
             
             PlayFabPlayerData.Instance.NewPlayerSetup(serializablesNewShips);
 
-            SceneManager.LoadScene(1);
 
+            giftRegister.SetActive(true);
+
+        }
+
+        public void GiftRegister()
+        {
+            SceneManager.LoadScene(1);
         }
 
         private List<SerializableShipData> FillSerializableShipList()

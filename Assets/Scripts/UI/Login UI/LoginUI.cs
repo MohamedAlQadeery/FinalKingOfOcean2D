@@ -17,7 +17,7 @@ namespace FishGame.UI
         [SerializeField] Toggle loginRememberMe;
         [SerializeField] GameObject signUpPanel;
         [SerializeField] GameObject signOutButton;
-
+        [SerializeField] GameObject loadingGamePanel;
         //End of login panel vars
         PlayFabAuth playFabAuthService ;
         private void Awake()
@@ -55,12 +55,19 @@ namespace FishGame.UI
         {
             Debug.Log("Message from login UI");
             Debug.Log(message+"?!");
+
+
+
+
             
+            StartCoroutine(LoadingGame());
+        }
 
-         
-
-           SceneManager.LoadScene(1);
-
+        IEnumerator LoadingGame()
+        {
+            loadingGamePanel.SetActive(true);
+            yield return new WaitForSeconds(5);
+            SceneManager.LoadScene(1);
         }
 
 

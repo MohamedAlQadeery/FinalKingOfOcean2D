@@ -15,12 +15,14 @@ public class ShipsPopup : MonoBehaviour
     {  
         fishAnim.SetBool("isFishing", true);
         shipAnim.SetBool("IsShipFishing", true);
+        Close();
     }
 
     public void StopFishing()
     {
         fishAnim.SetBool("isFishing", false);
         shipAnim.SetBool("IsShipFishing", false);
+        Close();
     }
 
     public void ShipInfo()
