@@ -5,6 +5,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,8 +27,9 @@ namespace FishGame.Core
         private const string mainShipKey = "main_ships";
         private const string levelKey = "level";
         private const string fishKey = "fishes";
+        private const string fishesFolderName = "Fishes";
 
-        
+
         [SerializeField] PlayFabPlayerShipsListEvent getPlayerShipsSuccessEvent;
         [SerializeField] PlayFabEvent errorEvent;
         [SerializeField] PlayFabEvent successEvent;
@@ -76,14 +78,23 @@ namespace FishGame.Core
         {
             
             string newShipsToJson = JsonConvert.SerializeObject(newShips);
-           
+            Dictionary<string, int> fishesDic = new Dictionary<string, int>();
+            List<Fish> fishesList = Resources.LoadAll<Fish>(fishesFolderName).ToList();
+            foreach(Fish fish in fishesList)
+            {
+                fishesDic.Add(fish.GetName(),0);
+                Debug.LogError($"Key is {fish.GetName()} And Value = {fishesDic[fish.GetName()]}");
+            }
+            string newFishesToJson = JsonConvert.SerializeObject(fishesDic);
+            Debug.Log($"Final Json = {newFishesToJson}");
+
             var shipRequest = new UpdateUserDataRequest
             {
                 Data = new Dictionary<string, string> {
                 { shipsKey,newShipsToJson},
                 {mainShipKey,newShipsToJson },
                 {levelKey,"0" },
-                {fishKey,"" }
+                {fishKey,newFishesToJson }
 
 
 
