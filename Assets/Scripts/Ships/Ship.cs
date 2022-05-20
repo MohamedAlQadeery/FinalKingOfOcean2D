@@ -18,12 +18,12 @@ namespace FishGame.Ships
         
         [SerializeField] Sprite shipImage, shipIcon,destroyedImage;
         [SerializeField] bool canUpgrade;
-       [SerializeField] bool  isFishing,onCooldown;
+       [SerializeField] public bool  isFishing,onCooldown;
         [SerializeField] List<Fish> canFishTypes; 
        [SerializeField] List<SerializableFishData> caughtFishes;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
 
-       
+    
 
        
         public bool CanFish()

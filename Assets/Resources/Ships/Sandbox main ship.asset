@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
   m_Name: Sandbox main ship
   m_EditorClassIdentifier: 
+  shipPrefab: {fileID: 0}
   dataToJson:
     shipName: First main ship
     currentCapacity: 0
-    currentHealth: 0
-    isMainShip: 0
+    currentHealth: 100
   shipName: First main ship
   currentCapacity: 0
   maxCapacity: 100
   unlockLevel: 0
-  currentHealth: 0
-  maxHealth: 0
+  currentHealth: 100
+  maxHealth: 100
   healDuration: 0
   healAmount: 0
-  fishingDuration: 0
-  numberFishCaughtPerMin: 0
+  fishingDuration: 2
+  numberFishCaughtPerMin: 50
   shipImage: {fileID: 0}
   shipIcon: {fileID: 0}
   destroyedImage: {fileID: 0}
@@ -39,4 +39,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: de75ad966a592904599a1addf6b95037, type: 2}
   caughtFishes: []
   animatorOverrideController: {fileID: 0}
-  isMainShip: 1

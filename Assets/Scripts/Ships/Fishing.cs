@@ -12,15 +12,15 @@ namespace FishGame.Ships
         [SerializeField] Ship currentShip;
         [SerializeField] float timeToFillCapacity;
         [SerializeField] bool startFishing = false;
-
+        private IEnumerator fishingCourtineRef;
 
         private void Start()
         {
            timeToFillCapacity= currentShip.GetFishingDuration() * 60;
-           
+
 
         }
-        public IEnumerator FishingCorutine()
+        private IEnumerator FishingCorutine()
         {
 
 
@@ -29,13 +29,13 @@ namespace FishGame.Ships
 
                 do
                 {
-                   
+                    Debug.Log("Fishing.....................................");
                     yield return new WaitForSeconds(60);
 
                     List<SerializableFishData> caughtFish = FillShipCapacity(currentShip.GetNumberOfFishCaughtPerMin());
                     currentShip.GetCaughtFishList().AddRange(caughtFish);
                     currentShip.UpdateCurrentCapacity();
-
+                    // here we send api request to the server to update the current capacity
                     Debug.Log($"{currentShip.GetNumberOfFishCaughtPerMin()} fishes has been caught by the ship in 1 min");
 
                 } while (!currentShip.IsCapacityFull());
@@ -86,21 +86,38 @@ namespace FishGame.Ships
         public void StartFishing()
         {
             startFishing = true;
-            StartCoroutine(FishingCorutine());
+            fishingCourtineRef = FishingCorutine();
+            StartCoroutine(fishingCourtineRef);
+            Debug.Log(fishingCourtineRef.GetHashCode());
+
         } 
         private void Update()
         {
             if (startFishing)
             {
+              
                 DisplayFishingTimer();
             }
+
+
         }
 
         private void DisplayFishingTimer()
         {
+            if (!startFishing) return;
             timeToFillCapacity -= Time.deltaTime;
-            TimeSpan time = TimeSpan.FromSeconds(timeToFillCapacity);
-            Debug.Log($"{time.Minutes.ToString()} : {time.Seconds.ToString()}");
+            //TimeSpan time = TimeSpan.FromSeconds(timeToFillCapacity);
+            //Debug.Log($"{time.Minutes.ToString()} : {time.Seconds.ToString()}");
+        }
+
+
+        public void CancelFishing()
+        {
+            StopCoroutine(fishingCourtineRef);
+            Debug.Log(fishingCourtineRef.GetHashCode());
+
+            startFishing = false;
+            Debug.Log("Fishing is canclled");
         }
     }
 
