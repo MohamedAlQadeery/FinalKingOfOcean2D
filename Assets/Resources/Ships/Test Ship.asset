@@ -10,32 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
-  m_Name: Sandbox main ship
+  m_Name: Test Ship
   m_EditorClassIdentifier: 
-  shipPrefab: {fileID: 0}
+  shipPrefab: {fileID: 3066793443064769090, guid: 1352bf5621b10bf429b203a9391a706a, type: 3}
   dataToJson:
-    shipName: First main ship
+    shipName: Test
     currentCapacity: 0
-    currentHealth: 100
-  shipName: First main ship
+    currentHealth: 0
+    isMainShip: 0
+  shipName: 
   currentCapacity: 0
-  maxCapacity: 100
+  maxCapacity: 0
   unlockLevel: 0
-  currentHealth: 100
-  maxHealth: 100
+  currentHealth: 0
+  maxHealth: 0
   healDuration: 0
   healAmount: 0
-  fishingDuration: 2
-  numberFishCaughtPerMin: 50
+  fishingDuration: 0
+  numberFishCaughtPerMin: 0
   shipImage: {fileID: 0}
   shipIcon: {fileID: 0}
   destroyedImage: {fileID: 0}
   canUpgrade: 0
   isFishing: 0
   onCooldown: 0
-  canFishTypes:
-  - {fileID: 11400000, guid: 751e615327a25f0439d775b578a1388f, type: 2}
-  - {fileID: 11400000, guid: 552c2798adcc20d478a7ca8ab43554a2, type: 2}
-  - {fileID: 11400000, guid: de75ad966a592904599a1addf6b95037, type: 2}
+  canFishTypes: []
   caughtFishes: []
   animatorOverrideController: {fileID: 0}
+  isMainShip: 0

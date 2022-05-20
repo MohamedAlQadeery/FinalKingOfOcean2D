@@ -27,6 +27,7 @@ namespace FishGame.Core
         private static PlayFabShipData _instance;
         private const string shipKey = "ships";
         private const string mainShipsKey = "main_ships";
+        
 
        [SerializeField] PlayFabPlayerShipEvent getShipSuccessEvent;
         [SerializeField] PlayFabPlayerShipsListEvent getMainShipsListEventSuccess;
@@ -142,18 +143,20 @@ namespace FishGame.Core
             updateMainShipsSuccessEvent?.Invoke("Main Ships has been updated ");
         }
 
-        private string GetJsonStringFromMainShipsList(List<Ship> mainShipsList)
+        public string GetJsonStringFromMainShipsList(List<Ship> mainShipsList)
         {
             List<SerializableShipData> serializableMainShips = new List<SerializableShipData>();
 
             foreach (Ship ship in mainShipsList)
             {
-                ship.SetIsMainShip(true); 
                 serializableMainShips.Add(ship.GetDataToJson());
             }
 
             return JsonConvert.SerializeObject(serializableMainShips);
         }
+
+
+       
     }
 
 }

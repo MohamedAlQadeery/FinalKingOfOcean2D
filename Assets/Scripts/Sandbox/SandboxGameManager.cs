@@ -41,18 +41,12 @@ namespace FishGame.Sandbox
 
         public void OnGetPlayerMainShipsSuccess(List<SerializableShipData> playerMainShips)
         {
-            List<Ship> mainShipsFromR = new List<Ship>();
-            foreach(SerializableShipData ship in playerMainShips)
-            {
-                if(FindScriptableObjectShip(ship.shipName) != null)
-                {
-                    mainShipsFromR.Add(FindScriptableObjectShip(ship.shipName));
-                }
-            }
+            List<Ship> mainShipsFromR = DeserialzeShipDataToShipList(playerMainShips);
             mainShips.Clear();
             mainShips.AddRange(mainShipsFromR);
         }
 
+      
         public void OnUpdatePlayerMainShipsSuccess(string message)
         {
             Debug.Log("Main Ships is updated !!");
@@ -62,14 +56,8 @@ namespace FishGame.Sandbox
         public void OnGetAllPlayerShipsSuccess(List<SerializableShipData> ships)
         {
             Debug.Log("All Ships recieved successfully");
-            List<Ship> allShipsFromR = new List<Ship>();
-            foreach (SerializableShipData serializableShip in ships)
-            {
-                if (FindScriptableObjectShip(serializableShip.shipName) != null)
-                {
-                    allShipsFromR.Add(FindScriptableObjectShip(serializableShip.shipName));
-                }
-            }
+            List<Ship> allShipsFromR = DeserialzeShipDataToShipList(ships);
+            
             userShips.Clear();
             userShips.AddRange(allShipsFromR);
         }
@@ -98,7 +86,23 @@ namespace FishGame.Sandbox
             return Resources.LoadAll<Ship>(shipsFolderName).ToList();
         }
 
+        /**
+         * Takes SerilziableShipData list and covert it to the Ship list from resoucrses folder
+         */
+        private List<Ship> DeserialzeShipDataToShipList(List<SerializableShipData> playerMainShips)
+        {
+            List<Ship> mainShipsFromR = new List<Ship>();
+            foreach (SerializableShipData ship in playerMainShips)
+            {
+                if (FindScriptableObjectShip(ship.shipName) != null)
+                {
+                    mainShipsFromR.Add(FindScriptableObjectShip(ship.shipName));
+                }
+            }
 
-        
+            return mainShipsFromR;
+        }
+
+
     }
 }

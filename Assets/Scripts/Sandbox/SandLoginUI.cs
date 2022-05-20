@@ -19,10 +19,11 @@ namespace FishGame.Sandbox
         [SerializeField] GameObject signUpPanel;
         [SerializeField] GameObject signOutButton;
         [SerializeField] GameObject LoggedInPanel;
-
+        [SerializeField] Button CancelFishingButton;
 
         //End of login panel vars
         PlayFabAuth playFabAuthService;
+        
         private void Awake()
         {
             playFabAuthService = PlayFabAuth.Instance;
@@ -34,7 +35,11 @@ namespace FishGame.Sandbox
             {
                 playFabAuthService.RememberMe = toggle;
             });
-
+            CancelFishingButton.onClick.AddListener(() =>
+            {
+                FindObjectOfType<Fishing>().CancelFishing();
+                Debug.Log("Cancel button is clicked !!");
+            });
 
             playFabAuthService.CheckCustomLink();
         }

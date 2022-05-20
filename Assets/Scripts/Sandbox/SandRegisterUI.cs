@@ -25,6 +25,7 @@ namespace FishGame.Sandbox
 
         [SerializeField] List<Ship> newPlayerShips;
 
+      
         public void OnClickRegisterButton()
         {
             string email = registerEmailInputField.text;
@@ -57,6 +58,7 @@ namespace FishGame.Sandbox
 
             return tmpList;
         }
+      
 
         public void OnErrorRegister(string message)
         {

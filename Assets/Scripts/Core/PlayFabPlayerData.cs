@@ -34,6 +34,8 @@ namespace FishGame.Core
         [SerializeField] PlayFabEvent errorEvent;
         [SerializeField] PlayFabEvent successEvent;
 
+
+
         public static PlayFabPlayerData Instance
         {
             get
@@ -78,6 +80,7 @@ namespace FishGame.Core
         {
             
             string newShipsToJson = JsonConvert.SerializeObject(newShips);
+
             Dictionary<string, int> fishesDic = new Dictionary<string, int>();
             List<Fish> fishesList = Resources.LoadAll<Fish>(fishesFolderName).ToList();
             foreach(Fish fish in fishesList)

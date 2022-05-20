@@ -8,6 +8,7 @@ namespace FishGame.Ships
     [CreateAssetMenu(fileName = "Ship", menuName = "ScriptableObjects/Ships/Create New Ship", order = 0)]
     public class Ship : ScriptableObject
     {
+        [SerializeField] GameObject shipPrefab;
         [SerializeField] SerializableShipData dataToJson;
 
         [SerializeField]  string shipName;
@@ -17,13 +18,14 @@ namespace FishGame.Ships
         
         [SerializeField] Sprite shipImage, shipIcon,destroyedImage;
         [SerializeField] bool canUpgrade;
-       [SerializeField] bool  isFishing,onCooldown;
+       [SerializeField] public bool  isFishing,onCooldown;
         [SerializeField] List<Fish> canFishTypes; 
        [SerializeField] List<SerializableFishData> caughtFishes;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
 
-        // main ships are the ships that is displayed at game scene (maximum 3 ships)
-       [SerializeField] bool isMainShip = false;
+    
+
+       
         public bool CanFish()
         {
             if (currentHealth <= 0) return false;
@@ -89,11 +91,7 @@ namespace FishGame.Ships
             return fishingDuration;
         }
 
-        public void SetIsMainShip(bool value)
-        {
-            isMainShip = value;
-            dataToJson.isMainShip = value;
-        }
+      
 
         public string GetShipName()
         {
@@ -108,7 +106,6 @@ namespace FishGame.Ships
         public string shipName;
         public int currentCapacity;
         public float currentHealth;
-        public bool isMainShip;
 
 
 
