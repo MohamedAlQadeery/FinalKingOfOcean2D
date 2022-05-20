@@ -24,7 +24,10 @@ namespace FishGame.Fishes
             return dataToJson;
         }
 
-
+       public string GetName()
+        {
+            return fishName;
+        }
     }
 
     public class SuperFish : Fish

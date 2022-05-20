@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &109810424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3275,7 +3275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156717b91ef549240bac45bebbe114ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentShip: {fileID: 11400000, guid: 823d0891b9499aa4fb44382456d97b7f, type: 2}
+  currentShip: {fileID: 11400000, guid: ba66ac10025c41b418d04ee4c2a5c98e, type: 2}
   timeToFillCapacity: 0
   startFishing: 0
 --- !u!114 &1182633344
@@ -3681,7 +3681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1272623315
 RectTransform:
   m_ObjectHideFlags: 0
