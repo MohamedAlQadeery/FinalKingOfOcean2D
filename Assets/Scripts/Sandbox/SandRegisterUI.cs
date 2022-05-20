@@ -41,7 +41,7 @@ namespace FishGame.Sandbox
             Debug.Log("From Register UI");
             Debug.Log(message);
 
-            List<SerializableShipData> serializablesNewShips = FillSerializableMainShipList();
+            List<SerializableShipData> serializablesNewShips = FillSerializableShipList();
 
             PlayFabPlayerData.Instance.NewPlayerSetup(serializablesNewShips);
 
@@ -58,17 +58,7 @@ namespace FishGame.Sandbox
 
             return tmpList;
         }
-        private List<SerializableShipData> FillSerializableMainShipList()
-        {
-            List<SerializableShipData> tmpList = new List<SerializableShipData>();
-            foreach (Ship ship in newPlayerShips)
-            {
-                ship.SetIsMainShip(true);
-                tmpList.Add(ship.GetDataToJson());
-            }
-
-            return tmpList;
-        }
+      
 
         public void OnErrorRegister(string message)
         {

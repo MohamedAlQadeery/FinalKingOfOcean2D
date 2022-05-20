@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
   m_Name: Test Ship
   m_EditorClassIdentifier: 
+  shipPrefab: {fileID: 3066793443064769090, guid: 1352bf5621b10bf429b203a9391a706a, type: 3}
   dataToJson:
     shipName: Test
     currentCapacity: 0

@@ -149,7 +149,6 @@ namespace FishGame.Core
 
             foreach (Ship ship in mainShipsList)
             {
-                ship.SetIsMainShip(true); 
                 serializableMainShips.Add(ship.GetDataToJson());
             }
 
