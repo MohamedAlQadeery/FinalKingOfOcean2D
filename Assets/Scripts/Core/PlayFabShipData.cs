@@ -7,6 +7,7 @@ using System;
 using FishGame.Ships;
 using UnityEngine.Events;
 using Newtonsoft.Json;
+using FishGame.Fishes;
 
 namespace FishGame.Core
 {
@@ -26,6 +27,7 @@ namespace FishGame.Core
     {
         private static PlayFabShipData _instance;
         private const string shipKey = "ships";
+        private const string fishKey = "fishes";
         private const string mainShipsKey = "main_ships";
         
 
@@ -36,6 +38,9 @@ namespace FishGame.Core
 
         [SerializeField] PlayFabError errorEvent;
         [SerializeField] PlayFabEvent updateMainShipsSuccessEvent;
+        [SerializeField] PlayFabEvent GetFishJsonSuccess;
+        [SerializeField] PlayFabEvent updateFishStorageSuccess;
+
 
         public static PlayFabShipData Instance
         {
@@ -155,7 +160,36 @@ namespace FishGame.Core
             return JsonConvert.SerializeObject(serializableMainShips);
         }
 
+        public void GetFishJsonValue()
+        {
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest { 
+                Keys = new List<string>(){fishKey}
+            
+            },  result => {
+                     Debug.Log("Inside GetFishJsonValue() result");
+                 GetFishJsonSuccess?.Invoke(result.Data[fishKey].Value);
+              
+            }, OnError);
 
+           
+        }
+
+       
+        public void UpdateFishStorage(Dictionary<string,int> fishDic)
+        {
+            string updatedFishJson = JsonConvert.SerializeObject(fishDic);
+            var request = new UpdateUserDataRequest
+            {
+                Data = new Dictionary<string, string>(){
+                    {fishKey,updatedFishJson },
+                }
+            };
+
+            PlayFabClientAPI.UpdateUserData(request,result=> {
+
+                updateFishStorageSuccess?.Invoke("Fish storage has been updated !");
+            },OnError);
+        }
        
     }
 
