@@ -12,8 +12,20 @@ public class FishingTimer : MonoBehaviour
     public TMP_Text timerText;
     private float fishingTime;
     public bool stopTimer = true;
-
+    public GameObject fullShipButton;
     // Start is called before the first frame update
+
+    public void FullShip()
+    {
+        //here code for take fish to store ot collect fish from ship
+        fullShipButton.SetActive(false);
+    }
+
+    public void FullShipActive()
+    {
+        fullShipButton.SetActive(true);
+    }
+
     void Start()
     {
         stopTimer = true;
@@ -58,6 +70,7 @@ public class FishingTimer : MonoBehaviour
         if (fishingTime <= 0)
         {
             stopTimer = true;
+                FullShipActive();
         }
 
             if (stopTimer == false)
