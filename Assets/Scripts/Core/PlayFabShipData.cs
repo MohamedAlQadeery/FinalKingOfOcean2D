@@ -26,7 +26,7 @@ namespace FishGame.Core
     public class PlayFabShipData : MonoBehaviour
     {
         private static PlayFabShipData _instance;
-        private const string shipKey = "ships";
+        private const string ownedShipKey = "owned_ships";
         private const string fishKey = "fishes";
         private const string mainShipsKey = "main_ships";
         
@@ -62,7 +62,7 @@ namespace FishGame.Core
 
             var request = new GetUserDataRequest
             {
-                Keys =new List<string> { shipKey},
+                Keys =new List<string> { ownedShipKey},
             };
             PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetAllPlayerShipsSuccess, OnError);
 
@@ -76,38 +76,38 @@ namespace FishGame.Core
         private void OnGetAllPlayerShipsSuccess(GetUserDataResult result)
         {
           
-            List<SerializableShipData> allUserShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[shipKey].Value);
+            List<SerializableShipData> allUserShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[ownedShipKey].Value);
            
            getAllShipsListEventSuccess?.Invoke(allUserShips);
         }
 
 
         //Get specifc ship by name
-        public void GetShip(string name)
-        {
-            name = "first ship";
-            var request = new GetUserDataRequest
-            {
-                Keys = new List<string> { shipKey },
-            };
-            PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
-               result => {
-                   List<SerializableShipData> shipsList = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[shipKey].Value);
+        //public void GetShip(string name)
+        //{
+        //    name = "first ship";
+        //    var request = new GetUserDataRequest
+        //    {
+        //        Keys = new List<string> { ownedShipKey },
+        //    };
+        //    PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
+        //       result => {
+        //           List<SerializableShipData> shipsList = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[ownedShipKey].Value);
 
-                   foreach(SerializableShipData ship in shipsList)
-                   {
-                       if(ship.shipName == name.ToLower())
-                       {
-                           Debug.Log($"Ship is found : {ship.shipName}");
-                           getShipSuccessEvent?.Invoke(ship);
-                           return;
-                       }
-                   }
+        //           foreach(SerializableShipData ship in shipsList)
+        //           {
+        //               if(ship.shipName == name.ToLower())
+        //               {
+        //                   Debug.Log($"Ship is found : {ship.shipName}");
+        //                   getShipSuccessEvent?.Invoke(ship);
+        //                   return;
+        //               }
+        //           }
                
-               } ,OnError
+        //       } ,OnError
                 
-              );
-        }
+        //      );
+        //}
 
 
         public void GetMainShips()
