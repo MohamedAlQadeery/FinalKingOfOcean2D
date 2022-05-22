@@ -9,6 +9,7 @@ TagManager:
   - CanvasUI
   - ShipUI
   - ShipUI1
+  - Ship
   layers:
   - Default
   - TransparentFX
