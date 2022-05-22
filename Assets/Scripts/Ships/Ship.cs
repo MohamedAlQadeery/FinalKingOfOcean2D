@@ -23,6 +23,14 @@ namespace FishGame.Ships
        [SerializeField] List<SerializableFishData> caughtFishes;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
 
+
+
+        public void SpawnShip(Transform transform)
+        {
+            //Instantiate(shipPrefab, postion);
+            GameObject  shipInstantiate= Instantiate(shipPrefab, transform.position, Quaternion.identity) as GameObject;
+            shipInstantiate.transform.SetParent(GameObject.FindGameObjectWithTag("ShipUI").transform, false);
+        }
     
 
        

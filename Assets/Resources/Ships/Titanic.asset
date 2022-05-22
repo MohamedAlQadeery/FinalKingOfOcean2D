@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
+  m_Name: Titanic
+  m_EditorClassIdentifier: 
+  shipPrefab: {fileID: 2140537446758158292, guid: 25088fa7cc0cb8c449ca71493ce4bdd4, type: 3}
+  dataToJson:
+    shipName: Titanic
+    currentCapacity: 50
+    currentHealth: 100
+  shipName: Titanic
+  currentCapacity: 50
+  maxCapacity: 100
+  unlockLevel: 0
+  currentHealth: 100
+  maxHealth: 100
+  healDuration: 0
+  healAmount: 0
+  fishingDuration: 2
+  numberFishCaughtPerMin: 50
+  shipImage: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
+  shipIcon: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
+  destroyedImage: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
+  canUpgrade: 0
+  isFishing: 0
+  onCooldown: 0
+  canFishTypes:
+  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
+  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
+  caughtFishes: []
+  animatorOverrideController: {fileID: 0}

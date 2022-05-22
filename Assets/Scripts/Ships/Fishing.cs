@@ -90,7 +90,7 @@ namespace FishGame.Ships
             StartCoroutine(fishingCourtineRef);
             Debug.Log(fishingCourtineRef.GetHashCode());
 
-        } 
+        }
         private void Update()
         {
             if (startFishing)

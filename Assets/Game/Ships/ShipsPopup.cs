@@ -8,7 +8,9 @@ public class ShipsPopup : MonoBehaviour
     Animator shipAnim;
     private void Start()
     {
-        fishAnim = GameObject.FindGameObjectWithTag("ShipUI1").GetComponentInChildren<Animator>();
+        //fishAnim = GameObject.FindGameObjectWithTag("ShipUI1").GetComponentInChildren<Animator>();
+        //fishAnim = GameObject.FindGameObjectWithTag("Ship").GetComponent<Animator>();
+        fishAnim = this.GetComponentInParent<Animator>();
         shipAnim = GameObject.FindGameObjectWithTag("ShipUI").GetComponentInChildren<Animator>();
     }
     public void StartFishing()
@@ -32,6 +34,7 @@ public class ShipsPopup : MonoBehaviour
 
     public void Close()
     {
-        Destroy(gameObject);
+        transform.gameObject.SetActive(false);
+       // Destroy(gameObject);
     }
 }

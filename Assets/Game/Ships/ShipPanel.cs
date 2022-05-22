@@ -7,10 +7,12 @@ public class ShipPanel : MonoBehaviour
 
     [SerializeField] GameObject shipsPanel;
 
+
     public void ShipsPanel()
     {
-        GameObject newUiSginUp = Instantiate(shipsPanel, transform.position, transform.rotation) as GameObject;
-        newUiSginUp.transform.SetParent(GameObject.FindGameObjectWithTag("ShipUI").transform, false);
+        shipsPanel.SetActive(true);
+        //GameObject newUiSginUp = Instantiate(shipsPanel,new Vector3(0,0,0), transform.rotation) as GameObject;
+        //newUiSginUp.transform.SetParent(this.transform, false);
     }
 
 }
