@@ -22,6 +22,13 @@ namespace FishGame.Ships
             shipDataService = PlayFabShipData.Instance;
 
         }
+
+        public float GetTimeToFillCapacity()
+        {
+            return currentShip.GetFishingDuration() * 60;
+        }
+
+
         private IEnumerator FishingCorutine()
         {
 
@@ -104,9 +111,9 @@ namespace FishGame.Ships
 
         }
 
-        private void DisplayFishingTimer()
+       private void DisplayFishingTimer()
         {
-            if (!startFishing) return;
+          if (!startFishing) return;
             timeToFillCapacity -= Time.deltaTime;
             //TimeSpan time = TimeSpan.FromSeconds(timeToFillCapacity);
             //Debug.Log($"{time.Minutes.ToString()} : {time.Seconds.ToString()}");
