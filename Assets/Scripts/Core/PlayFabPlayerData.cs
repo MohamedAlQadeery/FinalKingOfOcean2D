@@ -33,6 +33,7 @@ namespace FishGame.Core
         [SerializeField] PlayFabPlayerShipsListEvent getPlayerShipsSuccessEvent;
         [SerializeField] PlayFabEvent errorEvent;
         [SerializeField] PlayFabEvent successEvent;
+        [SerializeField] PlayFabEvent getDataByKeySuccess;
 
 
 
@@ -119,24 +120,46 @@ namespace FishGame.Core
             errorEvent?.Invoke($"Error : {error.GenerateErrorReport()}");
         }
 
-        public void AddFishToPlayerData(List<SerializableFishData> fishList)
-        {
-            string fishListToJson = JsonConvert.SerializeObject(fishList);
+        //public void AddFishToPlayerData(List<SerializableFishData> fishList)
+        //{
+        //    string fishListToJson = JsonConvert.SerializeObject(fishList);
             
-            var request = new UpdateUserDataRequest
-            {
-                Data = new Dictionary<string, string>
-                {
-                    {fishKey,fishListToJson }
-                },
-            };
+        //    var request = new UpdateUserDataRequest
+        //    {
+        //        Data = new Dictionary<string, string>
+        //        {
+        //            {fishKey,fishListToJson }
+        //        },
+        //    };
 
-            PlayFabClientAPI.UpdateUserData(request,AddPlayerFishSuccess,OnError);
-        }
+        //    PlayFabClientAPI.UpdateUserData(request,AddPlayerFishSuccess,OnError);
+        //}
 
         private void AddPlayerFishSuccess(UpdateUserDataResult result)
         {
             successEvent?.Invoke("Fishses has been added to player successfully");
+        }
+
+
+        /**
+         * Get player data by specific key
+         * still not implmeneted completely
+         */
+        public void  GetPlayerDataByKey(string key)
+        {
+          
+            var request = new GetUserDataRequest
+            {
+                Keys = new List<string> { key },
+            };
+
+            PlayFabClientAPI.GetUserData(request,result=> {
+
+                getDataByKeySuccess?.Invoke(result.Data[key].Value);
+            
+            }, error=> { 
+            
+            });
         }
     }
 

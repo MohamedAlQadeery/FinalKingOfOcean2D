@@ -1,5 +1,6 @@
 using FishGame.Core;
 using FishGame.Fishes;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,10 +15,11 @@ namespace FishGame.Ships
         [SerializeField] bool startFishing = false;
         private IEnumerator fishingCourtineRef;
 
+        PlayFabShipData shipDataService;
         private void Start()
         {
            timeToFillCapacity= currentShip.GetFishingDuration() * 60;
-
+            shipDataService = PlayFabShipData.Instance;
 
         }
         private IEnumerator FishingCorutine()
@@ -115,10 +117,54 @@ namespace FishGame.Ships
         {
             StopCoroutine(fishingCourtineRef);
             Debug.Log(fishingCourtineRef.GetHashCode());
-
+            currentShip.ClearCapacity();
             startFishing = false;
             Debug.Log("Fishing is canclled");
         }
+
+        /**
+         * Gets the current fish storage from the serever
+         * then update it with updated data then send it back to the server
+         */
+        public void StoreCaughtFishButton()
+        {
+            Debug.Log("Inside StoreCaughtFishButton() ");
+            shipDataService.GetFishJsonValue();
+        }
+
+        public void UpdateFishStorage(string fishJson)
+        {
+            Debug.Log("Inside UpdateFishStorage()");
+
+
+            Dictionary<string,int> currentFishStorage= JsonConvert.DeserializeObject<Dictionary<string, int>>(fishJson);
+            Debug.Log(fishJson);
+            foreach(var fish in currentShip.GetCaughtFishList())
+            {
+                if (currentFishStorage.ContainsKey(fish.fishName))
+                {
+                    currentFishStorage[fish.fishName]++;
+                }
+                else
+                {
+                    currentFishStorage.Add(fish.fishName, 1);
+                }
+            }
+
+
+            shipDataService.UpdateFishStorage(currentFishStorage);
+        }
+
+        public void OnUpdateFishStorageSuccess(string message)
+        {
+            currentShip.ClearCapacity();
+            Debug.Log(message);
+        }
+
+       
+
+
+
     }
 
 }
