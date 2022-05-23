@@ -1,5 +1,6 @@
 using FishGame.Core;
 using FishGame.Ships;
+using FishGame.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,18 @@ namespace FishGame.Sandbox
         private PlayFabShipData playFabShipDataService;
         private const string shipsFolderName = "Ships";
        [SerializeField] List<Ship> shipFromResources ;
+        ListUtil listUtilService;
+
 
         private void Start()
         {
             playFabShipDataService = PlayFabShipData.Instance;
             userShips = new List<Ship>();
             mainShips = new List<Ship>();
-            shipFromResources = GetShipsFromResourcesFolder();
             GetAllPlayerShips();
             GetPlayerMainShips();
+            listUtilService = ListUtil.Instance;
+
         }
         public void GetPlayerMainShips()
         {
@@ -41,7 +45,7 @@ namespace FishGame.Sandbox
 
         public void OnGetPlayerMainShipsSuccess(List<SerializableShipData> playerMainShips)
         {
-            List<Ship> mainShipsFromR = DeserialzeShipDataToShipList(playerMainShips);
+            List<Ship> mainShipsFromR = listUtilService.DeserialzeShipDataToShipList(playerMainShips);
             mainShips.Clear();
             mainShips.AddRange(mainShipsFromR);
         }
@@ -56,7 +60,7 @@ namespace FishGame.Sandbox
         public void OnGetAllPlayerShipsSuccess(List<SerializableShipData> ships)
         {
             Debug.Log("All Ships recieved successfully");
-            List<Ship> allShipsFromR = DeserialzeShipDataToShipList(ships);
+            List<Ship> allShipsFromR = listUtilService.DeserialzeShipDataToShipList(ships);
             
             userShips.Clear();
             userShips.AddRange(allShipsFromR);
@@ -68,40 +72,6 @@ namespace FishGame.Sandbox
             Debug.Log($"From Sandbox Game Manager : {message}");
         }
 
-
-        private Ship FindScriptableObjectShip(string name)
-        {
-            foreach(Ship ship in shipFromResources)
-            {
-                if(ship.GetShipName().ToLower() == name.ToLower())
-                {
-                    return ship;
-                }
-            }
-            return null;
-        }
-
-        private List<Ship> GetShipsFromResourcesFolder()
-        {
-            return Resources.LoadAll<Ship>(shipsFolderName).ToList();
-        }
-
-        /**
-         * Takes SerilziableShipData list and covert it to the Ship list from resoucrses folder
-         */
-        private List<Ship> DeserialzeShipDataToShipList(List<SerializableShipData> playerMainShips)
-        {
-            List<Ship> mainShipsFromR = new List<Ship>();
-            foreach (SerializableShipData ship in playerMainShips)
-            {
-                if (FindScriptableObjectShip(ship.shipName) != null)
-                {
-                    mainShipsFromR.Add(FindScriptableObjectShip(ship.shipName));
-                }
-            }
-
-            return mainShipsFromR;
-        }
 
 
         

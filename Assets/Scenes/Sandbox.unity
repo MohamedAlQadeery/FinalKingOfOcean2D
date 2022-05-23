@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &109810424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -780,21 +780,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  getAllShipsListEventSuccess:
+  getUserShipsEventSuccess:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 570970045}
-        m_TargetAssemblyTypeName: FishGame.Sandbox.SandboxGameManager, Assembly-CSharp
-        m_MethodName: OnGetAllPlayerShipsSuccess
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   updateMainShipsSuccessEvent:
     m_PersistentCalls:
       m_Calls:
@@ -825,6 +813,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  updateFishStorageSuccess:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &151805422
 Transform:
   m_ObjectHideFlags: 0
@@ -1355,7 +1346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &286223239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6472,6 +6463,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   successEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  getDataByKeySuccess:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2028720016

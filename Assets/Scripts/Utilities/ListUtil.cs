@@ -30,7 +30,7 @@ namespace FishGame.Utilities
         }
 
 
-        private List<Ship> DeserialzeShipDataToShipList(List<SerializableShipData> playerMainShips)
+        public List<Ship> DeserialzeShipDataToShipList(List<SerializableShipData> playerMainShips)
         {
             List<Ship> mainShipsFromR = new List<Ship>();
             foreach (SerializableShipData ship in playerMainShips)
