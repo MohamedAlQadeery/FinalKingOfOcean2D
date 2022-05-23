@@ -25,6 +25,7 @@ namespace FishGame.Core
         
         private const string shipsKey = "ships";
         private const string mainShipKey = "main_ships";
+        private const string ownedShipKey = "owned_ships";
         private const string levelKey = "level";
         private const string fishKey = "fishes";
         private const string fishesFolderName = "Fishes";
@@ -97,6 +98,7 @@ namespace FishGame.Core
                 Data = new Dictionary<string, string> {
                 { shipsKey,newShipsToJson},
                 {mainShipKey,newShipsToJson },
+                {ownedShipKey,newShipsToJson },
                 {levelKey,"0" },
                 {fishKey,newFishesToJson }
 
