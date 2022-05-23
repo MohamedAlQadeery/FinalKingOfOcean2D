@@ -38,8 +38,8 @@ namespace FishGame.Core
 
         [SerializeField] PlayFabError errorEvent;
         [SerializeField] PlayFabEvent updateMainShipsSuccessEvent;
-        [SerializeField] PlayFabEvent GetFishJsonSuccess;
-        [SerializeField] PlayFabEvent updateFishStorageSuccess;
+        public PlayFabEvent GetFishJsonSuccess;
+        public PlayFabEvent updateFishStorageSuccess;
 
 
         public static PlayFabShipData Instance
