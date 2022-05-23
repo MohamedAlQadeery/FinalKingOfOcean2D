@@ -33,7 +33,7 @@ namespace FishGame.Core
 
        [SerializeField] PlayFabPlayerShipEvent getShipSuccessEvent;
         [SerializeField] PlayFabPlayerShipsListEvent getMainShipsListEventSuccess;
-        [SerializeField] PlayFabPlayerShipsListEvent getAllShipsListEventSuccess;
+        [SerializeField] PlayFabPlayerShipsListEvent getUserShipsEventSuccess;
 
 
         [SerializeField] PlayFabError errorEvent;
@@ -64,7 +64,7 @@ namespace FishGame.Core
             {
                 Keys =new List<string> { ownedShipKey},
             };
-            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetAllPlayerShipsSuccess, OnError);
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetUserShipsSuccess, OnError);
 
         }
 
@@ -73,12 +73,12 @@ namespace FishGame.Core
             Debug.LogError($"{error.GenerateErrorReport()}");
         }
 
-        private void OnGetAllPlayerShipsSuccess(GetUserDataResult result)
+        private void OnGetUserShipsSuccess(GetUserDataResult result)
         {
           
             List<SerializableShipData> allUserShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[ownedShipKey].Value);
            
-           getAllShipsListEventSuccess?.Invoke(allUserShips);
+           getUserShipsEventSuccess?.Invoke(allUserShips);
         }
 
 
