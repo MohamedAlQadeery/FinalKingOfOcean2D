@@ -3043,7 +3043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storgePanel: {fileID: 2533618661720019229, guid: ab97d79e3f25c8345b468fa210b393ac, type: 3}
   storgeButton: {fileID: 1132188036}
-  shipsPanel: {fileID: 7816084203175687645, guid: 0ceaf8ffd9f9262499fc32a387ba4fde, type: 3}
+  shipsPanel: {fileID: 7816084203175687645, guid: e9d0197b664d18e419d6ae05800832fe, type: 3}
   shipsButton: {fileID: 1040646677}
   guildPanel: {fileID: 7816084203175687645, guid: 6c6f0ade6fa88874e8a9dd3f84d0fc60, type: 3}
   guildButton: {fileID: 840592127}
@@ -6597,5 +6597,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   updateMainShipsSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  GetFishJsonSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  updateFishStorageSuccess:
     m_PersistentCalls:
       m_Calls: []
