@@ -20,8 +20,17 @@ namespace FishGame.Ships
         {
            timeToFillCapacity= currentShip.GetFishingDuration() * 60;
             shipDataService = PlayFabShipData.Instance;
+            shipDataService.GetFishJsonSuccess.AddListener(UpdateFishStorage);
+            shipDataService.updateFishStorageSuccess.AddListener(OnUpdateFishStorageSuccess);
 
         }
+
+        public float GetTimeToFillCapacity()
+        {
+            return currentShip.GetFishingDuration() * 60;
+        }
+
+
         private IEnumerator FishingCorutine()
         {
 
@@ -104,9 +113,9 @@ namespace FishGame.Ships
 
         }
 
-        private void DisplayFishingTimer()
+       private void DisplayFishingTimer()
         {
-            if (!startFishing) return;
+          if (!startFishing) return;
             timeToFillCapacity -= Time.deltaTime;
             //TimeSpan time = TimeSpan.FromSeconds(timeToFillCapacity);
             //Debug.Log($"{time.Minutes.ToString()} : {time.Seconds.ToString()}");
@@ -126,6 +135,7 @@ namespace FishGame.Ships
          * Gets the current fish storage from the serever
          * then update it with updated data then send it back to the server
          */
+        
         public void StoreCaughtFishButton()
         {
             Debug.Log("Inside StoreCaughtFishButton() ");

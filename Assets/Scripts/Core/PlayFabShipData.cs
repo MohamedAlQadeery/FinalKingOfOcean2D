@@ -26,20 +26,20 @@ namespace FishGame.Core
     public class PlayFabShipData : MonoBehaviour
     {
         private static PlayFabShipData _instance;
-        private const string shipKey = "ships";
+        private const string ownedShipKey = "owned_ships";
         private const string fishKey = "fishes";
         private const string mainShipsKey = "main_ships";
         
 
        [SerializeField] PlayFabPlayerShipEvent getShipSuccessEvent;
         [SerializeField] PlayFabPlayerShipsListEvent getMainShipsListEventSuccess;
-        [SerializeField] PlayFabPlayerShipsListEvent getAllShipsListEventSuccess;
+         public PlayFabPlayerShipsListEvent getUserShipsEventSuccess;
 
 
         [SerializeField] PlayFabError errorEvent;
         [SerializeField] PlayFabEvent updateMainShipsSuccessEvent;
-        [SerializeField] PlayFabEvent GetFishJsonSuccess;
-        [SerializeField] PlayFabEvent updateFishStorageSuccess;
+        public PlayFabEvent GetFishJsonSuccess;
+        public PlayFabEvent updateFishStorageSuccess;
 
 
         public static PlayFabShipData Instance
@@ -62,9 +62,9 @@ namespace FishGame.Core
 
             var request = new GetUserDataRequest
             {
-                Keys =new List<string> { shipKey},
+                Keys =new List<string> { ownedShipKey},
             };
-            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetAllPlayerShipsSuccess, OnError);
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetUserShipsSuccess, OnError);
 
         }
 
@@ -73,41 +73,41 @@ namespace FishGame.Core
             Debug.LogError($"{error.GenerateErrorReport()}");
         }
 
-        private void OnGetAllPlayerShipsSuccess(GetUserDataResult result)
+        private void OnGetUserShipsSuccess(GetUserDataResult result)
         {
           
-            List<SerializableShipData> allUserShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[shipKey].Value);
+            List<SerializableShipData> allUserShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[ownedShipKey].Value);
            
-           getAllShipsListEventSuccess?.Invoke(allUserShips);
+           getUserShipsEventSuccess?.Invoke(allUserShips);
         }
 
 
         //Get specifc ship by name
-        public void GetShip(string name)
-        {
-            name = "first ship";
-            var request = new GetUserDataRequest
-            {
-                Keys = new List<string> { shipKey },
-            };
-            PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
-               result => {
-                   List<SerializableShipData> shipsList = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[shipKey].Value);
+        //public void GetShip(string name)
+        //{
+        //    name = "first ship";
+        //    var request = new GetUserDataRequest
+        //    {
+        //        Keys = new List<string> { ownedShipKey },
+        //    };
+        //    PlayFabClientAPI.GetUserData(new GetUserDataRequest(),
+        //       result => {
+        //           List<SerializableShipData> shipsList = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[ownedShipKey].Value);
 
-                   foreach(SerializableShipData ship in shipsList)
-                   {
-                       if(ship.shipName == name.ToLower())
-                       {
-                           Debug.Log($"Ship is found : {ship.shipName}");
-                           getShipSuccessEvent?.Invoke(ship);
-                           return;
-                       }
-                   }
+        //           foreach(SerializableShipData ship in shipsList)
+        //           {
+        //               if(ship.shipName == name.ToLower())
+        //               {
+        //                   Debug.Log($"Ship is found : {ship.shipName}");
+        //                   getShipSuccessEvent?.Invoke(ship);
+        //                   return;
+        //               }
+        //           }
                
-               } ,OnError
+        //       } ,OnError
                 
-              );
-        }
+        //      );
+        //}
 
 
         public void GetMainShips()

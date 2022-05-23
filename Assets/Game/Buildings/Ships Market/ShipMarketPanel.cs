@@ -5,22 +5,22 @@ using UnityEngine;
 public class ShipMarketPanel : MonoBehaviour
 {
     
-    //public GameObject toolsScroll;
-   // public GameObject fishScroll;
+    public GameObject shipMarketScroll;
+    public GameObject shipStoreScroll;
     public GameObject upgradePanel;
     public GameObject shipInfoPanel;
 
-    //public void FishButton()
-    //{
-    ///    toolsScroll.SetActive(false);
-    //    fishScroll.SetActive(true);
-   // }
+    public void ShipStoreButton()
+    {
+        shipMarketScroll.SetActive(false);
+        shipStoreScroll.SetActive(true);
+    }
 
-   // public void ToolsButton()
-   /// {
-    ///    fishScroll.SetActive(false);
-    //    toolsScroll.SetActive(true);
-   // }
+    public void ShipMarketButton()
+    {
+        shipStoreScroll.SetActive(false);
+        shipMarketScroll.SetActive(true);
+    }
 
     public void UpgradeButton()
     {
