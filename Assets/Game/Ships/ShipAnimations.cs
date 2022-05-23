@@ -27,6 +27,8 @@ public class ShipAnimations : MonoBehaviour
         fishingStoped.SetActive(false);
         fishAnim.SetBool("isFishing", true);
         shipAnim.SetBool("IsShipFishing", true);
+
+     
         Close();
     }
 

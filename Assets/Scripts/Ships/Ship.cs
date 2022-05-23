@@ -31,9 +31,12 @@ namespace FishGame.Ships
             GameObject  shipInstantiate= Instantiate(shipPrefab, transform.position, Quaternion.identity) as GameObject;
             shipInstantiate.transform.SetParent(GameObject.FindGameObjectWithTag("ShipUI").transform, false);
         }
-    
 
-       
+        public  Sprite GetShipIcon()
+        {
+            return shipIcon;
+        }
+
         public bool CanFish()
         {
             if (currentHealth <= 0) return false;

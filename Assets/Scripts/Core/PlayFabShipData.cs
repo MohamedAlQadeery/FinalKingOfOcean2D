@@ -33,7 +33,7 @@ namespace FishGame.Core
 
        [SerializeField] PlayFabPlayerShipEvent getShipSuccessEvent;
         [SerializeField] PlayFabPlayerShipsListEvent getMainShipsListEventSuccess;
-        [SerializeField] PlayFabPlayerShipsListEvent getUserShipsEventSuccess;
+         public PlayFabPlayerShipsListEvent getUserShipsEventSuccess;
 
 
         [SerializeField] PlayFabError errorEvent;
