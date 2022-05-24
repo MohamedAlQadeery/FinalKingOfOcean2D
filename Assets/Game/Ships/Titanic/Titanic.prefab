@@ -4769,7 +4769,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2895116478952437514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+
 --- !u!1 &9008922919427922340
 GameObject:
   m_ObjectHideFlags: 0

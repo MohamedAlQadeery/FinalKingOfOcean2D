@@ -8,41 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1003136507060677614}
-    - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
+
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1003136507060677614}
     - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FullShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
+
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: FullShip
       objectReference: {fileID: 0}
     - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FishingTimer, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: FishingTimer, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1312952182446178501, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
+
     - target: {fileID: 1692161265587034257, guid: 3f1e8bc464d6c494b8c08080533e0f42, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3

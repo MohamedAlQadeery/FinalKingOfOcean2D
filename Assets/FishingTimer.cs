@@ -17,6 +17,8 @@ public class FishingTimer : MonoBehaviour
 
     public void FullShip()
     {
+
+        GetComponent<Fishing>().StoreCaughtFishButton();
         //here code for take fish to store ot collect fish from ship
         fullShipButton.SetActive(false);
     }
