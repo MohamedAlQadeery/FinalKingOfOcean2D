@@ -111,9 +111,65 @@ PrefabInstance:
       propertyPath: currentShip
       value: 
       objectReference: {fileID: 11400000, guid: 1d0d247ba3eb9b448b603c391d627d2e, type: 2}
+    - target: {fileID: 2335430273679260173, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: completeButton
+      value: 
+      objectReference: {fileID: 1232077800496087080}
     - target: {fileID: 6465927399957056944, guid: 128e794762e23a0449db635ece647aaa, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7292077854338801391}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7292077854338801391}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FullShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: FullShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FishingTimer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FishingTimer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 128e794762e23a0449db635ece647aaa, type: 3}
@@ -126,5 +182,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85f75e73bbb3ee045b5afff15fb9dd78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1232077800496087080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+  m_PrefabInstance: {fileID: 7616818578820540662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7292077854338801391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 902630911771342361, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+  m_PrefabInstance: {fileID: 7616818578820540662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe19d074b9da91418ebdc4e88af9f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
