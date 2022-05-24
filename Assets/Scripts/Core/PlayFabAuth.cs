@@ -11,7 +11,7 @@ namespace FishGame.Core
     [Serializable]
     public class PlayFabEvent : UnityEvent<string>
     {
-
+        
     }
     public class PlayFabAuth : MonoBehaviour
     {

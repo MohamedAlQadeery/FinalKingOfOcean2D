@@ -4149,9 +4149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156717b91ef549240bac45bebbe114ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentShip: {fileID: 11400000, guid: 5d40baa9d691cd748bf643af1dec2a6a, type: 2}
+  currentShip: {fileID: 0}
   timeToFillCapacity: 0
   startFishing: 0
+  completeButton: {fileID: 1312952182446178501}
 --- !u!114 &806186526428517944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4768,31 +4769,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2895116478952437514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7355250218262781442}
-        m_TargetAssemblyTypeName: FishingTimer, Assembly-CSharp
-        m_MethodName: FullShip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5403420596637291030}
-        m_TargetAssemblyTypeName: FishGame.Ships.Fishing, Assembly-CSharp
-        m_MethodName: StoreCaughtFishButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+
 --- !u!1 &9008922919427922340
 GameObject:
   m_ObjectHideFlags: 0

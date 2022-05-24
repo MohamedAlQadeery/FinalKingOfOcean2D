@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FishGame.Ships
 {
@@ -16,12 +17,38 @@ namespace FishGame.Ships
         private IEnumerator fishingCourtineRef;
 
         PlayFabShipData shipDataService;
+        [SerializeField] Button completeButton;
+        static string clickedShipName = string.Empty;
+
+        private void Awake()
+        {
+            shipDataService = PlayFabShipData.Instance;
+           
+        }
+
+        private void OnEnable()
+        {
+            shipDataService.GetFishJsonSuccess.AddListener(UpdateFishStorage);
+            shipDataService.updateFishStorageSuccess.AddListener(OnUpdateFishStorageSuccess);
+            completeButton.onClick.AddListener(StoreCaughtFishButton);
+
+        }
+
+        private void OnDisable()
+        {
+            shipDataService.GetFishJsonSuccess.RemoveListener(UpdateFishStorage);
+            shipDataService.updateFishStorageSuccess.RemoveListener(OnUpdateFishStorageSuccess);
+            completeButton.onClick.RemoveListener(StoreCaughtFishButton);
+        }
+        private void DisplayClickedShipName()
+        {
+            Debug.LogError($"Ship name is {currentShip.GetShipName()}");
+        }
+
         private void Start()
         {
            timeToFillCapacity= currentShip.GetFishingDuration() * 60;
-            shipDataService = PlayFabShipData.Instance;
-            shipDataService.GetFishJsonSuccess.AddListener(UpdateFishStorage);
-            shipDataService.updateFishStorageSuccess.AddListener(OnUpdateFishStorageSuccess);
+
 
         }
 
@@ -138,12 +165,15 @@ namespace FishGame.Ships
         
         public void StoreCaughtFishButton()
         {
-            Debug.Log("Inside StoreCaughtFishButton() ");
+            Debug.Log($"{currentShip.GetShipName()}");
+            clickedShipName = currentShip.GetShipName();
+            completeButton.gameObject.SetActive(false);
             shipDataService.GetFishJsonValue();
         }
 
         public void UpdateFishStorage(string fishJson)
         {
+            if (currentShip.GetShipName() != clickedShipName) return;
             Debug.Log("Inside UpdateFishStorage()");
 
 
@@ -167,6 +197,8 @@ namespace FishGame.Ships
 
         public void OnUpdateFishStorageSuccess(string message)
         {
+            if (currentShip.GetShipName() != clickedShipName) return;
+
             currentShip.ClearCapacity();
             Debug.Log(message);
         }

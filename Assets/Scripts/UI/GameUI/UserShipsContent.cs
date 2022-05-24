@@ -23,11 +23,12 @@ namespace FishGame.UI.GameUI
         {
             shipDataService = PlayFabShipData.Instance;
             listUtilService = ListUtil.Instance;
+            shipDataService.getUserShipsEventSuccess.AddListener(OnGetUserShipsSuccess);
+
         }
 
         private void Start()
         {
-            shipDataService.getUserShipsEventSuccess.AddListener(OnGetUserShipsSuccess);
             shipDataService.GetAllPlayerShips();
 
 

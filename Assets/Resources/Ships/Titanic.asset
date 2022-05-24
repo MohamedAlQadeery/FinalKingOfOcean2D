@@ -15,17 +15,17 @@ MonoBehaviour:
   shipPrefab: {fileID: 2140537446758158292, guid: 25088fa7cc0cb8c449ca71493ce4bdd4, type: 3}
   dataToJson:
     shipName: Titanic
-    currentCapacity: 50
+    currentCapacity: 0
     currentHealth: 100
   shipName: Titanic
-  currentCapacity: 50
-  maxCapacity: 100
+  currentCapacity: 0
+  maxCapacity: 50
   unlockLevel: 0
   currentHealth: 100
   maxHealth: 100
   healDuration: 0
   healAmount: 0
-  fishingDuration: 2
+  fishingDuration: 1
   numberFishCaughtPerMin: 50
   shipImage: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
   shipIcon: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
