@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace FishGame.Core
 {
-    public class LevelSystem 
+    public class LevelSystem :MonoBehaviour
     {
         private static LevelSystem _instance;
 
@@ -18,17 +18,17 @@ namespace FishGame.Core
                 return _instance;
             }
         }
-
         public LevelSystem()
         {
             _instance = this;
             _instance.level = 0;
             _instance.experience = 0;
+           
         }
 
+        public UnityEvent OnExperinceGained ;
 
         public UnityEvent OnLevelChanged;
-        public UnityEvent OnExperinceGained;
 
         // from level 1 to 10 
         private static readonly int[] experiencePerLevel = new[] { 100, 120, 140, 160, 180, 200, 220, 250, 300, 400 };
@@ -83,6 +83,17 @@ namespace FishGame.Core
         public bool isMaxLevel(int level)
         {
             return level == experiencePerLevel.Length - 1;
+        }
+
+        // we set level from server here
+        public void SetLevel(int lvl)
+        {
+            level = lvl;
+        }
+
+        public void SetExperince(int exp)
+        {
+            experience = exp;
         }
         
     }
