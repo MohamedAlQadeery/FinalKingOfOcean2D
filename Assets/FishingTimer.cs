@@ -58,7 +58,12 @@ public class FishingTimer : MonoBehaviour
         string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
         timerText.text = textTime;
     }
-        // Update is called once per frame
+
+    void OnApplicationPause(bool isPaused)
+    {
+        Debug.Log("Games is Pause :- on " + isPaused);
+    }
+    // Update is called once per frame
     void Update()
     {
         if (stopTimer == false) { 

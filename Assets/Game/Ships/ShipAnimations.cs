@@ -11,6 +11,7 @@ public class ShipAnimations : MonoBehaviour
     public GameObject fishingRuning;
     public GameObject fishingStoped;
     public GameObject infoPanel;
+    public GameObject shipPopUpPanelAnimation;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class ShipAnimations : MonoBehaviour
     public void ShipsPanel()
     {
         shipPopUpPanel.SetActive(true);
+        LeanTween.scale(shipPopUpPanelAnimation, new Vector3(0.1089657f, 0.06674148f, 0f), 0.5f);
     }
         public void StartFishing()
     {
@@ -49,7 +51,14 @@ public class ShipAnimations : MonoBehaviour
 
     public void Close()
     {
+        LeanTween.scale(shipPopUpPanelAnimation, new Vector3(0, 0, 0), 0.5f);
+        StartCoroutine("EndAnime");
+    }
+    IEnumerator EndAnime()
+    {
+        yield return new WaitForSeconds(0.5f);
         shipPopUpPanel.SetActive(false);
+
     }
 
     public void clsoeInfo() 

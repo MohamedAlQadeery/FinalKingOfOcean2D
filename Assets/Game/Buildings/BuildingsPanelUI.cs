@@ -33,30 +33,35 @@ public class BuildingsPanelUI : MonoBehaviour
 
     private void Storge()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
         GameObject newUiLogin = Instantiate(storgePanel, transform.position, transform.rotation) as GameObject;
         newUiLogin.transform.SetParent(GameObject.FindGameObjectWithTag("GameUI").transform, false);
     }
 
     private void Ships()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
         GameObject newUiLogin = Instantiate(shipsPanel, transform.position, transform.rotation) as GameObject;
         newUiLogin.transform.SetParent(GameObject.FindGameObjectWithTag("GameUI").transform, false);
     }
 
     private void Guild()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
         GameObject newUiLogin = Instantiate(guildPanel, transform.position, transform.rotation) as GameObject;
         newUiLogin.transform.SetParent(GameObject.FindGameObjectWithTag("GameUI").transform, false);
     }
 
     private void Rocket()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
         GameObject newUiLogin = Instantiate(rocketPanel, transform.position, transform.rotation) as GameObject;
         newUiLogin.transform.SetParent(GameObject.FindGameObjectWithTag("GameUI").transform, false);
     }
 
     private void Shop()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
         GameObject newUiLogin = Instantiate(shopPanel, transform.position, transform.rotation) as GameObject;
         newUiLogin.transform.SetParent(GameObject.FindGameObjectWithTag("GameUI").transform, false);
     }
