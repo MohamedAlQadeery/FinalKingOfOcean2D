@@ -36,7 +36,7 @@ namespace FishGame.UI.GameUI
 
         private void OnGetUserShipsSuccess(List<SerializableShipData> ships)
         {
-            Debug.Log("inside OnGetUserShipsSuccess ()");
+          
             userShips = listUtilService.DeserialzeShipDataToShipList(ships);
             foreach (var ship in userShips)
             {

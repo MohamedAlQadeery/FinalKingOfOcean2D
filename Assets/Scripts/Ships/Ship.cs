@@ -29,7 +29,10 @@ namespace FishGame.Ships
             return price;
         }
 
-
+        public float GetMaxHealth()
+        {
+            return maxHealth;
+        }
 
         public void SpawnShip(Transform transform)
         {

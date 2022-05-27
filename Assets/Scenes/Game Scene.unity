@@ -1286,6 +1286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinText: {fileID: 389548862}
   gemText: {fileID: 1706023496}
+  levelText: {fileID: 910801096323504752}
+  experinceText: {fileID: 910801094599046626}
+  experinceSlider: {fileID: 910801095073743685}
 --- !u!1 &434594435
 GameObject:
   m_ObjectHideFlags: 0
@@ -6149,7 +6152,7 @@ GameObject:
   - component: {fileID: 910801094599046625}
   - component: {fileID: 910801094599046626}
   m_Layer: 5
-  m_Name: Text_Value
+  m_Name: Expericne Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6225,7 +6228,7 @@ GameObject:
   - component: {fileID: 910801094629357284}
   - component: {fileID: 910801094629357285}
   m_Layer: 5
-  m_Name: FrontFrame
+  m_Name: Experince Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6347,7 +6350,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 910801094256417465}
   m_HandleRect: {fileID: 0}
@@ -6394,7 +6397,7 @@ GameObject:
   - component: {fileID: 910801095073743686}
   - component: {fileID: 910801095073743685}
   m_Layer: 5
-  m_Name: Slider_IconType_03_s
+  m_Name: Experince Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6412,7 +6415,7 @@ GameObject:
   - component: {fileID: 910801095417017013}
   - component: {fileID: 910801095417017014}
   m_Layer: 5
-  m_Name: FrameIcon_s
+  m_Name: Level Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6598,7 +6601,7 @@ GameObject:
   - component: {fileID: 910801096323504767}
   - component: {fileID: 910801096323504752}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Level Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6637,6 +6640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2728994501188968608}
   - component: {fileID: 2728994501188968611}
+  - component: {fileID: 2728994501188968612}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6661,6 +6665,24 @@ MonoBehaviour:
   shipPos3: {fileID: 1277201042}
   mainShips: []
   shipFromResources: []
+--- !u!114 &2728994501188968612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728994501188968610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e48805c96d22e242874f8f2735e3116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnExperinceGained:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLevelChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!222 &8043188717902332061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7025,6 +7047,7 @@ GameObject:
   - component: {fileID: 8727142805194396150}
   - component: {fileID: 8727142805194396153}
   - component: {fileID: 8727142805194396154}
+  - component: {fileID: 8727142805194396155}
   m_Layer: 0
   m_Name: PlayFab Manager
   m_TagString: Untagged
@@ -7044,21 +7067,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08723762b774c54aaf370f73859347e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getUserCurrencySuccessEvent:
+  OnGetUserCurrencySuccess:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 414153844}
-        m_TargetAssemblyTypeName: TopBar, Assembly-CSharp
-        m_MethodName: CoinsGems
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnCoinsAddedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGemsAddedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCoinsSubtractedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGemsSubtractedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
   errorEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -7102,5 +7125,26 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   updateFishStorageSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8727142805194396155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8727142805194396152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12b97e8761728d4f8d6c67f30a806dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLeveLUpdatedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExpUpdatedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGetLevelAndExpSuccess:
     m_PersistentCalls:
       m_Calls: []

@@ -32,10 +32,7 @@ public class ShipMarketPanel : MonoBehaviour
         upgradePanel.SetActive(false);
     }
 
-    public void ShipInfoButton()
-    {
-        shipInfoPanel.SetActive(true);
-    }
+  
 
     public void ShipInfoCloseButton()
     {
