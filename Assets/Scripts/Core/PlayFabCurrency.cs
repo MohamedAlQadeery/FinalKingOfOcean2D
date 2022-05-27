@@ -6,6 +6,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System;
 using UnityEngine.Events;
+using FishGame.Systems;
 
 namespace FishGame.Core
 {
@@ -24,23 +25,49 @@ namespace FishGame.Core
     }
     public class PlayFabCurrency : MonoBehaviour
     {
-        public static PlayFabCurrency instance;
-        [SerializeField] PlayFabCurrencyEvent getUserCurrencySuccessEvent;
-        [SerializeField] PlayFabCurrencyUpdatedEvent OnCoinsUpdatedSuccess;
-        [SerializeField] PlayFabCurrencyUpdatedEvent OnGemsUpdatedSuccess;
+        private static PlayFabCurrency _instance;
+        public static PlayFabCurrency Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PlayFabCurrency();
+                }
+                return _instance;
+            }
+
+        }
+
+        public PlayFabCurrency()
+        {
+            _instance = this;
+        }
+
+
+        
+        [HideInInspector]  public PlayFabCurrencyEvent OnGetUserCurrencySuccess;
+
+       [HideInInspector]public PlayFabCurrencyUpdatedEvent OnCoinsAddedSuccess;
+        [HideInInspector]public PlayFabCurrencyUpdatedEvent OnGemsAddedSuccess;
+
+        [HideInInspector] public PlayFabCurrencyUpdatedEvent OnCoinsSubtractedSuccess;
+        [HideInInspector] public PlayFabCurrencyUpdatedEvent OnGemsSubtractedSuccess;
+
         [SerializeField] PlayFabEvent errorEvent;
       
         private const string coinsKey = "CN";        
-        private const string gemsKey = "GM";        
+        private const string gemsKey = "GM";
 
 
-        private void Awake()
-        {
-            instance = this;
-        }
+
+     
+
+
+
         public void GetUserCurrency()
         {
-            PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), OnSccuessGetUserInventory, OnError);
+            PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), OnSuccessGetUserCurrency, OnError);
         }
 
         private void OnError(PlayFabError error)
@@ -48,9 +75,9 @@ namespace FishGame.Core
             errorEvent?.Invoke($"Error : {error.GenerateErrorReport()}");
         }
 
-        private void OnSccuessGetUserInventory(GetUserInventoryResult result)
+        private void OnSuccessGetUserCurrency(GetUserInventoryResult result)
         {
-            getUserCurrencySuccessEvent?.Invoke(result.VirtualCurrency["CN"],result.VirtualCurrency["GM"]);
+            OnGetUserCurrencySuccess?.Invoke(result.VirtualCurrency["CN"],result.VirtualCurrency["GM"]);
         }
 
         
@@ -64,7 +91,7 @@ namespace FishGame.Core
             };
 
             PlayFabClientAPI.AddUserVirtualCurrency(request,result=> {
-                OnCoinsUpdatedSuccess?.Invoke(result.Balance);
+                OnCoinsAddedSuccess?.Invoke(result.Balance);
             
             },OnError);
         }
@@ -79,7 +106,7 @@ namespace FishGame.Core
             };
 
             PlayFabClientAPI.SubtractUserVirtualCurrency(request, result => {
-                OnCoinsUpdatedSuccess?.Invoke(result.Balance);
+                OnCoinsSubtractedSuccess?.Invoke(result.Balance);
 
             }, OnError);
         }
@@ -95,7 +122,7 @@ namespace FishGame.Core
             };
 
             PlayFabClientAPI.AddUserVirtualCurrency(request, result => {
-                OnGemsUpdatedSuccess?.Invoke(result.Balance);
+                OnGemsAddedSuccess?.Invoke(result.Balance);
 
             }, OnError);
         }
@@ -111,7 +138,7 @@ namespace FishGame.Core
             };
 
             PlayFabClientAPI.SubtractUserVirtualCurrency(request, result => {
-                OnGemsUpdatedSuccess?.Invoke(result.Balance);
+                OnGemsSubtractedSuccess?.Invoke(result.Balance);
 
             }, OnError);
         }

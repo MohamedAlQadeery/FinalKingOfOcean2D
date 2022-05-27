@@ -23,8 +23,8 @@ namespace FishGame.Systems
         
         int coins, gems;
 
-        public UnityEvent OnCoinsUpdated;
-        public UnityEvent OnGemsUpdated;
+        //public UnityEvent OnCurrencyUpdated;
+       
         public CurrencySystem()
         {
             _instance = this;
@@ -34,45 +34,60 @@ namespace FishGame.Systems
         }
 
 
-        public void AddCoins(int amount)
-        {
-            if (amount <= 0) return;
-            coins += amount;
-            OnCoinsUpdated?.Invoke();
-        }
-        
-        public void AddGems(int amount)
-        {
-            if (amount <= 0) return;
-            gems += amount;
-            OnGemsUpdated?.Invoke();
-        }
-        
-        public void SubtractCoins(int amount)
-        {
-            if (amount > coins) return;
-            coins -= amount;
-            OnCoinsUpdated?.Invoke();
-        }
+        //public void AddCoins(int amount)
+        //{
+        //    if (amount <= 0) return;
+        //    coins += amount;
+        //    OnCoinsAdded?.Invoke();
+        //}
 
-        public void SubtractGems(int amount)
-        {
-            if (amount > gems) return;
-            gems -= amount;
-            OnCoinsUpdated?.Invoke();
-        }
+        //public void AddGems(int amount)
+        //{
+        //    if (amount <= 0) return;
+        //    gems += amount;
+        //    OnGemsAdded?.Invoke();
+        //}
 
-        // used for initliaze the class
-        public void SetCoin(int coinsAmount)
-        {
-            coins = coinsAmount;
-        }
+        //public void SubtractCoins(int amount)
+        //{
+        //    if (amount > coins) return;
+        //    coins -= amount;
+        //    OnCoinsAdded?.Invoke();
+        //}
 
-        public void SetGems(int gemsAmount)
-        {
-            gems = gemsAmount;
-        }
+        //public void SubtractGems(int amount)
+        //{
+        //    if (amount > gems) return;
+        //    gems -= amount;
+        //    OnCoinsAdded?.Invoke();
+        //}
+
+        //// used for initliaze the class
+        //public void SetCoin(int coinsAmount)
+        //{
+        //    coins = coinsAmount;
+        //}
+
+        //public void SetGems(int gemsAmount)
+        //{
+        //    gems = gemsAmount;
+        //}
         //////////////////////////////
+        public int GetCoins()
+        {
+            return coins;
+        }
+
+        public int GetGems()
+        {
+            return gems;
+        }
+
+        public void InitCurrencySystem(int cn,int gm)
+        {
+            coins = cn;
+            gems = gm;
+        }
 
     }
 
