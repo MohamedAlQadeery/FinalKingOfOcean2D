@@ -41,9 +41,7 @@ namespace FishGame.Core
         public PlayFabEvent GetFishJsonSuccess;
         public PlayFabEvent updateFishStorageSuccess;
 
-        static int getFishJsonCount =0;
-        static int updateFishStorageCount=0;
-
+     
 
         public static PlayFabShipData Instance
         {
@@ -171,7 +169,6 @@ namespace FishGame.Core
                 Keys = new List<string>(){fishKey}
             
             },  result => {
-                Debug.LogError($"GetFishJsonValue() count : {++getFishJsonCount}");
                  GetFishJsonSuccess?.Invoke(result.Data[fishKey].Value);
               
             }, OnError);
@@ -191,7 +188,6 @@ namespace FishGame.Core
             };
 
             PlayFabClientAPI.UpdateUserData(request,result=> {
-                Debug.LogError($"UpdateFishStorage() count : {++updateFishStorageCount}");
 
                 updateFishStorageSuccess?.Invoke("Fish storage has been updated !");
 
