@@ -100,7 +100,6 @@ namespace FishGame.Core
 
         public void GetUserCurrentLevelAndExp()
         {
-            Debug.LogError("Inside GetUserCurrentLevelAndExp()");
             var request = new GetUserDataRequest
             {
                 Keys = new List<string> { levelKey,expKey },

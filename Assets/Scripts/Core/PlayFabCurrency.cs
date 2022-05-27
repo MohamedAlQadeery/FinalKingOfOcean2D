@@ -6,6 +6,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System;
 using UnityEngine.Events;
+using FishGame.Systems;
 
 namespace FishGame.Core
 {
@@ -42,7 +43,10 @@ namespace FishGame.Core
         {
             _instance = this;
         }
-      [HideInInspector]  public PlayFabCurrencyEvent OnGetUserCurrencySuccess;
+
+
+        
+        [HideInInspector]  public PlayFabCurrencyEvent OnGetUserCurrencySuccess;
 
        [HideInInspector]public PlayFabCurrencyUpdatedEvent OnCoinsAddedSuccess;
         [HideInInspector]public PlayFabCurrencyUpdatedEvent OnGemsAddedSuccess;
@@ -57,11 +61,10 @@ namespace FishGame.Core
 
 
 
+     
 
-        private void OnEnable()
-        {
-            
-        }
+
+
         public void GetUserCurrency()
         {
             PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), OnSuccessGetUserCurrency, OnError);
