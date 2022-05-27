@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570970039}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 419ea04febf0b994598494db57af1b9e, type: 3}
   m_Name: 
@@ -7114,6 +7114,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnGetLevelAndExpSuccess:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2028720016
 GameObject:
   m_ObjectHideFlags: 0

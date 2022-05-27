@@ -22,6 +22,7 @@ public class SandboxLevelManager : MonoBehaviour
         levelService.OnLeveLUpdatedSuccess.AddListener(OnLevelUpateSuccess);
         levelService.OnExpUpdatedSuccess.AddListener(OnExperinceUpdateSuccess);
         levelService.OnGetLevelAndExpSuccess.AddListener(OnGetExpAndLevelSuccess);
+        
     }
 
     private void OnGetExpAndLevelSuccess(int level, int exp)
