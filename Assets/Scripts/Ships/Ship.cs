@@ -22,6 +22,12 @@ namespace FishGame.Ships
         [SerializeField] List<Fish> canFishTypes; 
        [SerializeField] List<SerializableFishData> caughtFishes;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] int price;
+
+        public int GetPrice()
+        {
+            return price;
+        }
 
 
 

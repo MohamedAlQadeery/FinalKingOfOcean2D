@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace FishGame.Core
+namespace FishGame.Systems
 {
     public class LevelSystem :MonoBehaviour
     {
