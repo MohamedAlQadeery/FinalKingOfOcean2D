@@ -23,8 +23,10 @@ namespace FishGame.Systems
         
         int coins, gems;
 
-        public UnityEvent OnCoinsUpdated;
-        public UnityEvent OnGemsUpdated;
+        public UnityEvent OnCoinsAdded;
+        public UnityEvent OnCoinsSubstracted;
+        public UnityEvent OnGemsAdded;
+        public UnityEvent OnGemsSubstracted;
         public CurrencySystem()
         {
             _instance = this;
@@ -38,28 +40,28 @@ namespace FishGame.Systems
         {
             if (amount <= 0) return;
             coins += amount;
-            OnCoinsUpdated?.Invoke();
+            OnCoinsAdded?.Invoke();
         }
         
         public void AddGems(int amount)
         {
             if (amount <= 0) return;
             gems += amount;
-            OnGemsUpdated?.Invoke();
+            OnGemsAdded?.Invoke();
         }
         
         public void SubtractCoins(int amount)
         {
             if (amount > coins) return;
             coins -= amount;
-            OnCoinsUpdated?.Invoke();
+            OnCoinsSubstracted?.Invoke();
         }
 
         public void SubtractGems(int amount)
         {
             if (amount > gems) return;
             gems -= amount;
-            OnCoinsUpdated?.Invoke();
+            OnGemsSubstracted?.Invoke();
         }
 
         // used for initliaze the class
@@ -73,6 +75,16 @@ namespace FishGame.Systems
             gems = gemsAmount;
         }
         //////////////////////////////
+        public int GetCoins()
+        {
+            return coins;
+        }
+
+        public int GetGems()
+        {
+            return gems;
+        }
+
 
     }
 

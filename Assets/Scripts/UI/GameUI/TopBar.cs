@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using FishGame.Core;
+using FishGame.Systems;
 
 public class TopBar : MonoBehaviour
 {
@@ -10,16 +11,27 @@ public class TopBar : MonoBehaviour
     [SerializeField] TMP_Text coinText;
     [SerializeField] TMP_Text gemText;
 
+    CurrencySystem currencySystem;
+    PlayFabCurrency currencyService;
+
+    
     private void Start()
     {
-        PlayFabCurrency.instance.GetUserCurrency();
+        currencySystem = CurrencySystem.Instance;
+        currencyService = PlayFabCurrency.Instance;
+        currencyService.GetUserCurrency();
+        currencySystem.OnCoinsAdded.AddListener();
+        currencyService.OnGetUserCurrencySuccess.AddListener(SetCoinsAndGems);
     }
 
-    public void CoinsGems(int coin , int gem)
+    public void SetCoinsAndGems(int coin , int gem)
     {
-        Debug.Log(coin+  " gem" +gem);
-        coinText.text = coin.ToString();
-        gemText.text = gem.ToString();
+        currencySystem.SetCoin(coin);
+        currencySystem.SetGems(gem);
+        coinText.text = currencySystem.GetCoins().ToString();
+        gemText.text = currencySystem.GetGems().ToString();
+
+      
     }
 
     
