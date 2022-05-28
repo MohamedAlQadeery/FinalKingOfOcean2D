@@ -6663,7 +6663,7 @@ MonoBehaviour:
   shipPos1: {fileID: 1197602849}
   shipPos2: {fileID: 82728951}
   shipPos3: {fileID: 1277201042}
-  ownedShips: []
+  mainShips: []
   shipFromResources: []
 --- !u!114 &2728994501188968612
 MonoBehaviour:
@@ -7100,13 +7100,25 @@ MonoBehaviour:
   getShipSuccessEvent:
     m_PersistentCalls:
       m_Calls: []
-  getOwnedShipsListEventSuccess:
+  getMainShipsListEventSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2728994501188968611}
+        m_TargetAssemblyTypeName: FishGame.Scenes.GameManager, Assembly-CSharp
+        m_MethodName: OnGetPlayerMainShipsSuccess
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  getUserShipsEventSuccess:
     m_PersistentCalls:
       m_Calls: []
-  getAllShipsEventSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-  updateOwnedShipsSuccessEvent:
+  updateMainShipsSuccessEvent:
     m_PersistentCalls:
       m_Calls: []
   GetFishJsonSuccess:

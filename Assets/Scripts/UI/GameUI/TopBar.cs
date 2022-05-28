@@ -16,6 +16,7 @@ public class TopBar : MonoBehaviour
     [SerializeField] TMP_Text experinceText;
     [SerializeField] Slider experinceSlider;
 
+
     CurrencySystem currencySystem;
     PlayFabCurrency currencyService;
     LevelSystem levelSystem;
@@ -55,9 +56,11 @@ public class TopBar : MonoBehaviour
 
     }
 
+    
     private void OnLevelUpateSuccess()
     {
         levelText.text = levelSystem.GetCurrentLevel().ToString();
+
     }
 
     public void SetCoinsAndGems(int coin , int gem)
