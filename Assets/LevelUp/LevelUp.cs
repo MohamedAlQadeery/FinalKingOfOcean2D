@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using FishGame.Systems;
 
 public class LevelUp : MonoBehaviour
 {
     [SerializeField] GameObject lvlUi;
+    [SerializeField] TMP_Text levelText;
+    LevelSystem levelSystem;
     private void Start()
     {
+        levelSystem = LevelSystem.Instance;
+        levelText.text = levelSystem.GetCurrentLevel().ToString();
         SoundManager.Instance.PlaySound(SoundManager.Sound.LvlUpSound);
     }
     private void OnEnable()

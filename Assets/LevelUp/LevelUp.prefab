@@ -2180,6 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlUi: {fileID: 6226757432531116604}
+  levelText: {fileID: 6226757431997020553}
 --- !u!1 &6226757432309022046
 GameObject:
   m_ObjectHideFlags: 0
