@@ -10,7 +10,7 @@ namespace FishGame.Utilities
     public class ResourcesUtil 
     {
         private const string shipsFolderName = "Ships";
-        private const string fishesFolderName = "Fishses";
+        private const string fishesFolderName = "fishes";
     
         private static ResourcesUtil _instance;
 
@@ -35,7 +35,7 @@ namespace FishGame.Utilities
         }
 
 
-        private List<Ship> GetShipsFromResourcesFolder()
+        public List<Ship> GetShipsFromResourcesFolder()
         {
             return Resources.LoadAll<Ship>(shipsFolderName).ToList();
         }

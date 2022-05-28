@@ -1,5 +1,6 @@
 using FishGame.Core;
 using FishGame.Ships;
+using FishGame.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace FishGame.Scenes
         [SerializeField] Transform shipPos2;
         [SerializeField] Transform shipPos3;
 
-        [SerializeField] List<Ship> mainShips;
+        [SerializeField] List<Ship> ownedShips;
         [SerializeField] List<Ship> shipFromResources;
         private const string shipsFolderName = "Ships";
 
@@ -23,78 +24,50 @@ namespace FishGame.Scenes
         private void Awake()
         {
             shipDataService = PlayFabShipData.Instance;
-            shipFromResources = GetShipsFromResourcesFolder();
+            shipFromResources = ResourcesUtil.Instance.GetShipsFromResourcesFolder();
+            shipDataService.getOwnedShipsListEventSuccess.AddListener(OnGetPlayerOwnedShipsSuccess);
+            
         }
 
+        
 
         private void Start()
         {
-            GetUserMainShips();
+            GetUserOwnedShips();
         }
-        private void GetUserMainShips()
+        private void GetUserOwnedShips()
         {
-            shipDataService.GetMainShips();
+            shipDataService.GetOwnedShips();
         }
 
 
 
-        public void OnGetPlayerMainShipsSuccess(List<SerializableShipData> playerMainShips)
+        public void OnGetPlayerOwnedShipsSuccess(List<SerializableShipData> playerOwnedShips)
         {
-            List<Ship> mainShipsFromR = DeserialzeShipDataToShipList(playerMainShips);
-            mainShips.Clear();
-            mainShips.AddRange(mainShipsFromR);
+            Debug.Log("Inside OnGetPlayerOwnedShipsSuccess()");
+            List<Ship> ownedShipsFromResources = ListUtil.Instance.DeserialzeShipDataToShipList(playerOwnedShips);
+            ownedShips.Clear();
+            ownedShips.AddRange(ownedShipsFromResources);
 
             SpawnMainShips();
         }
 
-        /**
-      * Takes SerilziableShipData list and covert it to the Ship list from resoucrses folder
-      */
-        private List<Ship> DeserialzeShipDataToShipList(List<SerializableShipData> playerMainShips)
-        {
-            List<Ship> mainShipsFromR = new List<Ship>();
-            foreach (SerializableShipData ship in playerMainShips)
-            {
-                if (FindScriptableObjectShip(ship.shipName) != null)
-                {
-                    mainShipsFromR.Add(FindScriptableObjectShip(ship.shipName));
-                }
-            }
-
-            return mainShipsFromR;
-        }
-
-        private Ship FindScriptableObjectShip(string name)
-        {
-            foreach (Ship ship in shipFromResources)
-            {
-                if (ship.GetShipName().ToLower() == name.ToLower())
-                {
-                    return ship;
-                }
-            }
-            return null;
-        }
-
-        private List<Ship> GetShipsFromResourcesFolder()
-        {
-            return Resources.LoadAll<Ship>(shipsFolderName).ToList();
-        }
+      
 
         private void SpawnMainShips()
         {
-            if (mainShips.Count == 0) return;
-            if (mainShips[0] != null)
+            if (ownedShips.Count == 0) return;
+            if (ownedShips[0] != null)
             {
-                mainShips[0].SpawnShip(shipPos1);
+                ownedShips[0].SpawnShip(shipPos1);
             }
-            if (mainShips[1] != null)
+            if (ownedShips[1] != null)
             {
-                mainShips[1].SpawnShip(shipPos2);
+                ownedShips[1].SpawnShip(shipPos2);
             }
-            if (mainShips[2] != null)
+            if (ownedShips[2] != null)
             {
-                mainShips[2].SpawnShip(shipPos3);
+                ownedShips[2].SpawnShip(shipPos3);
             }
           
         }

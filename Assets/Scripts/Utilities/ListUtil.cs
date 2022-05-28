@@ -30,18 +30,18 @@ namespace FishGame.Utilities
         }
 
 
-        public List<Ship> DeserialzeShipDataToShipList(List<SerializableShipData> playerMainShips)
+        public List<Ship> DeserialzeShipDataToShipList(List<SerializableShipData> serialzieShipsList)
         {
-            List<Ship> mainShipsFromR = new List<Ship>();
-            foreach (SerializableShipData ship in playerMainShips)
+            List<Ship> shipsFromResources = new List<Ship>();
+            foreach (SerializableShipData ship in serialzieShipsList)
             {
                 if (resourcesUtil.FindScriptableObjectShip(ship.shipName) != null)
                 {
-                    mainShipsFromR.Add(resourcesUtil.FindScriptableObjectShip(ship.shipName));
+                    shipsFromResources.Add(resourcesUtil.FindScriptableObjectShip(ship.shipName));
                 }
             }
 
-            return mainShipsFromR;
+            return shipsFromResources;
         }
 
 

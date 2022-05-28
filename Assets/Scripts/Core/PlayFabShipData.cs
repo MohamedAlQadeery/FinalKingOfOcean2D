@@ -26,18 +26,19 @@ namespace FishGame.Core
     public class PlayFabShipData : MonoBehaviour
     {
         private static PlayFabShipData _instance;
-        private const string ownedShipKey = "owned_ships";
+        private const string all_ships_key = "ships";
         private const string fishKey = "fishes";
-        private const string mainShipsKey = "main_ships";
+        private const string owned_ships_key = "owned_ships";
         
 
        [SerializeField] PlayFabPlayerShipEvent getShipSuccessEvent;
-        [SerializeField] PlayFabPlayerShipsListEvent getMainShipsListEventSuccess;
-         public PlayFabPlayerShipsListEvent getUserShipsEventSuccess;
+        public PlayFabPlayerShipsListEvent getOwnedShipsListEventSuccess;
+         public PlayFabPlayerShipsListEvent getAllShipsEventSuccess;
 
 
         [SerializeField] PlayFabError errorEvent;
-        [SerializeField] PlayFabEvent updateMainShipsSuccessEvent;
+        [SerializeField] PlayFabEvent updateOwnedShipsSuccessEvent;
+
         public PlayFabEvent GetFishJsonSuccess;
         public PlayFabEvent updateFishStorageSuccess;
 
@@ -59,14 +60,14 @@ namespace FishGame.Core
         {
             _instance = this;
         }
-        public void GetAllPlayerShips()
+        public void GetAllShips()
         {
            
             var request = new GetUserDataRequest
             {
-                Keys =new List<string> { ownedShipKey},
+                Keys =new List<string> (){ all_ships_key},
             };
-            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetUserShipsSuccess, OnError);
+            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetAllShipsSuccess, OnError);
 
         }
 
@@ -75,12 +76,12 @@ namespace FishGame.Core
             Debug.LogError($"{error.GenerateErrorReport()}");
         }
 
-        private void OnGetUserShipsSuccess(GetUserDataResult result)
+        private void OnGetAllShipsSuccess(GetUserDataResult result)
         {
           
-            List<SerializableShipData> allUserShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[ownedShipKey].Value);
+            List<SerializableShipData> allShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[all_ships_key].Value);
            
-           getUserShipsEventSuccess?.Invoke(allUserShips);
+           getAllShipsEventSuccess?.Invoke(allShips);
         }
 
 
@@ -112,22 +113,22 @@ namespace FishGame.Core
         //}
 
 
-        public void GetMainShips()
+        public void GetOwnedShips()
         {
             var request = new GetUserDataRequest
             {
-                Keys = new List<string> { mainShipsKey },
+                Keys = new List<string>(){ owned_ships_key },
             };
 
-            PlayFabClientAPI.GetUserData(request,OnGetMainShipsListSuccess,OnError );
+            PlayFabClientAPI.GetUserData(request,OnGetOwnedShipsListSuccess,OnError );
 
         }
 
-        private void OnGetMainShipsListSuccess(GetUserDataResult result)
+        private void OnGetOwnedShipsListSuccess(GetUserDataResult result)
         {
           
-            List<SerializableShipData> mainShipsList = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[mainShipsKey].Value);
-            getMainShipsListEventSuccess?.Invoke(mainShipsList);
+            List<SerializableShipData> ownedShipsList = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[owned_ships_key].Value);
+            getOwnedShipsListEventSuccess?.Invoke(ownedShipsList);
 
         }
 
@@ -135,31 +136,31 @@ namespace FishGame.Core
          * User this function to update player main ships
          */
 
-        public void UpdateMainShips(List<Ship> mainShipsList)
+        public void UpdateOwnedShips(List<Ship> ownedShipsList)
         {
-           string shipsToJson= GetJsonStringFromMainShipsList(mainShipsList);
+           string shipsToJson= GetJsonStringFromOwnedShipsList(ownedShipsList);
             var request = new UpdateUserDataRequest
             {
-                Data = new Dictionary<string, string> { {mainShipsKey, shipsToJson } },
+                Data = new Dictionary<string, string> { {owned_ships_key, shipsToJson } },
             };
-            PlayFabClientAPI.UpdateUserData(request,OnUpdateMainShipsSucess,OnError);
+            PlayFabClientAPI.UpdateUserData(request,OnUpdateOwnedShipsSucess,OnError);
         }
 
-        private void OnUpdateMainShipsSucess(UpdateUserDataResult result)
+        private void OnUpdateOwnedShipsSucess(UpdateUserDataResult result)
         {
-            updateMainShipsSuccessEvent?.Invoke("Main Ships has been updated ");
+            updateOwnedShipsSuccessEvent?.Invoke("Owned Ships has been updated ");
         }
 
-        public string GetJsonStringFromMainShipsList(List<Ship> mainShipsList)
+        public string GetJsonStringFromOwnedShipsList(List<Ship> ownedShipsList)
         {
-            List<SerializableShipData> serializableMainShips = new List<SerializableShipData>();
+            List<SerializableShipData> serializableOwnedShips = new List<SerializableShipData>();
 
-            foreach (Ship ship in mainShipsList)
+            foreach (Ship ship in ownedShipsList)
             {
-                serializableMainShips.Add(ship.GetDataToJson());
+                serializableOwnedShips.Add(ship.GetDataToJson());
             }
 
-            return JsonConvert.SerializeObject(serializableMainShips);
+            return JsonConvert.SerializeObject(serializableOwnedShips);
         }
 
         public void GetFishJsonValue()

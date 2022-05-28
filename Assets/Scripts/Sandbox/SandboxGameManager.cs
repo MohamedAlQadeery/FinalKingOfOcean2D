@@ -30,17 +30,17 @@ namespace FishGame.Sandbox
         }
         public void GetPlayerMainShips()
         {
-            playFabShipDataService.GetMainShips();
+            playFabShipDataService.GetOwnedShips();
         }
 
         public void UpdatePlayerMainShips()
         {
-            playFabShipDataService.UpdateMainShips(mainShips);
+            playFabShipDataService.UpdateOwnedShips(mainShips);
         }
 
         public void GetAllPlayerShips()
         {
-            playFabShipDataService.GetAllPlayerShips();            
+            playFabShipDataService.GetAllShips();            
         }
 
         public void OnGetPlayerMainShipsSuccess(List<SerializableShipData> playerMainShips)
