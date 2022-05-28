@@ -50,6 +50,8 @@ public class TopBar : MonoBehaviour
 
     private void OnGetLevelAndExpSuccess(int level, int exp)
     {
+        levelSystem.SetLevel(level);
+        levelSystem.SetExperince(exp);
         experinceText.text = $"{exp}/{levelSystem.GetExperinceToNextLevel(level)}";
         levelText.text = level.ToString();
     }
