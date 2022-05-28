@@ -168,7 +168,7 @@ namespace FishGame.Ships
             Debug.Log($"{currentShip.GetShipName()}");
             clickedShipName = currentShip.GetShipName();
             completeButton.gameObject.SetActive(false);
-            shipDataService.GetFishJsonValue();
+            shipDataService.GetFishJsonValue(); // invoke event that updateFishStorage() listens to it
         }
 
         public void UpdateFishStorage(string fishJson)

@@ -16,8 +16,10 @@ public class TopBar : MonoBehaviour
     [SerializeField] TMP_Text experinceText;
     [SerializeField] Slider experinceSlider;
 
+
     //abood
     [SerializeField] GameObject lvlUpPanel;
+
 
     CurrencySystem currencySystem;
     PlayFabCurrency currencyService;
@@ -61,12 +63,14 @@ public class TopBar : MonoBehaviour
         experinceText.text = $"{levelSystem.GetCurrentExperince()}/{levelSystem.GetExperinceToNextLevel(levelSystem.GetCurrentLevel())}";
     }
 
+    
     private void OnLevelUpateSuccess()
     {
         //abood
         GameObject newUiLvlUpPanel = Instantiate(lvlUpPanel, lvlUpPanel.transform.position, Quaternion.identity) as GameObject;
         newUiLvlUpPanel.transform.SetParent(GameObject.FindGameObjectWithTag("CanvasUI").transform, false);
         levelText.text = levelSystem.GetCurrentLevel().ToString();
+
     }
 
     public void SetCoinsAndGems(int coin , int gem)

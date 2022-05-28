@@ -1,5 +1,6 @@
 using FishGame.Fishes;
 using FishGame.Ships;
+using FishGame.Utilities;
 using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -24,15 +25,13 @@ namespace FishGame.Core
     {
         
         private const string shipsKey = "ships";
-        private const string mainShipKey = "main_ships";
         private const string ownedShipKey = "owned_ships";
         private const string levelKey = "level";
         private const string expKey = "experince";
         private const string fishKey = "fishes";
-        private const string fishesFolderName = "Fishes";
 
 
-        [SerializeField] PlayFabPlayerShipsListEvent getPlayerShipsSuccessEvent;
+        //[SerializeField] PlayFabPlayerShipsListEvent getPlayerShipsSuccessEvent;
         [SerializeField] PlayFabEvent errorEvent;
         [SerializeField] PlayFabEvent successEvent;
         [SerializeField] PlayFabEvent getDataByKeySuccess;
@@ -57,26 +56,26 @@ namespace FishGame.Core
             _instance = this;
         }
 
-        public void GetPlayerShipsData()
-        {
-            PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetPlayerShipsSuccess, OnError);
-        }
+        //public void GetPlayerShipsData()
+        //{
+        //    PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetPlayerShipsSuccess, OnError);
+        //}
 
-        private void OnGetPlayerShipsSuccess(GetUserDataResult result)
-        {
-            if (result.Data != null)
-            {
-                List<SerializableShipData> playerShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[shipsKey].Value);
-                getPlayerShipsSuccessEvent?.Invoke(playerShips);
-            }
-            else
-            {
-                errorEvent?.Invoke("There was an error in fetching player data ..");
-            }
+        //private void OnGetPlayerShipsSuccess(GetUserDataResult result)
+        //{
+        //    if (result.Data != null)
+        //    {
+        //        List<SerializableShipData> playerShips = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[shipsKey].Value);
+        //        getPlayerShipsSuccessEvent?.Invoke(playerShips);
+        //    }
+        //    else
+        //    {
+        //        errorEvent?.Invoke("There was an error in fetching player data ..");
+        //    }
 
           
 
-        }
+        //}
 
         //set up for newly created players where we give them there first ships
         public void NewPlayerSetup(List<SerializableShipData> newShips)
@@ -85,8 +84,8 @@ namespace FishGame.Core
             string newShipsToJson = JsonConvert.SerializeObject(newShips);
 
             Dictionary<string, int> fishesDic = new Dictionary<string, int>();
-            List<Fish> fishesList = Resources.LoadAll<Fish>(fishesFolderName).ToList();
-            foreach(Fish fish in fishesList)
+            List<Fish> fishesList = ResourcesUtil.Instance.GetFishFromResourcesFolder();
+            foreach (Fish fish in fishesList)
             {
                 fishesDic.Add(fish.GetName(),0);
                 Debug.LogError($"Key is {fish.GetName()} And Value = {fishesDic[fish.GetName()]}");
@@ -98,7 +97,6 @@ namespace FishGame.Core
             {
                 Data = new Dictionary<string, string> {
                 { shipsKey,newShipsToJson},
-                {mainShipKey,newShipsToJson },
                 {ownedShipKey,newShipsToJson },
                 {levelKey,"0" },
                 {fishKey,newFishesToJson },
