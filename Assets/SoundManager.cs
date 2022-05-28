@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
         UpgradeBuildingSound,
         AttackSound,
         DmgSound,
+        ErrorSound,
     }
 
     private AudioSource audioSource;

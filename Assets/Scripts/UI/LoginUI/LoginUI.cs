@@ -40,11 +40,13 @@ namespace FishGame.UI
 
         public void OnClickSignOutButton()
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
             playFabAuthService.ClearAuth();
             playFabAuthService.ClearRememberMe();
         }
         public void OnClickLoginButton()
         {
+            
             string email = loginEmailInputField.text;
             string password = loginPasswordInputField.text;
             playFabAuthService.LoginWithEmail(email, password);
@@ -53,6 +55,7 @@ namespace FishGame.UI
 
         public void OnLoginSuccess(string message)
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
             Debug.Log("Message from login UI");
             Debug.Log(message+"?!");
 
@@ -66,23 +69,26 @@ namespace FishGame.UI
         IEnumerator LoadingGame()
         {
             loadingGamePanel.SetActive(true);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             SceneManager.LoadScene(1);
         }
 
 
         public void OnLoginError(string message)
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ErrorSound);
             Debug.Log(message);
         }
 
         public void Close()
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.CloseSonud);
             Destroy(gameObject);
         }
 
         public void SignUpPanel()
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
             Close();
             GameObject newUiSginUp = Instantiate(signUpPanel, transform.position, transform.rotation) as GameObject;
             newUiSginUp.transform.SetParent(GameObject.FindGameObjectWithTag("UILogin").transform, false);

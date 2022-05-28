@@ -70,16 +70,19 @@ namespace FishGame.UI
 
         public void OnErrorRegister(string message)
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ErrorSound);
             Debug.Log(message);
         }
 
         public void Close()
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.CloseSonud);
             Destroy(gameObject);
         }
 
         public void LoginPanel()
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
             Close();
             GameObject newUiSginUp = Instantiate(loginPanel, transform.position, transform.rotation) as GameObject;
             newUiSginUp.transform.SetParent(GameObject.FindGameObjectWithTag("UILogin").transform, false);

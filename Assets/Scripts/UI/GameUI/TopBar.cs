@@ -17,11 +17,14 @@ public class TopBar : MonoBehaviour
     [SerializeField] Slider experinceSlider;
 
 
+    //abood
+    [SerializeField] GameObject lvlUpPanel;
+
+
     CurrencySystem currencySystem;
     PlayFabCurrency currencyService;
     LevelSystem levelSystem;
     PlayFabPlayerLevel levelService;
-
 
     private void Awake()
     {
@@ -38,14 +41,19 @@ public class TopBar : MonoBehaviour
     }
     private void Start()
     {
-       
-        
-         levelService.GetUserCurrentLevelAndExp();
+        levelService.GetUserCurrentLevelAndExp();        
+    }
 
+    private void Update()
+    {
+        experinceSlider.maxValue = levelSystem.GetExperinceToNextLevel(levelSystem.GetCurrentLevel());
+        experinceSlider.value = levelSystem.GetCurrentExperince();
     }
 
     private void OnGetLevelAndExpSuccess(int level, int exp)
     {
+        levelSystem.SetLevel(level);
+        levelSystem.SetExperince(exp);
         experinceText.text = $"{exp}/{levelSystem.GetExperinceToNextLevel(level)}";
         levelText.text = level.ToString();
     }
@@ -53,12 +61,14 @@ public class TopBar : MonoBehaviour
     private void OnExperinceUpdateSuccess()
     {
         experinceText.text = $"{levelSystem.GetCurrentExperince()}/{levelSystem.GetExperinceToNextLevel(levelSystem.GetCurrentLevel())}";
-
     }
 
     
     private void OnLevelUpateSuccess()
     {
+        //abood
+        GameObject newUiLvlUpPanel = Instantiate(lvlUpPanel, lvlUpPanel.transform.position, Quaternion.identity) as GameObject;
+        newUiLvlUpPanel.transform.SetParent(GameObject.FindGameObjectWithTag("CanvasUI").transform, false);
         levelText.text = levelSystem.GetCurrentLevel().ToString();
 
     }
@@ -67,11 +77,15 @@ public class TopBar : MonoBehaviour
     {
         currencySystem.InitCurrencySystem(coin, gem);
         coinText.text = currencySystem.GetCoins().ToString();
-        gemText.text = currencySystem.GetGems().ToString();
-
-      
+        gemText.text = currencySystem.GetGems().ToString();     
     }
 
+    //abood
+    public void XpButton()
+    {
+        Debug.Log($"Adding 50 Exp");
+        levelSystem.AddExperince(50);
+    }
 
 
     

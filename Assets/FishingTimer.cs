@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using FishGame.Ships;
+using System;
 
 public class FishingTimer : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class FishingTimer : MonoBehaviour
     private float fishingTime;
     public bool stopTimer = true;
     public GameObject fullShipButton;
+/*
+    DateTime quitDateTime;
+    int timeLeft;
+*/
     // Start is called before the first frame update
 
     public void FullShip()
@@ -30,6 +35,18 @@ public class FishingTimer : MonoBehaviour
 
     void Start()
     {
+
+/*
+        string dateQuitString = PlayerPrefs.GetString("quitDateTimeFish", "");
+        string fishingTimeString = PlayerPrefs.GetString("FishingTime", "");
+        if (!dateQuitString.Equals("")) {            
+            fishingTime = int.Parse(fishingTimeString);
+            quitDateTime = DateTime.Parse(dateQuitString);
+            timeLeft = ((int)(DateTime.Now - quitDateTime).TotalSeconds) - 43200;
+            fishingTime = fishingTime + timeLeft;
+        }
+*/
+
         stopTimer = true;
         fishingTime = GetComponent<Fishing>().GetTimeToFillCapacity();
         timeSlider.maxValue = fishingTime;
@@ -87,4 +104,12 @@ public class FishingTimer : MonoBehaviour
             }
         }
     }
+/*
+    private void OnApplicationQuit()
+    {
+        DateTime quitDate = DateTime.Now;
+        PlayerPrefs.SetString("quitDateTimeFish", quitDate.ToString());
+        PlayerPrefs.SetString("FishingTime", fishingTime.ToString());
+    }
+*/
 }

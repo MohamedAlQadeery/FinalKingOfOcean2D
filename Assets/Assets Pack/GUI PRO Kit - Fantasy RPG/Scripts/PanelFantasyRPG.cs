@@ -15,12 +15,6 @@ namespace LayerLab.FantasyRPG
         public void OnEnable()
         {
             LeanTween.moveY(panelAnim, 1200, 0.5f);
-            for (int i = 0; i < otherPanels.Length; i++) otherPanels[i].SetActive(true);
-        }
-
-        public void OnDisable()
-        {
-            for (int i = 0; i < otherPanels.Length; i++) otherPanels[i].SetActive(false);
         }
 
         public void Close()

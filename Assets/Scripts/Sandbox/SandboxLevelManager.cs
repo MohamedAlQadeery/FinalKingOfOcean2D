@@ -14,6 +14,7 @@ public class SandboxLevelManager : MonoBehaviour
     [SerializeField] Button addExpButton;
     LevelSystem levelSystem;
     PlayFabPlayerLevel levelService;
+    [SerializeField] GameObject lvlUpPanel;
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class SandboxLevelManager : MonoBehaviour
 
     public void OnLevelUpateSuccess()
     {
+        Instantiate(lvlUpPanel ,transform.position,Quaternion.identity);
         levelText.text = $"Level : {levelSystem.GetCurrentLevel()}";
     }
 
