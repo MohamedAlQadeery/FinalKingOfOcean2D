@@ -776,6 +776,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinText: {fileID: 389548862}
   gemText: {fileID: 1706023496}
+  levelText: {fileID: 0}
+  experinceText: {fileID: 0}
+  experinceSlider: {fileID: 0}
+  lvlUpPanel: {fileID: 0}
 --- !u!1001 &490748857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1215,6 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textCount: {fileID: 204364797}
+  count: 1
 --- !u!4 &814038856
 Transform:
   m_ObjectHideFlags: 0
@@ -1556,7 +1561,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 814038855}
         m_TargetAssemblyTypeName: TimeQuitTest, Assembly-CSharp
-        m_MethodName: ButtonClick
+        m_MethodName: ClearPlayPrefs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4921,21 +4926,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08723762b774c54aaf370f73859347e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getUserCurrencySuccessEvent:
+  OnGetUserCurrencySuccess:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 414153844}
-        m_TargetAssemblyTypeName: TopBar, Assembly-CSharp
-        m_MethodName: CoinsGems
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnCoinsAddedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGemsAddedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCoinsSubtractedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGemsSubtractedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
   errorEvent:
     m_PersistentCalls:
       m_Calls: []
