@@ -17,7 +17,6 @@ namespace FishGame.Scenes
         [SerializeField] List<Ship> ownedShips;
         [SerializeField] List<Ship> shipFromResources;
 
-
         private PlayFabShipData shipDataService;
         private static bool isOwnedShipsModifed = false;
         private static bool isOwnedShipsSpawned = false;
@@ -75,7 +74,6 @@ namespace FishGame.Scenes
                 ownedShips[2].SpawnShip(shipPos3);
             }
             isOwnedShipsSpawned = true;
-
 
         }
     }

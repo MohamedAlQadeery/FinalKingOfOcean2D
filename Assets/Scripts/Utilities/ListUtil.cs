@@ -45,6 +45,17 @@ namespace FishGame.Utilities
         }
 
 
+        public List<SerializableShipData> ConvertToSerializableShipList(List<Ship> list)
+        {
+            List<SerializableShipData> tmpList = new List<SerializableShipData>();
+            foreach (Ship ship in list)
+            {
+                tmpList.Add(ship.GetDataToJson());
+            }
+
+            return tmpList;
+        }
+
 
 
     }

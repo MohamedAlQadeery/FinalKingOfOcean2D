@@ -1,5 +1,6 @@
 using FishGame.Core;
 using FishGame.Ships;
+using FishGame.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace FishGame.UI
             Debug.Log("From Register UI");
             Debug.Log(message);
 
-            List<SerializableShipData> serializablesNewShips = FillSerializableShipList();
+            List<SerializableShipData> serializablesNewShips = ListUtil.Instance.ConvertToSerializableShipList(newPlayerShips);
             
             PlayFabPlayerData.Instance.NewPlayerSetup(serializablesNewShips);
 
@@ -57,16 +58,7 @@ namespace FishGame.UI
             SceneManager.LoadScene(1);
         }
 
-        private List<SerializableShipData> FillSerializableShipList()
-        {
-            List<SerializableShipData> tmpList = new List<SerializableShipData>();
-            foreach(Ship ship in newPlayerShips)
-            {
-                tmpList.Add(ship.GetDataToJson());
-            }
-
-            return tmpList;
-        }
+      
 
         public void OnErrorRegister(string message)
         {
