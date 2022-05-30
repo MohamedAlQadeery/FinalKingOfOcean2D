@@ -13,6 +13,10 @@ namespace FishGame.UI.GameUI
         [SerializeField] Image Image;
         [SerializeField] TMP_Text shipName;
         //[SerializeField] TMP_Text shipPrice;
+        public Button sellButton;
+        public Button buyButton;
+        public Button equipButton;
+        public Button unEquipButton;
          ShipInfo shipInfo;
 
 

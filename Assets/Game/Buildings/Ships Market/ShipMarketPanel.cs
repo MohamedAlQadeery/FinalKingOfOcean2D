@@ -9,6 +9,7 @@ public class ShipMarketPanel : MonoBehaviour
     public GameObject shipStoreScroll;
     public GameObject upgradePanel;
     public GameObject shipInfoPanel;
+    public GameObject ConfirmSellPanel;
 
     public void ShipStoreButton()
     {
@@ -39,4 +40,9 @@ public class ShipMarketPanel : MonoBehaviour
         shipInfoPanel.SetActive(false);
     }
 
+
+    public void DisplayConfirmMessage()
+    {
+        ConfirmSellPanel.SetActive(true);
+    }
 }

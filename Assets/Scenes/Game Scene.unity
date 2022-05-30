@@ -6763,7 +6763,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2728994501188968610
 GameObject:
@@ -6776,6 +6776,7 @@ GameObject:
   - component: {fileID: 2728994501188968608}
   - component: {fileID: 2728994501188968611}
   - component: {fileID: 2728994501188968612}
+  - component: {fileID: 2728994501188968613}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6798,8 +6799,6 @@ MonoBehaviour:
   shipPos1: {fileID: 1197602849}
   shipPos2: {fileID: 82728951}
   shipPos3: {fileID: 1277201042}
-  ownedShips: []
-  shipFromResources: []
 --- !u!114 &2728994501188968612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6818,6 +6817,18 @@ MonoBehaviour:
   OnLevelChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2728994501188968613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2728994501188968610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166b4e1d901dbf2499d53dfc3e74a3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &8043188717902332061
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7169,7 +7180,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8727142805194396152
 GameObject:
@@ -7180,9 +7191,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8727142805194396150}
-  - component: {fileID: 8727142805194396153}
   - component: {fileID: 8727142805194396154}
   - component: {fileID: 8727142805194396155}
+  - component: {fileID: 8727142805194396156}
   m_Layer: 0
   m_Name: PlayFab Manager
   m_TagString: Untagged
@@ -7190,36 +7201,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8727142805194396153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8727142805194396152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c08723762b774c54aaf370f73859347e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnGetUserCurrencySuccess:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCoinsAddedSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGemsAddedSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCoinsSubtractedSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGemsSubtractedSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-  errorEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8727142805194396154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7269,5 +7250,35 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnGetLevelAndExpSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8727142805194396156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8727142805194396152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08723762b774c54aaf370f73859347e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnGetUserCurrencySuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCoinsAddedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGemsAddedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCoinsSubtractedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGemsSubtractedSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  errorEvent:
     m_PersistentCalls:
       m_Calls: []

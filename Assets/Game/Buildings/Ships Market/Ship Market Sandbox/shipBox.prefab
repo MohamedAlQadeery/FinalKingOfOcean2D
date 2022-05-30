@@ -648,8 +648,8 @@ GameObject:
   - component: {fileID: 289477915412687283}
   - component: {fileID: 1700698998996657034}
   m_Layer: 5
-  m_Name: ShipBox
-  m_TagString: Untagged
+  m_Name: shipBox
+  m_TagString: ship_box_ui
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -732,7 +732,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Image: {fileID: 4446857047356206146}
   shipName: {fileID: 3393654367759463398}
-  shipPrice: {fileID: 3399277435495934252}
+  sellButton: {fileID: 0}
+  buyButton: {fileID: 0}
+  equipButton: {fileID: 0}
+  unEquipButton: {fileID: 0}
 --- !u!1 &3508076079108307996
 GameObject:
   m_ObjectHideFlags: 0

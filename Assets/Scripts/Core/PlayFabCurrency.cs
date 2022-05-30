@@ -38,14 +38,38 @@ namespace FishGame.Core
             }
 
         }
-
+        CurrencySystem currencySystem;
         public PlayFabCurrency()
         {
             _instance = this;
         }
+        private void Awake()
+        {
+            currencySystem = CurrencySystem.Instance;
+            
+        }
+
+       
+
+        private void OnEnable()
+        {
+
+            currencySystem.OnCoinsAdded.AddListener(AddUserCoinsCurrency);
+            currencySystem.OnCoinSubtracted.AddListener(SubtractUserCoinsCurrency);
+            currencySystem.OnGemsAdded.AddListener(AddUserGemsCurrency);
+            currencySystem.OnGemsSubtracted.AddListener(SubtractUserGemsCurrency);
+        }
+
+        private void OnDisable()
+        {
+
+            currencySystem.OnCoinsAdded.RemoveListener(AddUserCoinsCurrency);
+            currencySystem.OnCoinSubtracted.RemoveListener(SubtractUserCoinsCurrency);
+            currencySystem.OnGemsAdded.RemoveListener(AddUserGemsCurrency);
+            currencySystem.OnGemsSubtracted.RemoveListener(SubtractUserGemsCurrency);
+        }
 
 
-        
         [HideInInspector]  public PlayFabCurrencyEvent OnGetUserCurrencySuccess;
 
        [HideInInspector]public PlayFabCurrencyUpdatedEvent OnCoinsAddedSuccess;

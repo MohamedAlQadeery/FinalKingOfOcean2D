@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 namespace FishGame.Systems
 {
-    public class CurrencyEvent : UnityEvent<int> { }
     public class CurrencySystem : MonoBehaviour
     {
         private static CurrencySystem _instance;
@@ -25,10 +24,10 @@ namespace FishGame.Systems
         int coins, gems;
 
         //public UnityEvent OnCurrencyUpdated;
-        public CurrencyEvent OnCoinsAdded;
-        public CurrencyEvent OnCoinSubtracted;
-         public CurrencyEvent OnGemsAdded;
-        public CurrencyEvent OnGemsSubtracted;
+        public CurrencyEvent OnCoinsAdded = new CurrencyEvent();
+        public CurrencyEvent OnCoinSubtracted = new CurrencyEvent();
+        public CurrencyEvent OnGemsAdded = new CurrencyEvent();
+        public CurrencyEvent OnGemsSubtracted = new CurrencyEvent();
         
 
 
@@ -97,5 +96,6 @@ namespace FishGame.Systems
         }
 
     }
+    public class CurrencyEvent : UnityEvent<int> { }
 
 }

@@ -11,6 +11,8 @@ TagManager:
   - ShipUI1
   - Ship
   - ship_info
+  - all_ships_content
+  - owned_ships_content
   layers:
   - Default
   - TransparentFX
