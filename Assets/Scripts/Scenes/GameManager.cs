@@ -16,7 +16,6 @@ namespace FishGame.Scenes
 
         [SerializeField] List<Ship> ownedShips;
         [SerializeField] List<Ship> shipFromResources;
-    
 
         private PlayFabShipData shipDataService;
         private static bool isOwnedShipsModifed = false;
@@ -27,10 +26,10 @@ namespace FishGame.Scenes
             shipDataService = PlayFabShipData.Instance;
             shipFromResources = ResourcesUtil.Instance.GetShipsFromResourcesFolder();
             shipDataService.getOwnedShipsListEventSuccess.AddListener(OnGetPlayerOwnedShipsSuccess);
-            
+
         }
 
-        
+
 
         private void Start()
         {
@@ -39,7 +38,7 @@ namespace FishGame.Scenes
 
         private void GetUserOwnedShips()
         {
-            
+
             shipDataService.GetOwnedShips();
         }
 
@@ -57,7 +56,7 @@ namespace FishGame.Scenes
             SpawnMainShips();
         }
 
-      
+
 
         private void SpawnMainShips()
         {
@@ -75,7 +74,6 @@ namespace FishGame.Scenes
                 ownedShips[2].SpawnShip(shipPos3);
             }
             isOwnedShipsSpawned = true;
-           
 
         }
     }

@@ -35,20 +35,19 @@ public class FishingTimer : MonoBehaviour
 
     void Start()
     {
-
+        stopTimer = true;
+        fishingTime = GetComponent<Fishing>().GetTimeToFillCapacity();
 /*
         string dateQuitString = PlayerPrefs.GetString("quitDateTimeFish", "");
-        string fishingTimeString = PlayerPrefs.GetString("FishingTime", "");
-        if (!dateQuitString.Equals("")) {            
-            fishingTime = int.Parse(fishingTimeString);
+        string fishingTimeString = PlayerPrefs.GetString("FishingTime1", "");
+        if (!fishingTimeString.Equals("")) {
+            Debug.Log("Test in time test");
+            fishingTime = float.Parse(fishingTimeString);
             quitDateTime = DateTime.Parse(dateQuitString);
             timeLeft = ((int)(DateTime.Now - quitDateTime).TotalSeconds) - 43200;
             fishingTime = fishingTime + timeLeft;
         }
-*/
-
-        stopTimer = true;
-        fishingTime = GetComponent<Fishing>().GetTimeToFillCapacity();
+    */    
         timeSlider.maxValue = fishingTime;
         timeSlider.value = fishingTime;   
         TimeMethod();
@@ -109,7 +108,7 @@ public class FishingTimer : MonoBehaviour
     {
         DateTime quitDate = DateTime.Now;
         PlayerPrefs.SetString("quitDateTimeFish", quitDate.ToString());
-        PlayerPrefs.SetString("FishingTime", fishingTime.ToString());
+        PlayerPrefs.SetString("FishingTime1", fishingTime.ToString());
     }
 */
 }

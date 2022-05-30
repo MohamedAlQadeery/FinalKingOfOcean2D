@@ -7,7 +7,7 @@ using System;
 public class TimeQuitTest : MonoBehaviour
 {
     [SerializeField] TMP_Text textCount;
-    int count = 1;
+    public int count = 1;
     DateTime quitDateTime1;
     string dateQuitString;
     DateTime quitDateTime;
@@ -31,18 +31,32 @@ public class TimeQuitTest : MonoBehaviour
         }
     }
     IEnumerator Count()
-    {     
-        while (true)
-        {          
+    {
+        while(true)
+        {
             textCount.text = (count++).ToString();
             yield return new WaitForSeconds(1f);
-        }
+        }         
+            
+        
     }
     private void OnApplicationQuit()
     {
+        if (count > 10)
+        {
+            count = 1;
+            PlayerPrefs.SetString("quitDateTime", "");
+        }
         DateTime quitDate= DateTime.Now;        
         PlayerPrefs.SetString("quitDateTime", quitDate.ToString());
         PlayerPrefs.SetString("Count",count.ToString());
+        
+    }
+
+
+    public void ClearPlayPrefs()
+    {
+        
     }
 
 }
