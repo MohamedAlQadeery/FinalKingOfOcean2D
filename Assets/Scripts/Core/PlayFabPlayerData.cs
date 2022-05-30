@@ -80,9 +80,13 @@ namespace FishGame.Core
         //set up for newly created players where we give them there first ships
         public void NewPlayerSetup(List<SerializableShipData> newShips)
         {
-            
-            string newShipsToJson = JsonConvert.SerializeObject(newShips);
 
+            List<SerializableShipData> allShips = 
+                ListUtil.Instance.ConvertToSerializableShipList(ResourcesUtil.Instance.GetShipsFromResourcesFolder());
+
+            string allShipsToJson = JsonConvert.SerializeObject(allShips);
+            string newShipsToJson = JsonConvert.SerializeObject(newShips);
+         
             Dictionary<string, int> fishesDic = new Dictionary<string, int>();
             List<Fish> fishesList = ResourcesUtil.Instance.GetFishFromResourcesFolder();
             foreach (Fish fish in fishesList)
@@ -96,7 +100,7 @@ namespace FishGame.Core
             var shipRequest = new UpdateUserDataRequest
             {
                 Data = new Dictionary<string, string> {
-                { shipsKey,newShipsToJson},
+                { shipsKey,allShipsToJson},
                 {ownedShipKey,newShipsToJson },
                 {levelKey,"0" },
                 {fishKey,newFishesToJson },

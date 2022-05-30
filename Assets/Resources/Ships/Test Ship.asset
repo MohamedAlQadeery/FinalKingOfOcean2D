@@ -14,27 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 3066793443064769090, guid: 1352bf5621b10bf429b203a9391a706a, type: 3}
   dataToJson:
-    shipName: Test
+    shipName: New Ship
     currentCapacity: 0
     currentHealth: 0
-    isMainShip: 0
-  shipName: 
+  shipName: New Ship
   currentCapacity: 0
-  maxCapacity: 0
+  maxCapacity: 100
   unlockLevel: 0
   currentHealth: 0
-  maxHealth: 0
-  healDuration: 0
+  maxHealth: 300
+  healDuration: 2
   healAmount: 0
-  fishingDuration: 0
-  numberFishCaughtPerMin: 0
-  shipImage: {fileID: 0}
-  shipIcon: {fileID: 0}
-  destroyedImage: {fileID: 0}
+  fishingDuration: 2
+  numberFishCaughtPerMin: 50
+  shipImage: {fileID: 21300000, guid: a1d5595c064c14cb8b81227d0387b9a8, type: 3}
+  shipIcon: {fileID: 21300000, guid: a55fb3c0768e249f0b52a465d44dced4, type: 3}
+  destroyedImage: {fileID: 21300000, guid: 382f8ac5faeec4459b28227dce2a1019, type: 3}
   canUpgrade: 0
   isFishing: 0
   onCooldown: 0
-  canFishTypes: []
+  canFishTypes:
+  - {fileID: 11400000, guid: de75ad966a592904599a1addf6b95037, type: 2}
+  - {fileID: 11400000, guid: 751e615327a25f0439d775b578a1388f, type: 2}
   caughtFishes: []
   animatorOverrideController: {fileID: 0}
-  isMainShip: 0
+  price: 200
