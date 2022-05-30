@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace FishGame.Systems
 {
+    public class CurrencyEvent : UnityEvent<int> { }
     public class CurrencySystem : MonoBehaviour
     {
         private static CurrencySystem _instance;
@@ -24,7 +25,13 @@ namespace FishGame.Systems
         int coins, gems;
 
         //public UnityEvent OnCurrencyUpdated;
-       
+        public CurrencyEvent OnCoinsAdded;
+        public CurrencyEvent OnCoinSubtracted;
+         public CurrencyEvent OnGemsAdded;
+        public CurrencyEvent OnGemsSubtracted;
+        
+
+
         public CurrencySystem()
         {
             _instance = this;
@@ -34,44 +41,44 @@ namespace FishGame.Systems
         }
 
 
-        //public void AddCoins(int amount)
-        //{
-        //    if (amount <= 0) return;
-        //    coins += amount;
-        //    OnCoinsAdded?.Invoke();
-        //}
+        public void AddCoins(int amount)
+        {
+            if (amount <= 0) return;
+            coins += amount;
+            OnCoinsAdded?.Invoke(amount);
+        }
 
-        //public void AddGems(int amount)
-        //{
-        //    if (amount <= 0) return;
-        //    gems += amount;
-        //    OnGemsAdded?.Invoke();
-        //}
+        public void AddGems(int amount)
+        {
+            if (amount <= 0) return;
+            gems += amount;
+            OnGemsAdded?.Invoke(amount);
+        }
 
-        //public void SubtractCoins(int amount)
-        //{
-        //    if (amount > coins) return;
-        //    coins -= amount;
-        //    OnCoinsAdded?.Invoke();
-        //}
+        public void SubtractCoins(int amount)
+        {
+            if (amount > coins) return;
+            coins -= amount;
+            OnCoinSubtracted?.Invoke(amount);
+        }
 
-        //public void SubtractGems(int amount)
-        //{
-        //    if (amount > gems) return;
-        //    gems -= amount;
-        //    OnCoinsAdded?.Invoke();
-        //}
+        public void SubtractGems(int amount)
+        {
+            if (amount > gems) return;
+            gems -= amount;
+            OnGemsSubtracted?.Invoke(amount);
+        }
 
-        //// used for initliaze the class
-        //public void SetCoin(int coinsAmount)
-        //{
-        //    coins = coinsAmount;
-        //}
+        // used for initliaze the class
+        public void SetCoin(int coinsAmount)
+        {
+            coins = coinsAmount;
+        }
 
-        //public void SetGems(int gemsAmount)
-        //{
-        //    gems = gemsAmount;
-        //}
+        public void SetGems(int gemsAmount)
+        {
+            gems = gemsAmount;
+        }
         //////////////////////////////
         public int GetCoins()
         {

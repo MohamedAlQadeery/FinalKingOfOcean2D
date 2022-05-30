@@ -17,7 +17,7 @@ MonoBehaviour:
     expiredDuration: 0
     expPoints: 0
   fishName: SandboxFish
-  fishIcon: {fileID: 0}
+  fishIcon: {fileID: 21300000, guid: 91fbc88c254764131b4c69eebbb96944, type: 3}
   maxPrice: 0
   minPrice: 0
   currentPrice: 0

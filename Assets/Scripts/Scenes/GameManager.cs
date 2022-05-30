@@ -14,8 +14,8 @@ namespace FishGame.Scenes
         [SerializeField] Transform shipPos2;
         [SerializeField] Transform shipPos3;
 
-        [SerializeField] List<Ship> ownedShips;
-        [SerializeField] List<Ship> shipFromResources;
+        public  List<Ship> ownedShips;
+        public  List<Ship> shipFromResources;
 
         private PlayFabShipData shipDataService;
         private static bool isOwnedShipsModifed = false;
@@ -54,6 +54,7 @@ namespace FishGame.Scenes
             ownedShips.AddRange(ownedShipsFromResources);
 
             SpawnMainShips();
+            isOwnedShipsModifed = false;
         }
 
 

@@ -34,8 +34,7 @@ MonoBehaviour:
   isFishing: 0
   onCooldown: 0
   canFishTypes:
-  - {fileID: 11400000, guid: de75ad966a592904599a1addf6b95037, type: 2}
-  - {fileID: 11400000, guid: 751e615327a25f0439d775b578a1388f, type: 2}
+  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
   caughtFishes: []
   animatorOverrideController: {fileID: 0}
   price: 200

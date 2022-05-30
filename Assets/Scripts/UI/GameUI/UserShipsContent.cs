@@ -48,8 +48,6 @@ namespace FishGame.UI.GameUI
 
         }
 
-       
-
 
         private void OnGetAllShipsSuccess(List<SerializableShipData> ships)
         {
@@ -69,7 +67,7 @@ namespace FishGame.UI.GameUI
         {
             ShipBox shipItem = Instantiate(shipTypePrefab, contentParent);
             shipItem.SetShipBoxName(ship.GetShipName());
-            shipItem.SetShipBoxPrice("2000");
+            ////shipItem.SetShipBoxPrice("2000");
             shipItem.SetShipImage(ship.GetShipIcon());
         }
     }

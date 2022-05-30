@@ -12,7 +12,7 @@ namespace FishGame.UI.GameUI
     {
         [SerializeField] Image Image;
         [SerializeField] TMP_Text shipName;
-        [SerializeField] TMP_Text shipPrice;
+        //[SerializeField] TMP_Text shipPrice;
          ShipInfo shipInfo;
 
 
@@ -37,6 +37,16 @@ namespace FishGame.UI.GameUI
             shipInfo.SetFishingTime($"{ship.GetFishingDuration()} min"); // we should add min in arabic
             shipInfo.SetShipIcon(ship.GetShipIcon());
             shipInfo.SetPrice(ship.GetPrice().ToString()); // we should add price in arabic  
+
+            //start of fish types info
+            shipInfo.SetFirstFishIcon(ship.GetCanFishTypesList()[0].GetFishIcon());
+            shipInfo.SetSecondFishIcon(ship.GetCanFishTypesList()[1].GetFishIcon());
+            shipInfo.SetThridFishIcon(ship.GetCanFishTypesList()[2].GetFishIcon());
+
+            shipInfo.SetFirstFishName(ship.GetCanFishTypesList()[0].GetName());
+            shipInfo.SetSecondFishName(ship.GetCanFishTypesList()[1].GetName());
+            shipInfo.SetThirdFishName(ship.GetCanFishTypesList()[2].GetName());
+            //end of fish types info
         }
 
         public void SetShipBoxName(string name)
@@ -44,10 +54,10 @@ namespace FishGame.UI.GameUI
             shipName.text = name;
         }
 
-        public void SetShipBoxPrice(string price)
-        {
-            shipPrice.text = price;
-        }
+        //public void SetShipBoxPrice(string price)
+        //{
+        //    shipPrice.text = price;
+        //}
 
         public void SetShipImage(Sprite shipImage)
         {
