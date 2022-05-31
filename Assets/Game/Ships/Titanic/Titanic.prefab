@@ -3992,7 +3992,7 @@ GameObject:
   - component: {fileID: 7355250218262781442}
   m_Layer: 5
   m_Name: Titanic
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -37,7 +37,7 @@ namespace FishGame.Core
 
 
         [SerializeField] PlayFabError errorEvent;
-        [SerializeField] PlayFabEvent updateOwnedShipsSuccessEvent;
+        public PlayFabEvent updateOwnedShipsSuccessEvent;
 
         public PlayFabEvent GetFishJsonSuccess;
         public PlayFabEvent updateFishStorageSuccess;

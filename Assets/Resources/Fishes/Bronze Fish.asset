@@ -17,7 +17,7 @@ MonoBehaviour:
     expiredDuration: 0
     expPoints: 0
   fishName: bronze fish
-  fishIcon: {fileID: 0}
+  fishIcon: {fileID: 21300000, guid: 40bc07e1541974091b75d2396d44ae8e, type: 3}
   maxPrice: 0
   minPrice: 0
   currentPrice: 0

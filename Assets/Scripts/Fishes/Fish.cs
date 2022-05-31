@@ -28,6 +28,11 @@ namespace FishGame.Fishes
         {
             return fishName;
         }
+
+        public Sprite GetFishIcon()
+        {
+            return fishIcon;
+        }
     }
 
     public class SuperFish : Fish

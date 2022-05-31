@@ -22,11 +22,19 @@ namespace FishGame.Ships
         [SerializeField] List<Fish> canFishTypes; 
        [SerializeField] List<SerializableFishData> caughtFishes;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
-        [SerializeField] int price;
 
-        public int GetPrice()
+        //sell price is lower 
+        [SerializeField] int sellPrice , buyPrice;
+
+
+        public int GetSellPrice()
         {
-            return price;
+            return sellPrice;
+        }
+
+        public int GetBuyPrice()
+        {
+            return buyPrice;
         }
 
         public float GetMaxHealth()
