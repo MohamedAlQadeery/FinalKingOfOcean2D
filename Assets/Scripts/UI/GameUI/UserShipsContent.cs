@@ -120,7 +120,7 @@ namespace FishGame.UI.GameUI
             }
             else
             {
-                shipItem.equipButton.gameObject.SetActive(true);
+             //   shipItem.equipButton.gameObject.SetActive(true);
 
                 if(GameManager.GetOwnedShipsList().Count > 1)
                 {
@@ -138,6 +138,13 @@ namespace FishGame.UI.GameUI
                 Debug.Log("You already have 3 ships you cant buy more !!");
                 return;
             }
+            else
+            {
+                Debug.Log($"Inside OnClickBuyButton() For {ship} ship ");
+                ConfirmBuyUI confirmPanel = FindObjectOfType<ConfirmBuyUI>(true);
+                confirmPanel.SetSelectedShip(ship);
+                confirmPanel.gameObject.SetActive(true);
+            }
         }
 
         public void OnClickSellButton(Ship ship)
@@ -154,6 +161,7 @@ namespace FishGame.UI.GameUI
         {
             if (!isUserShipsUpdated) return ;
 
+            //clears both list
             ownedShips.Clear();
             AllShips.Clear();
 

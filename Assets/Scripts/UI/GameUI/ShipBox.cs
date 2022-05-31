@@ -15,8 +15,8 @@ namespace FishGame.UI.GameUI
         //[SerializeField] TMP_Text shipPrice;
         public Button sellButton;
         public Button buyButton;
-        public Button equipButton;
-        public Button unEquipButton;
+        //public Button equipButton;
+        //public Button unEquipButton;
          ShipInfo shipInfo;
 
 
@@ -39,8 +39,8 @@ namespace FishGame.UI.GameUI
             shipInfo.SetCapacity(ship.GetMaxCapacity().ToString());
             shipInfo.SetHealth(ship.GetMaxHealth().ToString());
             shipInfo.SetFishingTime($"{ship.GetFishingDuration()} min"); // we should add min in arabic
-            shipInfo.SetShipIcon(ship.GetShipIcon());
-            shipInfo.SetPrice(ship.GetPrice().ToString()); // we should add price in arabic  
+            shipInfo.SetSellPrice(ship.GetSellPrice().ToString()); // we should add price in arabic  
+            shipInfo.SetBuyPrice(ship.GetBuyPrice().ToString()); // we should add price in arabic  
 
             //start of fish types info
             shipInfo.SetFirstFishIcon(ship.GetCanFishTypesList()[0].GetFishIcon());

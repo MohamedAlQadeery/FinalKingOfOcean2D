@@ -12,9 +12,9 @@ namespace FishGame.UI.GameUI
         [SerializeField] TMP_Text shipName;
         [SerializeField] TMP_Text capacity;
         [SerializeField] TMP_Text health;
-        [SerializeField] TMP_Text price;
+        [SerializeField] TMP_Text sellPrice;
+        [SerializeField] TMP_Text buyPrice;
         [SerializeField] TMP_Text fishingTime;
-        [SerializeField] Image shipIcon;
 
         //Start of Fish types
         [SerializeField] Image firstFishIcon;
@@ -69,9 +69,14 @@ namespace FishGame.UI.GameUI
             health.text = healthText;
         }
 
-        public void SetPrice(string priceText)
+        public void SetBuyPrice(string price)
         {
-            price.text = priceText;
+            buyPrice.text = price;
+        }
+
+        public void SetSellPrice(string price )
+        {
+            sellPrice.text = price;
         }
 
         public void SetFishingTime(string fishingTimeText)
@@ -79,10 +84,7 @@ namespace FishGame.UI.GameUI
             fishingTime.text = fishingTimeText;
         }
 
-        public void SetShipIcon(Sprite icon)
-        {
-            shipIcon.sprite = icon;
-        }
+       
 
        
     }

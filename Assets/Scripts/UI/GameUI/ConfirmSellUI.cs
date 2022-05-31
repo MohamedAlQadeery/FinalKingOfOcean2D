@@ -62,10 +62,10 @@ namespace FishGame.UI.GameUI
             }
             else
             {
-                currencySystem.AddCoins(selectedShip.GetPrice());
+                currencySystem.AddCoins(selectedShip.GetSellPrice());
                 GameManager.GetOwnedShipsList().Remove(selectedShip);
                 GameManager.isOwnedShipsModifed = true;
-                UserShipsContent.isUserShipsUpdated = true; ;
+                UserShipsContent.isUserShipsUpdated = true;
                 shipService.UpdateOwnedShips(GameManager.GetOwnedShipsList());
                 currencyService.GetUserCurrency();
                 Debug.Log($"{selectedShip} is sold !!");
