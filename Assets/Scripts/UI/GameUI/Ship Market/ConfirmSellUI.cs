@@ -8,7 +8,7 @@ using FishGame.Systems;
 using FishGame.Scenes;
 using FishGame.Core;
 
-namespace FishGame.UI.GameUI
+namespace FishGame.UI.GameUI.ShipMarketUI
 {
     public class ConfirmSellUI : MonoBehaviour
     {

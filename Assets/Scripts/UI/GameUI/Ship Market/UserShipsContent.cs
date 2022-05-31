@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace FishGame.UI.GameUI
+namespace FishGame.UI.GameUI.ShipMarketUI
 {
     public class UserShipsContent : MonoBehaviour
     {
