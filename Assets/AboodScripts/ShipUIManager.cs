@@ -53,6 +53,7 @@ public class ShipUIManager : MonoBehaviour
         Close();
     }
 
+    //Save Date (Position , animations , active and not active Button ) On PlayerPrefs --
     private void OnApplicationQuit()
     {
         if (fishAnim.GetBool("isFishing"))
