@@ -7,24 +7,49 @@ using UnityEngine.UI;
 
 public class FishingTimeBar : MonoBehaviour
 {
+    private static FishingTimeBar instance;
+
+    private Timer timer;
 
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private float fishingTime;
-    [SerializeField] private bool stopTimer = true;
-    [SerializeField] private GameObject fullShipButton;
-
-    private void Start()
+    public static bool countdown = false;
+    private void Awake()
     {
-        float timeToFillShip = GetComponent<ShipFishing>().TimeToFishing();
-
-        Timer timer = gameObject.AddComponent<Timer>();
-        timer.Initialize("Fisihng", DateTime.Now, TimeSpan.FromMinutes(2));
-        timer.startTimer();
-        timer.TimerFinishedEvent.AddListener(delegate
-        {
-            Destroy(gameObject);
-            Destroy(timer);
-        });
+        instance = this;
     }
+
+    private void ShowTimer(GameObject caller)
+    {
+        timer = caller.GetComponent<Timer>();
+
+        if (timer == null)
+        {
+            return;
+        }
+
+        Debug.Log(timer.Name);
+
+        countdown = true;
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (countdown) 
+        {
+            timeSlider.value = (float)(1.0 - timer.secondsLeft / timer.timeToFinish.TotalSeconds);
+            timerText.text = timer.DisplayTime();
+        }
+        else
+        {
+            timerText.text = "Cancel";
+        }
+    } 
+
+    public static void ShowTimerStatic(GameObject caller)
+    {
+        instance.ShowTimer(caller);
+    }
+
 }

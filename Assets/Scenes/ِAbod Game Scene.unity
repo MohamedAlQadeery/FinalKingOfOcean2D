@@ -17207,7 +17207,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305767176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b0783c4087deee4cb83b54dccef3317, type: 3}
   m_Name: 
@@ -32506,6 +32506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313884130315104718}
   - component: {fileID: 1313884130315104719}
+  - component: {fileID: 1313884130315104720}
   m_Layer: 5
   m_Name: TimerBar
   m_TagString: Untagged
@@ -32589,6 +32590,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1313884130315104720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313884130315104561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f1e542730f0bd46b3755f5f7aa0379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSlider: {fileID: 1313884130315104719}
+  timerText: {fileID: 1499259261295153296}
 --- !u!114 &1313884130338710816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32746,6 +32761,7 @@ MonoBehaviour:
   timeToFillCapacity: 0
   startFishing: 0
   completeButton: {fileID: 8525072825199091673}
+  shipIsFullButton: {fileID: 2251490557997168973}
 --- !u!114 &1313884130338710823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36174,6 +36190,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1313884130338710822}
+        m_TargetAssemblyTypeName: ShipFishing, Assembly-CSharp
+        m_MethodName: stopFishingButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6830579364539461016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37529,6 +37557,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1313884130338710822}
+        m_TargetAssemblyTypeName: ShipFishing, Assembly-CSharp
+        m_MethodName: startFishingButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8300894117114283810
 GameObject:
   m_ObjectHideFlags: 0
@@ -37668,7 +37708,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5501756647934158870}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1313884130338710823}
+        m_TargetAssemblyTypeName: ShipUIManager, Assembly-CSharp
+        m_MethodName: StopFishing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &8577592684061581521
 CanvasRenderer:
   m_ObjectHideFlags: 0

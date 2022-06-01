@@ -76,12 +76,12 @@ public class Timer : MonoBehaviour
         }
         else if (timeLeft.Minutes != 0)
         {
-            text += timeLeft.Minutes + "mon ";
-            text += timeLeft.Seconds + "sec";
+            text += timeLeft.Minutes +":";
+            text += timeLeft.Seconds;
         }
         else if (secondsLeft > 0)
         {
-            text +=Mathf.FloorToInt((float) secondsLeft) + "sec";
+            text += "00:"+Mathf.FloorToInt((float) secondsLeft);
         }
         else
         {

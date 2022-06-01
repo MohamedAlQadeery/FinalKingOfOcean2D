@@ -57,10 +57,6 @@ public class ShipUIManager : MonoBehaviour
     {
         if (fishAnim.GetBool("isFishing"))
         {
-            //PlayerPrefs.SetString("isFishing", "false");
-            //DateTime quitDate = DateTime.Now;
-            //PlayerPrefs.SetString("QuitDateTime", "");
-            //PlayerPrefs.SetString("TimeToFill", "");
             PlayerPrefs.SetString("Stop", "false");
             PlayerPrefs.SetString("Fishing", "true");
             PlayerPrefs.SetFloat("Xpos",transform.position.x);
