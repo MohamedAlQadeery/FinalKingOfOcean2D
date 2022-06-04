@@ -115,10 +115,18 @@ PrefabInstance:
       propertyPath: completeButton
       value: 
       objectReference: {fileID: 1232077800496087080}
+    - target: {fileID: 4282224256186150874, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: currentShip
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d0d247ba3eb9b448b603c391d627d2e, type: 2}
     - target: {fileID: 6465927399957056944, guid: 128e794762e23a0449db635ece647aaa, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7604397168291895056, guid: 128e794762e23a0449db635ece647aaa, type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d0d247ba3eb9b448b603c391d627d2e, type: 2}
     - target: {fileID: 8695703346210105566, guid: 128e794762e23a0449db635ece647aaa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -179,7 +187,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7616818578820540662}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85f75e73bbb3ee045b5afff15fb9dd78, type: 3}
   m_Name: 
@@ -201,7 +209,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7616818578820540662}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbe19d074b9da91418ebdc4e88af9f0e, type: 3}
   m_Name: 

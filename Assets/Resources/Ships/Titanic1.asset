@@ -15,10 +15,10 @@ MonoBehaviour:
   shipPrefab: {fileID: 2078875401413202467, guid: 128e794762e23a0449db635ece647aaa, type: 3}
   dataToJson:
     shipName: Titanic1
-    currentCapacity: 1
+    currentCapacity: 25
     currentHealth: 100
   shipName: Titanic1
-  currentCapacity: 1
+  currentCapacity: 25
   maxCapacity: 25
   unlockLevel: 0
   currentHealth: 100
@@ -37,10 +37,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
   - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
   - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
-  caughtFishes:
-  - fishName: bronze fish
-    expiredDuration: 0
-    expPoints: 0
+  caughtFishes: []
   animatorOverrideController: {fileID: 0}
   sellPrice: 200
   buyPrice: 600
