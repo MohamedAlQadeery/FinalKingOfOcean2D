@@ -3344,6 +3344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8524317091252203218}
   - component: {fileID: 8524317091252203219}
+  - component: {fileID: 7201439530551471499}
   m_Layer: 5
   m_Name: TimerBar
   m_TagString: Untagged
@@ -3427,6 +3428,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7201439530551471499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524317091252203053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f1e542730f0bd46b3755f5f7aa0379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 0}
+  timeSlider: {fileID: 0}
+  timerText: {fileID: 0}
+  countdown: 0
 --- !u!1 &8524317091536475902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3990,6 +4007,8 @@ GameObject:
   - component: {fileID: 5403420596637291030}
   - component: {fileID: 806186526428517944}
   - component: {fileID: 7355250218262781442}
+  - component: {fileID: 224597231310110475}
+  - component: {fileID: 5906566944354027457}
   m_Layer: 5
   m_Name: Titanic
   m_TagString: Ship
@@ -4144,7 +4163,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8524317092836031032}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 156717b91ef549240bac45bebbe114ca, type: 3}
   m_Name: 
@@ -4160,7 +4179,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8524317092836031032}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85f75e73bbb3ee045b5afff15fb9dd78, type: 3}
   m_Name: 
@@ -4178,7 +4197,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8524317092836031032}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbe19d074b9da91418ebdc4e88af9f0e, type: 3}
   m_Name: 
@@ -4187,6 +4206,41 @@ MonoBehaviour:
   timerText: {fileID: 8122769446048812940}
   stopTimer: 0
   fullShipButton: {fileID: 8883712173478880849}
+--- !u!114 &224597231310110475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524317092836031032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9fff64c799f1545936814001fe5ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishAnim: {fileID: 0}
+  shipPopUpPanel: {fileID: 0}
+  fishingRuning: {fileID: 0}
+  fishingStoped: {fileID: 0}
+  infoPanel: {fileID: 0}
+  ship: {fileID: 0}
+--- !u!114 &5906566944354027457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524317092836031032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4208b5ef98cff5146a470f28a0615299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentShip: {fileID: 0}
+  timeToFillCapacity: 0
+  startFishing: 0
+  completeButton: {fileID: 0}
+  shipIsFullButton: {fileID: 0}
 --- !u!1 &8524317093032858643
 GameObject:
   m_ObjectHideFlags: 0
