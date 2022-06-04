@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using FishGame.Fishes;
 
-namespace FishGame.UI.GameUI
+namespace FishGame.UI.GameUI.ShipMarketUI
 {
     public class ShipInfo : MonoBehaviour
     {

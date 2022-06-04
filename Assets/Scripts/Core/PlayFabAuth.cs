@@ -24,6 +24,8 @@ namespace FishGame.Core
 
         private const string _loginRememberKey = "PlayFabLoginRemember";
         private const string _playFabRememberMeIdKey = "PlayFabIdPassGuid";
+        private static string entityId;
+        private static string entityType;
         public bool RememberMe
         {
             get
@@ -50,6 +52,7 @@ namespace FishGame.Core
         }
         private static PlayFabAuth _instance;
 
+        
         public PlayFabAuth()
         {
             _instance = this;
@@ -105,6 +108,12 @@ namespace FishGame.Core
             {
                 AssignCustomLink();
             }
+            entityId = result.EntityToken.Entity.Id;
+            // The expected entity type is title_player_account.
+            entityType = result.EntityToken.Entity.Type;
+
+            Debug.Log($"Entity id = {entityId}");
+            Debug.Log($"Entity type = {entityType}");
             loginSuccessEvent?.Invoke("Login Successfully");
 
         }

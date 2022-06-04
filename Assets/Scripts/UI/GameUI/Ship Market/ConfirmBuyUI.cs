@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FishGame.UI.GameUI
+namespace FishGame.UI.GameUI.ShipMarketUI
 {
     public class ConfirmBuyUI : MonoBehaviour
     {

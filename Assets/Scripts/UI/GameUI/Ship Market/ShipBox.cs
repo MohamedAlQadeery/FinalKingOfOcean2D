@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using FishGame.Utilities;
 using FishGame.Ships;
 
-namespace FishGame.UI.GameUI
+namespace FishGame.UI.GameUI.ShipMarketUI
 {
     public class ShipBox : MonoBehaviour
     {
