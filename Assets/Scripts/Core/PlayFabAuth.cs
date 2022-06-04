@@ -71,7 +71,7 @@ namespace FishGame.Core
             }
         }
 
-
+      
         public void RegisterWithEmail(string email,string password,string username)
         {
             var request = new RegisterPlayFabUserRequest {
@@ -193,6 +193,9 @@ namespace FishGame.Core
         }
 
 
+        #region Getters
+
+       
         public static string GetPlayerFabId()
         {
             return playerFabId;
@@ -203,5 +206,17 @@ namespace FishGame.Core
         {
             return gameTitle;
         }
+
+
+        public static string GetEntityId()
+        {
+            return entityId;
+        }
+
+        public static string GetEntityType()
+        {
+            return entityType;
+        }
+        #endregion
     }
 }
