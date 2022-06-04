@@ -1,3 +1,4 @@
+using FishGame.Ships;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class ShipUIManager : MonoBehaviour
     public GameObject fishingRuning;
     public GameObject fishingStoped;
     public GameObject infoPanel;
+    public Ship ship;
 
     /*
      we need all this as playerPrefs
@@ -22,11 +24,11 @@ public class ShipUIManager : MonoBehaviour
      */
     private void Start()
     {
-        if (PlayerPrefs.GetFloat("Xpos") != 0) {
-            float xPos = PlayerPrefs.GetFloat("Xpos");
-            float yPos = PlayerPrefs.GetFloat("Ypos");
+        if (PlayerPrefs.GetFloat(ship.GetShipName()+"Xpos") != 0) {
+            float xPos = PlayerPrefs.GetFloat(ship.GetShipName() + "Xpos");
+            float yPos = PlayerPrefs.GetFloat(ship.GetShipName() + "Ypos");
             transform.position = new Vector3(xPos, yPos, 0);
-            if (PlayerPrefs.GetString("Fishing").Equals("true"))
+            if (PlayerPrefs.GetString(ship.GetShipName() + "Fishing").Equals("true"))
             {
                 fishingRuning.SetActive(true);
                 fishingStoped.SetActive(false);
@@ -58,17 +60,17 @@ public class ShipUIManager : MonoBehaviour
     {
         if (fishAnim.GetBool("isFishing"))
         {
-            PlayerPrefs.SetString("Stop", "false");
-            PlayerPrefs.SetString("Fishing", "true");
-            PlayerPrefs.SetFloat("Xpos",transform.position.x);
-            PlayerPrefs.SetFloat("Ypos",transform.position.y);
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos",transform.position.x);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos",transform.position.y);
         }
         else
         {
-            PlayerPrefs.SetString("Stop", "true");
-            PlayerPrefs.SetString("Fishing", "flase");
-            PlayerPrefs.SetFloat("Xpos", 0);
-            PlayerPrefs.SetFloat("Ypos", 0);
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
         }
     }
 

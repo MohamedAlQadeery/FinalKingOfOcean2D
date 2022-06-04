@@ -7,28 +7,26 @@ using UnityEngine.UI;
 
 public class FishingTimeBar : MonoBehaviour
 {
-    private static FishingTimeBar instance;
+    //private static FishingTimeBar instance;
 
-    private Timer timer;
+    public Timer timer;
 
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timerText;
-    public static bool countdown = false;
-    private void Awake()
+    public bool countdown = false;
+    /*private void Awake()
     {
         instance = this;
     }
-
-    private void ShowTimer(GameObject caller)
+    */
+    public void ShowTimer(Timer caller)
     {
-        timer = caller.GetComponent<Timer>();
+        timer = caller;
 
         if (timer == null)
         {
             return;
-        }
-
-        Debug.Log(timer.Name);
+        }    
 
         countdown = true;
 
@@ -45,11 +43,12 @@ public class FishingTimeBar : MonoBehaviour
         {
             timerText.text = "Cancel";
         }
+
     } 
 
-    public static void ShowTimerStatic(GameObject caller)
-    {
-        instance.ShowTimer(caller);
-    }
+    //public void ShowTimerStatic(GameObject caller)
+    //{
+    //    ShowTimer(caller);
+    //}
 
 }

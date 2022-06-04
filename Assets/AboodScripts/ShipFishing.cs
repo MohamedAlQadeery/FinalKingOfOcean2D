@@ -16,15 +16,14 @@ public class ShipFishing : MonoBehaviour
     [SerializeField] Button completeButton;
     [SerializeField] GameObject shipIsFullButton;
     Timer timer;
+    FishingTimeBar fishingTimeBar;
 
     public void stopFishingButton()
     {
         Debug.Log("Stopfishing");
-        Debug.Log(timer.skipAmount);
-        Debug.Log(timer.secondsLeft);
         Destroy(timer);
-        FishingTimeBar.countdown = false;
         currentShip.ClearCapacity();
+        currentShip.isFishing = false;
     }
 
     public void FillStore()
@@ -32,7 +31,6 @@ public class ShipFishing : MonoBehaviour
         List<SerializableFishData> caughtFish = FillShipCapacity(currentShip.GetNumberOfFishCaughtPerMin());
         currentShip.GetCaughtFishList().AddRange(caughtFish);
         currentShip.UpdateCurrentCapacity();
-        PlayerPrefs.SetString("ShipIsFull","true");
     }
     private List<SerializableFishData> FillShipCapacity(float numberOfFishes)
     {
@@ -52,7 +50,6 @@ public class ShipFishing : MonoBehaviour
             else
             {
                 tmpList.Add(currentShip.GetCanFishTypesList()[2].GetDataToJson());
-
             }
         }
         return tmpList;
@@ -60,70 +57,78 @@ public class ShipFishing : MonoBehaviour
 
     public void startFishingButton()
     {
-        //currentShip.isFishing;
-
-        if (PlayerPrefs.GetString("Fishing").Equals("true"))
+        currentShip.isFishing = true;
+        if (PlayerPrefs.GetString(currentShip.GetShipName() + "Fishing").Equals("true"))
         {
+            Debug.Log("Startfishing seconde or more time");
             Awake();
         }
         else
         {
+            Debug.Log("Startfishing first time");
             StartCoroutine("putfish");
             timeToFillCapacity = currentShip.GetFishingDuration();
-            Debug.Log("Startfishing");
             timer = gameObject.AddComponent<Timer>();
-            timer.Initialize("Fisihng", DateTime.Now, TimeSpan.FromMinutes(1));
+            timer.Initialize("Fisihng", DateTime.Now, TimeSpan.FromMinutes(currentShip.GetFishingDuration()));
             timer.startTimer();
             timer.TimerFinishedEvent.AddListener(delegate
             {
-                //FillStore();             
-                PlayerPrefs.SetString("ShipIsFull", "false");
+                PlayerPrefs.SetString(currentShip.GetShipName() + "ShipIsFull", "false");
                 //shipIsFullButton.SetActive(true);
                 Destroy(timer);
                 Debug.Log("Time Finished Ship is full");
+                currentShip.isFishing = false;
             });
-            FishingTimeBar.ShowTimerStatic(gameObject);
+            fishingTimeBar.ShowTimer(timer);
         }
     }
-
     private void Awake()
     {
+        fishingTimeBar = gameObject.GetComponentInChildren<FishingTimeBar>();
         timeToFillCapacity = currentShip.GetFishingDuration();
-        if (PlayerPrefs.GetString("Fishing").Equals("true"))
+        if (PlayerPrefs.GetString(currentShip.GetShipName() + "Fishing").Equals("true"))
         {
-            StartCoroutine("putfish");
-            Debug.Log("Fishing 1");
-            string quitDate =PlayerPrefs.GetString("QuitTime");
-            Debug.Log(quitDate);
+            if (currentShip.isFishing == false) return;
+            Debug.Log("is fishing" + currentShip.isFishing);
+            string quitDate = PlayerPrefs.GetString(currentShip.GetShipName() + "QuitTime");
             DateTime quitDate1 = DateTime.Parse(quitDate);
-            float timeLift = float.Parse(PlayerPrefs.GetString("TimeToFill"));
-            timeToFillCapacity = timeLift/60;
-            timeLift = ((float)(DateTime.Now - quitDate1).TotalSeconds) - 43200;
+            float timeLift = float.Parse(PlayerPrefs.GetString(currentShip.GetShipName() + "TimeToFill"));
+            timeToFillCapacity = timeLift / 60;
+            timeLift = ((float)(DateTime.Now - quitDate1).TotalSeconds);//+ 43200
             //add fish when game quit
-
-            float fishQuitTime = timeLift / (currentShip.GetFishingDuration() * 60 / currentShip.GetNumberOfFishCaughtPerMin());
-            List<SerializableFishData> caughtFish = FillShipCapacity(fishQuitTime);
-            currentShip.GetCaughtFishList().AddRange(caughtFish);
-            currentShip.UpdateCurrentCapacity();
-
-            Debug.Log("Fish Quit Time = "+ fishQuitTime);
-            Debug.Log(timeLift);
-            timeLift = (timeToFillCapacity) - timeLift/60;
-            Debug.Log("Fishing 2");
-            Debug.Log(timeLift);
+            float lastFishing = timeLift;
+            timeLift = (timeToFillCapacity) - timeLift / 60;
+            StartCoroutine("putfish");
+            float fishQuitTime = lastFishing / (currentShip.GetFishingDuration() * 60 / currentShip.GetNumberOfFishCaughtPerMin());
+            if (currentShip.GetCapacity() + fishQuitTime >= currentShip.GetMaxCapacity())
+            {
+                Debug.Log(" is full : " + currentShip.IsCapacityFull());
+                List<SerializableFishData> caughtFish = FillShipCapacity(currentShip.GetMaxCapacity() - 1);
+                currentShip.GetCaughtFishList().Clear();
+                currentShip.GetCaughtFishList().AddRange(caughtFish);
+                currentShip.UpdateCurrentCapacity();
+                PlayerPrefs.SetString(currentShip.GetShipName() + "ShipIsFull", "true");
+                currentShip.isFishing = false;
+            }
+            else if (currentShip.GetCapacity() < currentShip.GetMaxCapacity())
+            {
+                List<SerializableFishData> caughtFish = FillShipCapacity(fishQuitTime);
+                currentShip.GetCaughtFishList().AddRange(caughtFish);
+                currentShip.UpdateCurrentCapacity();
+            }
             timer = gameObject.AddComponent<Timer>();
             timer.Initialize("Fisihng", DateTime.Now, TimeSpan.FromMinutes(timeLift));
             timer.startTimer();
             timer.TimerFinishedEvent.AddListener(delegate
             {
-                //FillStore();
-                PlayerPrefs.SetString("ShipIsFull", "false");
-                PlayerPrefs.SetString("Fishing", "false");
+                currentShip.isFishing = false;
+                PlayerPrefs.SetString(currentShip.GetShipName() + "ShipIsFull", "true");
+                PlayerPrefs.SetString(currentShip.GetShipName() + "Fishing", "false");
                 //shipIsFullButton.SetActive(true);
                 Destroy(timer);
-                Debug.Log("Time Finished Ship is full");
+                currentShip.isFishing = false;
             });
-            FishingTimeBar.ShowTimerStatic(gameObject);   
+            fishingTimeBar.ShowTimer(timer);
         }
         else
         {
@@ -131,40 +136,34 @@ public class ShipFishing : MonoBehaviour
         }
     }
 
-    //Save Date Time On PlayerPrefs --
-    private void OnApplicationQuit()
-    {
-        if (PlayerPrefs.GetString("isFishing").Equals("true"))
-        {
-            DateTime quitDate = DateTime.Now;
-            PlayerPrefs.SetString("QuitTime", quitDate.ToString());
-            PlayerPrefs.SetString("TimeToFill", timer.secondsLeft.ToString());
-        }
-        else
-        {
-            PlayerPrefs.SetString("QuitTime", "");
-            PlayerPrefs.SetString("TimeToFill", "");
-        }
-    }
-
     private IEnumerator putfish()
     {
-        if (currentShip.CanFish())
+        if (currentShip.isFishing == true)
         {
-            do 
+            do
             {
-                yield return new WaitForSeconds(currentShip.GetFishingDuration()*60/currentShip.GetNumberOfFishCaughtPerMin());
+                yield return new WaitForSeconds(currentShip.GetFishingDuration() * 60 / currentShip.GetNumberOfFishCaughtPerMin());
                 List<SerializableFishData> caughtFish = FillShipCapacity(currentShip.GetFishingDuration());
                 currentShip.GetCaughtFishList().AddRange(caughtFish);
                 currentShip.UpdateCurrentCapacity();
-            } while (!currentShip.IsCapacityFull());
+            } while (currentShip.isFishing);
             Debug.Log("The Ship is full now");
-
-        }else
-        {
-            Debug.Log("Cant fish the ship is busy");
         }
-
     }
 
+    //Save Date Time On PlayerPrefs --
+    private void OnApplicationQuit()
+    {
+        if (currentShip.isFishing)
+        {
+            DateTime quitDate = DateTime.Now;
+            PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", quitDate.ToString());
+            PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", timer.secondsLeft.ToString());
+        }
+        else
+        {
+            PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
+            PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
+        }
+    }
 }
