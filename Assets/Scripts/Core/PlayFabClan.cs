@@ -1,3 +1,4 @@
+using FishGame.UI.SocialUI;
 using PlayFab;
 using PlayFab.GroupsModels;
 using System;
@@ -18,6 +19,32 @@ namespace FishGame.Core
             
             entityId = PlayFabAuth.GetEntityId();
             entityType = PlayFabAuth.GetEntityType();
+            ClanManagmentUI.OnCreateClan += HandleCreateClan;
+            ClanManagmentUI.OnGetClans += GetClanList;
+        }
+
+        private void OnDestroy()
+        {
+            ClanManagmentUI.OnCreateClan -= HandleCreateClan;
+            ClanManagmentUI.OnGetClans -= GetClanList;
+
+        }
+        private void HandleCreateClan(string clanName)
+        {
+            var request = new CreateGroupRequest { GroupName = clanName };
+            PlayFabGroupsAPI.CreateGroup(request,OnCreateClanResponse,OnCreateClanError);
+        }
+
+        private void OnCreateClanResponse(CreateGroupResponse obj)
+        {
+            Debug.Log("Clan created successfully");
+            GetClanList();
+        }
+
+        private void OnCreateClanError(PlayFabError obj)
+        {
+            Debug.Log($"Error : {obj.GenerateErrorReport()}");
+
         }
 
         public void GetClanList()

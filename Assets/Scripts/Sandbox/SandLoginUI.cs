@@ -23,6 +23,7 @@ namespace FishGame.Sandbox
         [SerializeField] GameObject loginPanel;
         [SerializeField] GameObject addFriendPanel;
         [SerializeField] GameObject friendListPanel;
+        [SerializeField] GameObject clanPanel;
 
         //End of login panel vars
         PlayFabAuth playFabAuthService;
@@ -70,8 +71,9 @@ namespace FishGame.Sandbox
             Debug.Log(message);
             loginPanel.SetActive(false);
             LoggedInPanel.SetActive(true);
-            addFriendPanel.SetActive(true);
-            friendListPanel.SetActive(true);
+            //  addFriendPanel.SetActive(true);
+            // friendListPanel.SetActive(true);
+            clanPanel.SetActive(true);
             //should be disabled if user not auth
             GetComponent<SandboxGameManager>().enabled=true;
             GetComponent<SandboxLevelManager>().enabled=true;
