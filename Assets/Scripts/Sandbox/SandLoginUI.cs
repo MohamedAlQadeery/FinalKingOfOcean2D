@@ -69,7 +69,7 @@ namespace FishGame.Sandbox
             Debug.Log("Message from SANDBOX login UI");
             Debug.Log(message);
             loginPanel.SetActive(false);
-            //LoggedInPanel.SetActive(true);
+            LoggedInPanel.SetActive(true);
             addFriendPanel.SetActive(true);
             friendListPanel.SetActive(true);
             //should be disabled if user not auth

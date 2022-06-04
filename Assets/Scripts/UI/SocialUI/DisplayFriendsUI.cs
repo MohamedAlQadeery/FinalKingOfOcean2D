@@ -33,7 +33,7 @@ namespace FishGame.UI.SocialUI
             friendsText.text = string.Empty;
             foreach (var friend in displayedFriends)
             {
-                friendsText.text+= $"Name : {friend.Username},";
+                friendsText.text+= $"{friend.Username},";
             }
         }
 
