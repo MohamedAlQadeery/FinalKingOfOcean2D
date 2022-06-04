@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &109810424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1322,7 +1322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &286223239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2254,6 +2254,7 @@ MonoBehaviour:
   loginPanel: {fileID: 109810423}
   addFriendPanel: {fileID: 364066096}
   friendListPanel: {fileID: 1729458010}
+  clanPanel: {fileID: 1054397983}
 --- !u!114 &570970044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3856,7 +3857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1054397984
 RectTransform:
   m_ObjectHideFlags: 0
