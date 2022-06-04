@@ -1,3 +1,4 @@
+using FishGame.UI.SocialUI;
 using PlayFab;
 using PlayFab.ClientModels;
 using System;
@@ -10,16 +11,37 @@ namespace FishGame.Core
 {
     enum FriendIdType { PlayFabId, Username, Email, DisplayName };
 
-    public class PlayFabFriendsListEvent: UnityEvent<List<FriendInfo>> { }
 
     public class PlayFabSocial : MonoBehaviour
     {
-        public static List<FriendInfo> friendsList = null;
-        public PlayFabFriendsListEvent onGetFriendListSuccess;
-        public PlayFabEvent onAddFriendSuccess;
-        public PlayFabEvent onPlayFabSocialError;
-       public void GetFriendsList()
+
+       private List<FriendInfo> friendsList ;
+        public static Action<List<FriendInfo>> OnFriendListUpdated = delegate { };
+
+        private void Awake()
         {
+            friendsList = new List<FriendInfo>();
+            AddFriendUI.OnAddFriend += HandleAddFriend;
+            DisplayFriendsUI.OnGetFriends+=GetFriends;
+        }
+
+        private void GetFriends()
+        {
+            HandleGetFriendsList();
+        }
+
+        private void OnDestroy()
+        {
+            AddFriendUI.OnAddFriend -= HandleAddFriend;
+            DisplayFriendsUI.OnGetFriends -= GetFriends;
+
+
+        }
+
+
+        public void HandleGetFriendsList()
+        {
+            Debug.Log("Playfab is getting friend list..");
             var request = new GetFriendsListRequest
             {
                 IncludeSteamFriends = false,
@@ -28,8 +50,9 @@ namespace FishGame.Core
             };
 
             PlayFabClientAPI.GetFriendsList(request,result => {
+                Debug.Log($"Playfab get friend list success: {result.Friends.Count}");
                 friendsList = result.Friends;
-                onGetFriendListSuccess?.Invoke(friendsList);
+                OnFriendListUpdated?.Invoke(result.Friends);
 
             },error => {
 
@@ -40,27 +63,14 @@ namespace FishGame.Core
 
 
 
-        void AddFriend(FriendIdType idType, string friendId)
+        void HandleAddFriend(string name)
         {
-            var request = new AddFriendRequest();
-            switch (idType)
-            {
-                case FriendIdType.PlayFabId:
-                    request.FriendPlayFabId = friendId;
-                    break;
-                case FriendIdType.Username:
-                    request.FriendUsername = friendId;
-                    break;
-                case FriendIdType.Email:
-                    request.FriendEmail = friendId;
-                    break;
-                case FriendIdType.DisplayName:
-                    request.FriendTitleDisplayName = friendId;
-                    break;
-            }
+            var request = new AddFriendRequest { FriendUsername= name};
+            
             // Execute request and update friends when we are done
             PlayFabClientAPI.AddFriend(request, result => {
-                onAddFriendSuccess?.Invoke("Friends added successfully");
+                Debug.Log($"{name} is added to your friend list successfully");
+                HandleGetFriendsList();
             }, error=> {
                 Debug.Log($"Error in Adding friend : +{error.ErrorMessage} ");
 
@@ -69,7 +79,7 @@ namespace FishGame.Core
 
         private void OnPlayFabSocialError(PlayFabError obj)
         {
-            onPlayFabSocialError?.Invoke(obj.ErrorMessage);
+            Debug.LogError(obj.GenerateErrorReport());
         }
 
 
