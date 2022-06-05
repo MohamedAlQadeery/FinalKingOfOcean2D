@@ -1,3 +1,4 @@
+using FishGame.Ships;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,18 +8,12 @@ using UnityEngine.UI;
 
 public class FishingTimeBar : MonoBehaviour
 {
-    //private static FishingTimeBar instance;
-
     public Timer timer;
+    public Ship ship;
 
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timerText;
     public bool countdown = false;
-    /*private void Awake()
-    {
-        instance = this;
-    }
-    */
     public void ShowTimer(Timer caller)
     {
         timer = caller;
@@ -36,7 +31,7 @@ public class FishingTimeBar : MonoBehaviour
     {
         if (countdown) 
         {
-            timeSlider.value = (float)(1.0 - timer.secondsLeft / timer.timeToFinish.TotalSeconds);
+            timeSlider.value = (float)(1.0 - timer.secondsLeft / (ship.GetFishingDuration()*60));
             timerText.text = timer.DisplayTime();
         }
         else
@@ -44,11 +39,6 @@ public class FishingTimeBar : MonoBehaviour
             timerText.text = "Cancel";
         }
 
-    } 
-
-    //public void ShowTimerStatic(GameObject caller)
-    //{
-    //    ShowTimer(caller);
-    //}
+    }
 
 }
