@@ -4,8 +4,6 @@ using PlayFab.ClientModels;
 using PlayFab;
 using System;
 using UnityEngine.Events;
-using Facebook.Unity;
-using System.Collections.Generic;
 
 namespace FishGame.Core
 {
@@ -60,64 +58,6 @@ namespace FishGame.Core
             _instance = this;
         }
 
-
-        private void Start()
-        {
-            Debug.Log(FB.IsInitialized);
-           // if (FB.IsInitialized) return;
-           //there is issuse i'll solve it later
-            //FB.Init(OnFacebookInitialized);
-
-
-        }
-      
-
-        public void OnFacebookInitialized()
-        {
-            // Once Facebook SDK is initialized, if we are logged in, we log out to demonstrate the entire authentication cycle.
-            if (FB.IsLoggedIn)
-                FB.LogOut();
-
-          
-        }
-
-
-        public void LoginWithFacebook()
-        {
-            // We invoke basic login procedure and pass in the callback to process the result
-            FB.LogInWithReadPermissions(new List<string> { "public_profile", "email" }, result => {
-
-                // If result has no errors, it means we have authenticated in Facebook successfully
-                if (result == null || string.IsNullOrEmpty(result.Error))
-                {
-                    Debug.Log("Facebook Auth Complete! Access Token: " + AccessToken.CurrentAccessToken.TokenString + "\nLogging into PlayFab...");
-
-                    /*
-                     * We proceed with making a call to PlayFab API. We pass in current Facebook AccessToken and let it create
-                     * and account using CreateAccount flag set to true. We also pass the callback for Success and Failure results
-                     */
-                    PlayFabClientAPI.LoginWithFacebook(new LoginWithFacebookRequest { CreateAccount = true, AccessToken = AccessToken.CurrentAccessToken.TokenString },
-                        OnPlayfabFacebookAuthComplete, OnPlayfabFacebookAuthFailed);
-                }
-                else
-                {
-                    // If Facebook authentication failed, we stop the cycle with the message
-                    Debug.Log("Facebook Auth Failed: " + result.Error + "\n" + result.RawResult);
-                }
-            });
-        }
-
-      
-        private void OnPlayfabFacebookAuthFailed(PlayFabError error)
-        {
-            Debug.LogError("PlayFab Facebook Auth Failed: " + error.GenerateErrorReport());
-        }
-
-        private void OnPlayfabFacebookAuthComplete(PlayFab.ClientModels.LoginResult result)
-        {
-            Debug.Log("PlayFab Facebook Auth Complete. Session ticket: " + result.SessionTicket);
-        }
-
         public string RememberMeId
         {
             get
@@ -162,9 +102,7 @@ namespace FishGame.Core
             PlayFabClientAPI.LoginWithEmailAddress(request,OnLoginSuccess,OnError);
         }
 
-    
-
-        private void OnLoginSuccess(PlayFab.ClientModels.LoginResult result)
+        private void OnLoginSuccess(LoginResult result)
         {
             if (RememberMe)
             {

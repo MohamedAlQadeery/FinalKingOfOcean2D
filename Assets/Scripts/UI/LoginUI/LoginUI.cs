@@ -31,13 +31,12 @@ namespace FishGame.UI
             {
                 playFabAuthService.RememberMe = toggle;
             });
-            
+
         
             playFabAuthService.CheckCustomLink();
 
         }
 
-       
 
         public void OnClickSignOutButton()
         {
@@ -52,11 +51,6 @@ namespace FishGame.UI
             string password = loginPasswordInputField.text;
             playFabAuthService.LoginWithEmail(email, password);
            
-        }
-
-        public void OnClickFacebookLogin()
-        {
-            playFabAuthService.LoginWithFacebook();
         }
 
         public void OnLoginSuccess(string message)
