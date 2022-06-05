@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 578823968681678951, guid: 25088fa7cc0cb8c449ca71493ce4bdd4, type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 11400000, guid: 76ecef7409235c74f8f0d400672bd0c5, type: 2}
     - target: {fileID: 2140537446758158288, guid: 25088fa7cc0cb8c449ca71493ce4bdd4, type: 3}
       propertyPath: m_Sprite
       value: 
