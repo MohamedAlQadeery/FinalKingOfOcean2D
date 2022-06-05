@@ -536,6 +536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccdb425f0c0da0340902e8abf2f82948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  friendName: {fileID: 6763226325553903630}
+  friendLevel: {fileID: 2990922320501082890}
 --- !u!1 &4368939745355776900
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +875,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
+  m_fontSize: 5
   m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -16,6 +16,8 @@ namespace FishGame.Core
 
        private List<FriendInfo> friendsList ;
         public static Action<List<FriendInfo>> OnFriendListUpdated = delegate { };
+        //we invoke this for error messages or successful message
+        public static Action<string,string> OnGetResponceMessage = delegate { };
 
         private void Awake()
         {
@@ -70,8 +72,10 @@ namespace FishGame.Core
             PlayFabClientAPI.AddFriend(request, result => {
                 Debug.Log($"{name} is added to your friend list successfully");
                 HandleGetFriendsList();
+                OnGetResponceMessage?.Invoke("Success", $"{name} is added to your friends successfully");
             }, error=> {
                 Debug.Log($"Error in Adding friend : +{error.ErrorMessage} ");
+                OnGetResponceMessage?.Invoke("Error", $"{error.ErrorMessage}");
 
             });
         }

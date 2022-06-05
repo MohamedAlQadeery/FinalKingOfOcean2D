@@ -3979,7 +3979,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1366202861}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8043188718436272666}
+        m_TargetAssemblyTypeName: BottomBarUI, Assembly-CSharp
+        m_MethodName: OnClickFriends
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1366202861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7213,8 +7225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bc3cefcda5be94c84cf5a17ec3551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingPanel: {fileID: 8043188718828076569}
-  friendsButton: {fileID: 0}
+  settingPanel: {fileID: 0}
+  friendsPanel: {fileID: 8081959129967202185, guid: 5d5e24c984d735e40a5594167d797e49, type: 3}
 --- !u!224 &8043188718436272667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7492,6 +7504,7 @@ GameObject:
   - component: {fileID: 8727142805194396154}
   - component: {fileID: 8727142805194396155}
   - component: {fileID: 8727142805194396156}
+  - component: {fileID: 8727142805194396157}
   m_Layer: 0
   m_Name: PlayFab Manager
   m_TagString: Untagged
@@ -7580,3 +7593,15 @@ MonoBehaviour:
   errorEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8727142805194396157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8727142805194396152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ad3349ac2519a4ba44f3016558a0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

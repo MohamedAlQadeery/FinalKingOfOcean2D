@@ -17,6 +17,8 @@ public class BottomBarUI : MonoBehaviour
 
     public void OnClickFriends()
     {
-
+        SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
+        GameObject friendPanelUI = Instantiate(friendsPanel, friendsPanel.transform.position, friendsPanel.transform.rotation) ;
+        friendPanelUI.transform.SetParent(GameObject.FindGameObjectWithTag("CanvasUI").transform, false);
     }
 }

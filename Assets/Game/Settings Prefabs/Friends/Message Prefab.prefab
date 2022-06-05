@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1485188352258576462}
   - component: {fileID: 1485188352258576496}
   - component: {fileID: 1485188352258576497}
+  - component: {fileID: 9184108196967515164}
   m_Layer: 5
   m_Name: Message Prefab
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9184108196967515164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485188352258576463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85068dea7b6ba2f4abd4c558a3f1b0ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 1485188353046294701}
+  messageBody: {fileID: 1485188353635250699}
 --- !u!1 &1485188353046294699
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,4 +620,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6181377282460342477}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9184108196967515164}
+        m_TargetAssemblyTypeName: FishGame.UI.SocialUI.MessagePopup, Assembly-CSharp
+        m_MethodName: OnClickDoneButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

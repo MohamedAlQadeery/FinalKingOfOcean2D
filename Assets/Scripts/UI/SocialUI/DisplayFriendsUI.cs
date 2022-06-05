@@ -14,12 +14,22 @@ namespace FishGame.UI.SocialUI
         private List<FriendInfo> displayedFriends;
         [SerializeField] FriendListBox friendListBoxPrefab;
         [SerializeField] Transform friendListContent;
+        [SerializeField] GameObject addFriendPrefab;
 
         private void Awake()
         {
             displayedFriends = new List<FriendInfo>();
             PlayFabSocial.OnFriendListUpdated += HandleOnFriendListUpdated;
+            
         }
+
+        private void Start()
+        {
+            OnGetFriends?.Invoke();
+           
+        }
+
+       
 
         private void OnDestroy()
         {
@@ -29,6 +39,7 @@ namespace FishGame.UI.SocialUI
 
         private void HandleOnFriendListUpdated(List<FriendInfo> list)
         {
+            Debug.Log($"Inside HandleOnFriendListUpdated() and friend count = {list.Count}"); 
             ClearCurrentFriendList(list);
 
             foreach (var friend in displayedFriends)
@@ -53,14 +64,18 @@ namespace FishGame.UI.SocialUI
             friendListBox.SetFriendName(friend.Username);
         }
 
-        private void Start()
+     
+
+        public void OnClickAddNewFriendButton()
         {
-            OnGetFriends?.Invoke();  
+            Debug.Log("Inside OnClickAddNewFriendButton() ");
+            addFriendPrefab.SetActive(true);
         }
 
-
-
-
+        public void OnExitButton()
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
