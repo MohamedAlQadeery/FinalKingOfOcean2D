@@ -12,8 +12,8 @@ namespace FishGame.UI.SocialUI
     {
         public static Action OnGetFriends = delegate { };
         private List<FriendInfo> displayedFriends;
-        [SerializeField]private TMP_Text friendsText;
-
+        [SerializeField] FriendListBox friendListBoxPrefab;
+        [SerializeField] Transform friendListContent;
 
         private void Awake()
         {
@@ -27,14 +27,30 @@ namespace FishGame.UI.SocialUI
 
         }
 
-        private void HandleOnFriendListUpdated(List<FriendInfo> obj)
+        private void HandleOnFriendListUpdated(List<FriendInfo> list)
         {
-            displayedFriends = obj;
-            friendsText.text = string.Empty;
+            ClearCurrentFriendList(list);
+
             foreach (var friend in displayedFriends)
             {
-                friendsText.text+= $"{friend.Username},";
+                FillFriendListBox(friend);
             }
+        }
+
+        private void ClearCurrentFriendList(List<FriendInfo> list)
+        {
+            displayedFriends.Clear();
+            displayedFriends = list;
+            foreach (Transform transform in friendListContent)
+            {
+                Destroy(transform.gameObject);
+            }
+        }
+
+        private void FillFriendListBox(FriendInfo friend)
+        {
+            FriendListBox friendListBox = Instantiate(friendListBoxPrefab,friendListContent);
+            friendListBox.SetFriendName(friend.Username);
         }
 
         private void Start()
