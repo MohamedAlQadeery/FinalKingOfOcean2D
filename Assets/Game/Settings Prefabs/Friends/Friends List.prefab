@@ -2558,6 +2558,7 @@ MonoBehaviour:
   friendListBoxPrefab: {fileID: 6493195541005066283, guid: f054616d538ad83438c662c132eba50a, type: 3}
   friendListContent: {fileID: 5702154302206642053}
   addFriendPrefab: {fileID: 3199106385717218410}
+  messagePrefab: {fileID: 3060690530896858782}
 --- !u!1 &8125731770945780429
 GameObject:
   m_ObjectHideFlags: 0

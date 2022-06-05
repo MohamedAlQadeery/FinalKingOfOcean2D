@@ -15,12 +15,17 @@ namespace FishGame.UI.SocialUI
         [SerializeField] FriendListBox friendListBoxPrefab;
         [SerializeField] Transform friendListContent;
         [SerializeField] GameObject addFriendPrefab;
+        [SerializeField] MessagePopup messagePrefab;
+
+     
+     
 
         private void Awake()
         {
             displayedFriends = new List<FriendInfo>();
             PlayFabSocial.OnFriendListUpdated += HandleOnFriendListUpdated;
-            
+            PlayFabSocial.OnGetResponceMessage += HandleOnGetResponceMessage;
+
         }
 
         private void Start()
@@ -34,7 +39,15 @@ namespace FishGame.UI.SocialUI
         private void OnDestroy()
         {
             PlayFabSocial.OnFriendListUpdated -= HandleOnFriendListUpdated;
+            PlayFabSocial.OnGetResponceMessage -= HandleOnGetResponceMessage;
 
+        }
+
+        private void HandleOnGetResponceMessage(string title, string body)
+        {
+            messagePrefab.SetTitle(title);
+            messagePrefab.SetMessageBody(body);
+            messagePrefab.gameObject.SetActive(true);
         }
 
         private void HandleOnFriendListUpdated(List<FriendInfo> list)
@@ -44,6 +57,7 @@ namespace FishGame.UI.SocialUI
 
             foreach (var friend in displayedFriends)
             {
+                
                 FillFriendListBox(friend);
             }
         }
@@ -62,6 +76,7 @@ namespace FishGame.UI.SocialUI
         {
             FriendListBox friendListBox = Instantiate(friendListBoxPrefab,friendListContent);
             friendListBox.SetFriendName(friend.Username);
+            friendListBox.SetPlayFabId(friend.FriendPlayFabId);
         }
 
      

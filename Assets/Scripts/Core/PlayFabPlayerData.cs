@@ -99,6 +99,7 @@ namespace FishGame.Core
 
             var shipRequest = new UpdateUserDataRequest
             {
+                Permission= UserDataPermission.Public,
                 Data = new Dictionary<string, string> {
                 { shipsKey,allShipsToJson},
                 {ownedShipKey,newShipsToJson },
@@ -106,6 +107,7 @@ namespace FishGame.Core
                 {fishKey,newFishesToJson },
                 {expKey,"0" },
 
+                
 
 
               }

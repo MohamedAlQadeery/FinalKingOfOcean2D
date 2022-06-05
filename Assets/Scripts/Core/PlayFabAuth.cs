@@ -80,6 +80,7 @@ namespace FishGame.Core
                 Username=username,
                 TitleId = gameTitle,
 
+                
             };
 
             PlayFabClientAPI.RegisterPlayFabUser(request, OnSuccessRegister, OnError);
