@@ -9,7 +9,6 @@ using UnityEngine.Events;
 
 namespace FishGame.Core
 {
-    enum FriendIdType { PlayFabId, Username, Email, DisplayName };
 
 
     public class PlayFabSocial : MonoBehaviour
