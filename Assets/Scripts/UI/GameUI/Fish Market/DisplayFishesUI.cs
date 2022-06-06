@@ -1,18 +1,33 @@
+using FishGame.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayFishesUI : MonoBehaviour
+namespace FishGame.UI.GameUI.FishMarketUI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DisplayFishesUI : MonoBehaviour
     {
+        [SerializeField] Transform contentTransform;
         
+
+        private void Awake()
+        {
+            PlayFabFishData.OnFishListUpdated += HandleOnFishListUpdated;
+        }
+
+     
+
+        private void OnDestroy()
+        {
+            PlayFabFishData.OnFishListUpdated -= HandleOnFishListUpdated;
+
+        }
+
+        private void HandleOnFishListUpdated(Dictionary<string, int> fishDic)
+        {
+            
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

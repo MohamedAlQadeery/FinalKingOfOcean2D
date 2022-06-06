@@ -57,6 +57,18 @@ namespace FishGame.Utilities
             }
             return null;
         }
+
+        public Fish FindScriptableObjectFish(string name)
+        {
+            foreach (Fish fish in GetFishFromResourcesFolder())
+            {
+                if (fish.GetName().ToLower() == name.ToLower())
+                {
+                    return fish;
+                }
+            }
+            return null;
+        }
     }
 }
 
