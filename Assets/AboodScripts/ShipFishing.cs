@@ -220,7 +220,6 @@ public class ShipFishing : MonoBehaviour
 
     public void StoreCaughtFishButton()
     {
-        Debug.Log($"{currentShip.GetShipName()}");
         clickedShipName = currentShip.GetShipName();
         completeButton.gameObject.SetActive(false);
         shipDataService.GetFishJsonValue(); // invoke event that updateFishStorage() listens to it
