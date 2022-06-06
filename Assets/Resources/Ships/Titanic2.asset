@@ -15,10 +15,10 @@ MonoBehaviour:
   shipPrefab: {fileID: 8461637036262669013, guid: ef4ed9987b2c5bc46aa95ed3f568667a, type: 3}
   dataToJson:
     shipName: Titanic2
-    currentCapacity: 99
+    currentCapacity: 0
     currentHealth: 100
   shipName: Titanic2
-  currentCapacity: 99
+  currentCapacity: 0
   maxCapacity: 100
   unlockLevel: 0
   currentHealth: 100

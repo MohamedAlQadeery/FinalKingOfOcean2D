@@ -16,15 +16,37 @@ namespace FishGame.Core
 
        private List<FriendInfo> friendsList ;
         public static Action<List<FriendInfo>> OnFriendListUpdated = delegate { };
+        //we invoke this for error messages or successful message
+        public static Action<string,string> OnGetResponceMessage = delegate { };
 
         private void Awake()
         {
             friendsList = new List<FriendInfo>();
             AddFriendUI.OnAddFriend += HandleAddFriend;
-            DisplayFriendsUI.OnGetFriends+=GetFriends;
+            DisplayFriendsUI.OnGetFriends+=HandleOnGetFriends;
+            FriendListBox.OnShowProfile += HandleOnShowProfile;
+            FriendListBox.OnRemoveFriend += RemoveFriend;
         }
 
-        private void GetFriends()
+        private void HandleOnShowProfile(string id)
+        {
+            var request = new GetUserDataRequest
+            {
+                PlayFabId = id,
+            };
+
+            PlayFabClientAPI.GetUserData(request,result=> {
+
+                Debug.Log("HandleOnClickOnFriendBox() success");
+                Debug.Log(result.Data["level"].Value);
+                Debug.Log(result.Data["experince"].Value);
+            },error=> {
+
+                Debug.Log($"Error in GetUserData +{error.ErrorMessage}");
+            });
+        }
+
+        private void HandleOnGetFriends()
         {
             HandleGetFriendsList();
         }
@@ -32,7 +54,10 @@ namespace FishGame.Core
         private void OnDestroy()
         {
             AddFriendUI.OnAddFriend -= HandleAddFriend;
-            DisplayFriendsUI.OnGetFriends -= GetFriends;
+            DisplayFriendsUI.OnGetFriends -= HandleOnGetFriends;
+            FriendListBox.OnShowProfile -= HandleOnShowProfile;
+            FriendListBox.OnRemoveFriend -= RemoveFriend;
+
 
 
         }
@@ -47,6 +72,7 @@ namespace FishGame.Core
                 IncludeFacebookFriends = false,
                 XboxToken = null
             };
+
 
             PlayFabClientAPI.GetFriendsList(request,result => {
                 Debug.Log($"Playfab get friend list success: {result.Friends.Count}");
@@ -70,8 +96,10 @@ namespace FishGame.Core
             PlayFabClientAPI.AddFriend(request, result => {
                 Debug.Log($"{name} is added to your friend list successfully");
                 HandleGetFriendsList();
+                OnGetResponceMessage?.Invoke("Success", $"{name} is added to your friends successfully");
             }, error=> {
                 Debug.Log($"Error in Adding friend : +{error.ErrorMessage} ");
+                OnGetResponceMessage?.Invoke("Error", $"{error.ErrorMessage}");
 
             });
         }
@@ -84,15 +112,18 @@ namespace FishGame.Core
 
         // unlike AddFriend, RemoveFriend only takes a PlayFab ID
         // you can get this from the FriendInfo object under FriendPlayFabId
-        void RemoveFriend(FriendInfo friendInfo)
+        void RemoveFriend(string playfabId)
         {
             PlayFabClientAPI.RemoveFriend(new RemoveFriendRequest
             {
-                FriendPlayFabId = friendInfo.FriendPlayFabId
+                FriendPlayFabId = playfabId,
             }, result => {
-                friendsList.Remove(friendInfo);
+                OnGetResponceMessage?.Invoke("Success", $"Removed From your friend list successfully");
+                HandleGetFriendsList();
+
             }, error=> {
-                Debug.Log($"Error in removing friend : +{error.ErrorMessage} ");
+                OnGetResponceMessage?.Invoke("Error", $"{error.ErrorMessage}");
+
             });
         }
     }

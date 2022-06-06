@@ -70,7 +70,8 @@ namespace FishGame.UI
         {
             loadingGamePanel.SetActive(true);
             yield return new WaitForSeconds(2);
-            SceneManager.LoadScene(1);
+           // SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2); // mohamed game scene
         }
 
 
