@@ -15,10 +15,12 @@ MonoBehaviour:
   dataToJson:
     fishName: first first fish
     expiredDuration: 2
+    expPoints: 0
   fishName: first first fish
-  fishIcon: {fileID: 0}
+  fishIcon: {fileID: 21300000, guid: 6ae31c9601e1c52439360baf422f4fd8, type: 3}
   maxPrice: 30
   minPrice: 2
   currentPrice: 10
   expiredDuration: 0
   apperanceRate: 0
+  expPoints: 0

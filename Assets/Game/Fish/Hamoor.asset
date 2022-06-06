@@ -15,10 +15,12 @@ MonoBehaviour:
   dataToJson:
     fishName: hamoor
     expiredDuration: 55
+    expPoints: 0
   fishName: hamoor
-  fishIcon: {fileID: 0}
+  fishIcon: {fileID: 21300000, guid: 6cf42a064b9afbd4d8c840dc718b3c8a, type: 3}
   maxPrice: 1000
   minPrice: 10
   currentPrice: 599
   expiredDuration: 0
   apperanceRate: 0
+  expPoints: 0

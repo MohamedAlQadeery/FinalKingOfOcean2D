@@ -15,10 +15,12 @@ MonoBehaviour:
   dataToJson:
     fishName: Golden Fish
     expiredDuration: 0
+    expPoints: 0
   fishName: Golden Fish
-  fishIcon: {fileID: 0}
+  fishIcon: {fileID: 21300000, guid: 75982d05862a8664c8b25d82a6b5e99b, type: 3}
   maxPrice: 0
   minPrice: 0
   currentPrice: 0
   expiredDuration: 0
   apperanceRate: 0
+  expPoints: 0
