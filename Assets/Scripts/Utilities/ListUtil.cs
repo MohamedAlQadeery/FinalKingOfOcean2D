@@ -1,3 +1,4 @@
+using FishGame.Fishes;
 using FishGame.Ships;
 using System.Collections;
 using System.Collections.Generic;
@@ -56,6 +57,20 @@ namespace FishGame.Utilities
             return tmpList;
         }
 
+        public Dictionary<Fish,int> ConvertToStringKeyToFishType(Dictionary<string,int> fishDic)
+        {
+            Dictionary<Fish, int> newFishDic = new Dictionary<Fish, int>();
+
+            foreach (var item in fishDic)
+            {
+                if(resourcesUtil.FindScriptableObjectFish(item.Key) != null)
+                {
+                    newFishDic.Add(resourcesUtil.FindScriptableObjectFish(item.Key),item.Value);
+                }
+            }
+
+            return newFishDic;
+        }
 
 
     }

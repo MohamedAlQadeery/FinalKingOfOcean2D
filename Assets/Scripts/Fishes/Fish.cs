@@ -33,6 +33,11 @@ namespace FishGame.Fishes
         {
             return fishIcon;
         }
+
+        public float GetCurrentPrice()
+        {
+            return currentPrice;
+        }
     }
 
     public class SuperFish : Fish

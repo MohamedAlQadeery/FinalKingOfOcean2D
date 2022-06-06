@@ -20,7 +20,7 @@ MonoBehaviour:
   fishIcon: {fileID: 21300000, guid: c9edab67bbc114bf5945753c219d3af7, type: 3}
   maxPrice: 0
   minPrice: 0
-  currentPrice: 0
+  currentPrice: 300
   expiredDuration: 0
   apperanceRate: 0
   expPoints: 0
