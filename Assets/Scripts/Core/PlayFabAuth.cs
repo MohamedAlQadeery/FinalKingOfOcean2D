@@ -4,6 +4,10 @@ using PlayFab.ClientModels;
 using PlayFab;
 using System;
 using UnityEngine.Events;
+using Newtonsoft.Json;
+using FishGame.Ships;
+using System.Collections.Generic;
+using FishGame.Utilities;
 
 namespace FishGame.Core
 {
@@ -26,6 +30,10 @@ namespace FishGame.Core
         private const string _playFabRememberMeIdKey = "PlayFabIdPassGuid";
         private static string entityId;
         private static string entityType;
+
+        PlayFabShipData shipService;
+
+      
         public bool RememberMe
         {
             get
@@ -115,12 +123,13 @@ namespace FishGame.Core
 
             Debug.Log($"Entity id = {entityId}");
             Debug.Log($"Entity type = {entityType}");
+            UpdateAllShips();
             loginSuccessEvent?.Invoke("Login Successfully");
-
         }
 
 
       
+
 
         private void OnError(PlayFabError error)
         {
@@ -193,10 +202,34 @@ namespace FishGame.Core
 
         }
 
+        public void UpdateAllShips()
+        {
+            Debug.Log("Inside UpdateAllShips()");
+            string allShipsToJson = GetAllShipsJson();
+            var request = new UpdateUserDataRequest
+            {
+                Data = new Dictionary<string, string> {
+                { "ships",allShipsToJson},
+
+
+              }
+            };
+
+            PlayFabClientAPI.UpdateUserData(request, null, null);
+        }
+
+        private static string GetAllShipsJson()
+        {
+            List<SerializableShipData> allShips =
+                ListUtil.Instance.ConvertToSerializableShipList(ResourcesUtil.Instance.GetShipsFromResourcesFolder());
+
+            string allShipsToJson = JsonConvert.SerializeObject(allShips);
+            return allShipsToJson;
+        }
 
         #region Getters
 
-       
+
         public static string GetPlayerFabId()
         {
             return playerFabId;

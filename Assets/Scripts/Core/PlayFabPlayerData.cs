@@ -56,6 +56,10 @@ namespace FishGame.Core
             _instance = this;
         }
 
+
+        
+     
+
         //public void GetPlayerShipsData()
         //{
         //    PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnGetPlayerShipsSuccess, OnError);
@@ -73,25 +77,22 @@ namespace FishGame.Core
         //        errorEvent?.Invoke("There was an error in fetching player data ..");
         //    }
 
-          
+
 
         //}
 
         //set up for newly created players where we give them there first ships
         public void NewPlayerSetup(List<SerializableShipData> newShips)
         {
+            //string allShipsToJson = GetAllShipsJson();
 
-            List<SerializableShipData> allShips = 
-                ListUtil.Instance.ConvertToSerializableShipList(ResourcesUtil.Instance.GetShipsFromResourcesFolder());
-
-            string allShipsToJson = JsonConvert.SerializeObject(allShips);
             string newShipsToJson = JsonConvert.SerializeObject(newShips);
-         
+
             Dictionary<string, int> fishesDic = new Dictionary<string, int>();
             List<Fish> fishesList = ResourcesUtil.Instance.GetFishFromResourcesFolder();
             foreach (Fish fish in fishesList)
             {
-                fishesDic.Add(fish.GetName(),0);
+                fishesDic.Add(fish.GetName(), 0);
                 Debug.LogError($"Key is {fish.GetName()} And Value = {fishesDic[fish.GetName()]}");
             }
             string newFishesToJson = JsonConvert.SerializeObject(fishesDic);
@@ -99,15 +100,15 @@ namespace FishGame.Core
 
             var shipRequest = new UpdateUserDataRequest
             {
-                Permission= UserDataPermission.Public,
+                Permission = UserDataPermission.Public,
                 Data = new Dictionary<string, string> {
-                { shipsKey,allShipsToJson},
+                //{ shipsKey,allShipsToJson},
                 {ownedShipKey,newShipsToJson },
                 {levelKey,"0" },
                 {fishKey,newFishesToJson },
                 {expKey,"0" },
 
-                
+
 
 
               }
@@ -117,6 +118,14 @@ namespace FishGame.Core
 
         }
 
+        private static string GetAllShipsJson()
+        {
+            List<SerializableShipData> allShips =
+                ListUtil.Instance.ConvertToSerializableShipList(ResourcesUtil.Instance.GetShipsFromResourcesFolder());
+
+            string allShipsToJson = JsonConvert.SerializeObject(allShips);
+            return allShipsToJson;
+        }
 
         private void OnSetupNewPlayerShipsSuccess(UpdateUserDataResult result)
         {
