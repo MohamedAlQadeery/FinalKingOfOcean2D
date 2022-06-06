@@ -6917,7 +6917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bc3cefcda5be94c84cf5a17ec3551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingPanel: {fileID: 5477757636433138428, guid: 89dd73f3d353343cfada74341075969e, type: 3}
+  settingPanel: {fileID: 5477757636433138428, guid: 82d9497a8522e9747a10d84efa63c721, type: 3}
   friendsPanel: {fileID: 8081959129967202185, guid: 5d5e24c984d735e40a5594167d797e49, type: 3}
 --- !u!224 &8043188718436272667
 RectTransform:
