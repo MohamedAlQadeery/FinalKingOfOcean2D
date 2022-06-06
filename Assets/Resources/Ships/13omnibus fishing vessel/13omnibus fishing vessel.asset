@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
+  m_Name: 13omnibus fishing vessel
+  m_EditorClassIdentifier: 
+  shipPrefab: {fileID: 3011353478248620338, guid: 4fd5ff0ac93b81e499b3f093694b5978, type: 3}
+  dataToJson:
+    shipName: 13omnibus fishing vessel
+    currentCapacity: 0
+    currentHealth: 20000
+  shipName: 13omnibus fishing vessel
+  currentCapacity: 0
+  maxCapacity: 20000
+  unlockLevel: 0
+  currentHealth: 20000
+  maxHealth: 20000
+  healDuration: 1200
+  healAmount: 1200
+  fishingDuration: 30
+  numberFishCaughtPerMin: 20000
+  shipImage: {fileID: 21300000, guid: 9e784ce6a7042f9419d824215ffe0e14, type: 3}
+  shipIcon: {fileID: 21300000, guid: 9e784ce6a7042f9419d824215ffe0e14, type: 3}
+  destroyedImage: {fileID: 21300000, guid: 9e784ce6a7042f9419d824215ffe0e14, type: 3}
+  canUpgrade: 0
+  isFishing: 0
+  onCooldown: 0
+  canFishTypes:
+  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
+  - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
+  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  caughtFishes: []
+  animatorOverrideController: {fileID: 0}
+  sellPrice: 1800000
+  buyPrice: 4000000

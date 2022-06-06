@@ -17,7 +17,7 @@ public class ShipFishing : MonoBehaviour
     [SerializeField] GameObject shipIsFullButton;
     Timer timer;
     FishingTimeBar fishingTimeBar;
-
+    int randNum;
     public void stopFishingButton()
     {
         Debug.Log("Stopfishing");
@@ -54,29 +54,67 @@ public class ShipFishing : MonoBehaviour
     {
         List<SerializableFishData> tmpList = new List<SerializableFishData>();
         for (int i = 0; i < numberOfFishes; i++)
-        {
-            int randNum = UnityEngine.Random.Range(1, 10);
-            if (randNum < 5)
+        {          
+            if (currentShip.GetCanFishTypesList().Count == 1)
             {
                 tmpList.Add(currentShip.GetCanFishTypesList()[0].GetDataToJson());
             }
-            else if (randNum > 5 && randNum <= 8)
+            else if (currentShip.GetCanFishTypesList().Count == 2)
             {
-                tmpList.Add(currentShip.GetCanFishTypesList()[1].GetDataToJson());
+                if (randNum < 5)
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[0].GetDataToJson());
+                }
+                else
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[1].GetDataToJson());
+                }
             }
-            else
+            else if (currentShip.GetCanFishTypesList().Count == 3)
             {
-                tmpList.Add(currentShip.GetCanFishTypesList()[2].GetDataToJson());
+                if (randNum < 5)
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[0].GetDataToJson());
+                }
+                else if (randNum > 5 && randNum <= 8)
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[1].GetDataToJson());
+                }
+                else
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[2].GetDataToJson());
+                }
             }
+            //for more than 3 fish 
+            /*else if (currentShip.GetCanFishTypesList().Count == 4)
+            {
+                if (randNum < 4)
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[0].GetDataToJson());
+                }
+                else if (randNum > 4 && randNum <= 7)
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[1].GetDataToJson());
+                }
+                else if (randNum > 7 && randNum <= 9)
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[2].GetDataToJson());
+                }
+                else
+                {
+                    tmpList.Add(currentShip.GetCanFishTypesList()[3].GetDataToJson());
+                }
+            }*/
         }
         return tmpList;
     }
 
     public void startFishingButton()
     {
+        randNum = UnityEngine.Random.Range(1, 10);
         currentShip.isFishing = true;
         if (PlayerPrefs.GetString(currentShip.GetShipName() + "Fishing").Equals("true"))
-        {
+        {            
             Awake();
         }
         else
@@ -88,6 +126,7 @@ public class ShipFishing : MonoBehaviour
     }
     private void Awake()
     {
+        randNum = PlayerPrefs.GetInt(currentShip.GetShipName() + "FishType");
         fishingTimeBar = gameObject.GetComponentInChildren<FishingTimeBar>();
         timeToFillCapacity = currentShip.GetFishingDuration();
         if (PlayerPrefs.GetString(currentShip.GetShipName() + "Fishing").Equals("true"))
@@ -101,8 +140,9 @@ public class ShipFishing : MonoBehaviour
             timeLift = (timeToFillCapacity) - timeLift / 60;
             StartCoroutine("putfish");
             float fishQuitTime = lastFishing / (currentShip.GetFishingDuration() * 60 / currentShip.GetNumberOfFishCaughtPerMin());
+            Debug.Log("@@@" + currentShip.GetCapacity() + " " + fishQuitTime);
             if (currentShip.GetCapacity() + fishQuitTime >= currentShip.GetMaxCapacity())
-            {           
+            {
                 currentShip.GetCaughtFishList().Clear();
                 FillStore(currentShip.GetMaxCapacity() - 1);
                 PlayerPrefs.SetString(currentShip.GetShipName() + "ShipIsFull", "true");
@@ -116,7 +156,7 @@ public class ShipFishing : MonoBehaviour
         }
         else
         {
-            Debug.Log(currentShip.name +" is idel (noot fishsing)");
+            Debug.Log(currentShip.name + " is idel (noot fishsing)");
         }
     }
 
@@ -126,8 +166,8 @@ public class ShipFishing : MonoBehaviour
         {
             do
             {
-                yield return new WaitForSeconds(currentShip.GetFishingDuration() * 60 / currentShip.GetNumberOfFishCaughtPerMin());
-                List<SerializableFishData> caughtFish = FillShipCapacity(currentShip.GetFishingDuration());
+                yield return new WaitForSeconds((currentShip.GetFishingDuration() * 60) / currentShip.GetMaxCapacity());
+                List<SerializableFishData> caughtFish = FillShipCapacity(1);
                 currentShip.GetCaughtFishList().AddRange(caughtFish);
                 currentShip.UpdateCurrentCapacity();
             } while (currentShip.isFishing);
@@ -143,9 +183,11 @@ public class ShipFishing : MonoBehaviour
             DateTime quitDate = DateTime.Now;
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", quitDate.ToString());
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", timer.secondsLeft.ToString());
+            PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);
         }
         else
         {
+            PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType" , randNum);
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
         }
