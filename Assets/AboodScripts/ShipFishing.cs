@@ -14,15 +14,18 @@ public class ShipFishing : MonoBehaviour
     [SerializeField] float timeToFillCapacity;
     [SerializeField] bool startFishing = false;
     [SerializeField] Button completeButton;
-    [SerializeField] GameObject shipIsFullButton;
     Timer timer;
     FishingTimeBar fishingTimeBar;
     int randNum;
+    PlayFabShipData shipDataService;
+    static string clickedShipName = string.Empty;
+
+
     public void stopFishingButton()
     {
+        StoreCaughtFishButton();
         Debug.Log("Stopfishing");
         Destroy(timer);
-        currentShip.ClearCapacity();
         currentShip.isFishing = false;
     }
 
@@ -36,7 +39,7 @@ public class ShipFishing : MonoBehaviour
             currentShip.isFishing = false;
             PlayerPrefs.SetString(currentShip.GetShipName() + "ShipIsFull", "true");
             PlayerPrefs.SetString(currentShip.GetShipName() + "Fishing", "false");
-            //shipIsFullButton.SetActive(true);
+            completeButton.gameObject.SetActive(true);
             Destroy(timer);
             currentShip.isFishing = false;
         });
@@ -126,6 +129,7 @@ public class ShipFishing : MonoBehaviour
     }
     private void Awake()
     {
+        shipDataService = PlayFabShipData.Instance;
         randNum = PlayerPrefs.GetInt(currentShip.GetShipName() + "FishType");
         fishingTimeBar = gameObject.GetComponentInChildren<FishingTimeBar>();
         timeToFillCapacity = currentShip.GetFishingDuration();
@@ -135,7 +139,7 @@ public class ShipFishing : MonoBehaviour
             DateTime quitDate = DateTime.Parse(PlayerPrefs.GetString(currentShip.GetShipName() + "QuitTime"));
             float timeLift = float.Parse(PlayerPrefs.GetString(currentShip.GetShipName() + "TimeToFill"));
             timeToFillCapacity = timeLift / 60;
-            timeLift = ((float)(DateTime.Now - quitDate).TotalSeconds);//+ 43200
+            timeLift = ((float)(DateTime.Now - quitDate).TotalSeconds) - 43200;//+ 43200
             float lastFishing = timeLift;
             timeLift = (timeToFillCapacity) - timeLift / 60;
             StartCoroutine("putfish");
@@ -191,5 +195,66 @@ public class ShipFishing : MonoBehaviour
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
         }
+    }
+
+
+    //shittttttttttttttttttttttttttttttttttttt
+    private void OnEnable()
+    {
+        shipDataService.GetFishJsonSuccess.AddListener(UpdateFishStorage);
+        shipDataService.updateFishStorageSuccess.AddListener(OnUpdateFishStorageSuccess);
+        completeButton.onClick.AddListener(StoreCaughtFishButton);
+
+    }
+
+    private void OnDisable()
+    {
+        shipDataService.GetFishJsonSuccess.RemoveListener(UpdateFishStorage);
+        shipDataService.updateFishStorageSuccess.RemoveListener(OnUpdateFishStorageSuccess);
+        completeButton.onClick.RemoveListener(StoreCaughtFishButton);
+    }
+    /**
+         * Gets the current fish storage from the serever
+         * then update it with updated data then send it back to the server
+         */
+
+    public void StoreCaughtFishButton()
+    {
+        Debug.Log($"{currentShip.GetShipName()}");
+        clickedShipName = currentShip.GetShipName();
+        completeButton.gameObject.SetActive(false);
+        shipDataService.GetFishJsonValue(); // invoke event that updateFishStorage() listens to it
+    }
+
+    public void UpdateFishStorage(string fishJson)
+    {
+        if (currentShip.GetShipName() != clickedShipName) return;
+        Debug.Log("Inside UpdateFishStorage()");
+
+
+        Dictionary<string, int> currentFishStorage = JsonConvert.DeserializeObject<Dictionary<string, int>>(fishJson);
+        Debug.Log(fishJson);
+        foreach (var fish in currentShip.GetCaughtFishList())
+        {
+            if (currentFishStorage.ContainsKey(fish.fishName))
+            {
+                currentFishStorage[fish.fishName]++;
+            }
+            else
+            {
+                currentFishStorage.Add(fish.fishName, 1);
+            }
+        }
+
+
+        shipDataService.UpdateFishStorage(currentFishStorage);
+    }
+
+    public void OnUpdateFishStorageSuccess(string message)
+    {
+        if (currentShip.GetShipName() != clickedShipName) return;
+
+        currentShip.ClearCapacity();
+        Debug.Log(message);
     }
 }
