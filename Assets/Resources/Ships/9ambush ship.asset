@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
-  m_Name: Test Ship
+  m_Name: 9ambush ship
   m_EditorClassIdentifier: 
-  shipPrefab: {fileID: 3066793443064769090, guid: 1352bf5621b10bf429b203a9391a706a, type: 3}
+  shipPrefab: {fileID: 3011353478248620338, guid: e95508c4953241d48a367e8bf3f2ac85, type: 3}
   dataToJson:
-    shipName: New Ship
+    shipName: 9ambush ship
     currentCapacity: 0
-    currentHealth: 0
-  shipName: New Ship
+    currentHealth: 4500
+  shipName: 9ambush ship
   currentCapacity: 0
-  maxCapacity: 100
+  maxCapacity: 4500
   unlockLevel: 0
-  currentHealth: 0
-  maxHealth: 300
-  healDuration: 2
-  healAmount: 0
-  fishingDuration: 2
-  numberFishCaughtPerMin: 50
-  shipImage: {fileID: 21300000, guid: a1d5595c064c14cb8b81227d0387b9a8, type: 3}
-  shipIcon: {fileID: 21300000, guid: a55fb3c0768e249f0b52a465d44dced4, type: 3}
-  destroyedImage: {fileID: 21300000, guid: 382f8ac5faeec4459b28227dce2a1019, type: 3}
+  currentHealth: 4500
+  maxHealth: 4500
+  healDuration: 1050
+  healAmount: 1050
+  fishingDuration: 20
+  numberFishCaughtPerMin: 4500
+  shipImage: {fileID: 21300000, guid: 9c3573d943379b449acbaf7e1a67b833, type: 3}
+  shipIcon: {fileID: 21300000, guid: 9c3573d943379b449acbaf7e1a67b833, type: 3}
+  destroyedImage: {fileID: 21300000, guid: 9c3573d943379b449acbaf7e1a67b833, type: 3}
   canUpgrade: 0
   isFishing: 0
   onCooldown: 0
@@ -37,6 +37,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
   - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
   - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
   caughtFishes: []
   animatorOverrideController: {fileID: 0}
-  price: 200
+  sellPrice: 70000
+  buyPrice: 160000

@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
+  m_Name: 15Warship
+  m_EditorClassIdentifier: 
+  shipPrefab: {fileID: 3011353478248620338, guid: 784c6979a1b1a014bb328e108a34749a, type: 3}
+  dataToJson:
+    shipName: 15Warship
+    currentCapacity: 27
+    currentHealth: 4000
+  shipName: 15Warship
+  currentCapacity: 27
+  maxCapacity: 4000
+  unlockLevel: 0
+  currentHealth: 4000
+  maxHealth: 4000
+  healDuration: 1380
+  healAmount: 1380
+  fishingDuration: 45
+  numberFishCaughtPerMin: 4000
+  shipImage: {fileID: 21300000, guid: 67831249fce5db04a9b91a29efa8d7b1, type: 3}
+  shipIcon: {fileID: 21300000, guid: 67831249fce5db04a9b91a29efa8d7b1, type: 3}
+  destroyedImage: {fileID: 21300000, guid: 67831249fce5db04a9b91a29efa8d7b1, type: 3}
+  canUpgrade: 0
+  isFishing: 1
+  onCooldown: 0
+  canFishTypes:
+  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
+  - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
+  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  caughtFishes:
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  - fishName: iron fish
+    expiredDuration: 0
+    expPoints: 0
+  animatorOverrideController: {fileID: 0}
+  sellPrice: 16500000
+  buyPrice: 35000000

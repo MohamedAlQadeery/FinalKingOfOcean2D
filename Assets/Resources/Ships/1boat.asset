@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
-  m_Name: Titanic
+  m_Name: 1boat
   m_EditorClassIdentifier: 
-  shipPrefab: {fileID: 2140537446758158292, guid: 25088fa7cc0cb8c449ca71493ce4bdd4, type: 3}
+  shipPrefab: {fileID: 3011353478248620338, guid: bfe940328bc6837468baef490243f37f, type: 3}
   dataToJson:
-    shipName: Titanic
+    shipName: 1boat
     currentCapacity: 0
     currentHealth: 100
-  shipName: Titanic
+  shipName: 1boat
   currentCapacity: 0
   maxCapacity: 100
   unlockLevel: 0
@@ -25,19 +25,17 @@ MonoBehaviour:
   maxHealth: 100
   healDuration: 0
   healAmount: 0
-  fishingDuration: 4
+  fishingDuration: 2.66
   numberFishCaughtPerMin: 100
-  shipImage: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
-  shipIcon: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
-  destroyedImage: {fileID: 21300000, guid: ff84fc9431a1f1d429dfe7dc07856908, type: 3}
+  shipImage: {fileID: 21300000, guid: 4ad5634ff3f2bc7438378c6b68441ef6, type: 3}
+  shipIcon: {fileID: 21300000, guid: 4ad5634ff3f2bc7438378c6b68441ef6, type: 3}
+  destroyedImage: {fileID: 21300000, guid: 4ad5634ff3f2bc7438378c6b68441ef6, type: 3}
   canUpgrade: 0
   isFishing: 0
   onCooldown: 0
   canFishTypes:
-  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
   - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
-  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
   caughtFishes: []
   animatorOverrideController: {fileID: 0}
-  sellPrice: 400
-  buyPrice: 1000
+  sellPrice: 250
+  buyPrice: 450

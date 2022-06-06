@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f73f2f1ef812614f8352bf4cab066c0, type: 3}
+  m_Name: 8big fishing boat
+  m_EditorClassIdentifier: 
+  shipPrefab: {fileID: 3011353478248620338, guid: 03fbf345e7865884ab2f2d7d9ebe768a, type: 3}
+  dataToJson:
+    shipName: 8big fishing boat
+    currentCapacity: 0
+    currentHealth: 8500
+  shipName: 8big fishing boat
+  currentCapacity: 0
+  maxCapacity: 8500
+  unlockLevel: 0
+  currentHealth: 8500
+  maxHealth: 8500
+  healDuration: 1140
+  healAmount: 1140
+  fishingDuration: 30
+  numberFishCaughtPerMin: 8500
+  shipImage: {fileID: 21300000, guid: cac11604f58f32f448bc94ea2041ad01, type: 3}
+  shipIcon: {fileID: 21300000, guid: cac11604f58f32f448bc94ea2041ad01, type: 3}
+  destroyedImage: {fileID: 21300000, guid: cac11604f58f32f448bc94ea2041ad01, type: 3}
+  canUpgrade: 0
+  isFishing: 0
+  onCooldown: 0
+  canFishTypes:
+  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
+  - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
+  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  caughtFishes: []
+  animatorOverrideController: {fileID: 0}
+  sellPrice: 60000
+  buyPrice: 120000

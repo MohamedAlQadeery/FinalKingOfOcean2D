@@ -15366,6 +15366,7 @@ MonoBehaviour:
   otherPanels:
   - {fileID: 0}
   signUp: {fileID: 0}
+  panelAnim: {fileID: 0}
 --- !u!1 &2427258863359007906
 GameObject:
   m_ObjectHideFlags: 0
@@ -40251,9 +40252,7 @@ MonoBehaviour:
   loginPanel: {fileID: 6508849083252047861, guid: ae2063843b8584e1a8e9bbacf5b43677, type: 3}
   giftRegister: {fileID: 2427258862020482709}
   newPlayerShips:
-  - {fileID: 11400000, guid: 5d40baa9d691cd748bf643af1dec2a6a, type: 2}
-  - {fileID: 11400000, guid: 76ecef7409235c74f8f0d400672bd0c5, type: 2}
-  - {fileID: 11400000, guid: 1d0d247ba3eb9b448b603c391d627d2e, type: 2}
+  - {fileID: 11400000, guid: e5515dcaccae92446b70e5423eeeae7a, type: 2}
 --- !u!1 &8448189674423284222
 GameObject:
   m_ObjectHideFlags: 0
