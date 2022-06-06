@@ -192,7 +192,9 @@ namespace FishGame.Core
 
                 updateFishStorageSuccess?.Invoke("Fish storage has been updated !");
 
-            },OnError);
+
+
+            }, OnError);
         }
        
     }
