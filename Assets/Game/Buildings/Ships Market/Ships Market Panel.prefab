@@ -1071,7 +1071,6 @@ GameObject:
   - component: {fileID: 6766403659944493625}
   - component: {fileID: 390479182092422745}
   - component: {fileID: 5066051263895501274}
-  - component: {fileID: 5869565501028099813}
   m_Layer: 5
   m_Name: Ships info
   m_TagString: ship_info
@@ -1191,21 +1190,6 @@ MonoBehaviour:
   fishingTime: {fileID: 2795666353688929807}
   shipFishTypePrefab: {fileID: 564719682670137091, guid: e032bac0ac170e744ace200569ee0167, type: 3}
   canFishTypeTransform: {fileID: 2122750435544347468}
---- !u!114 &5869565501028099813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727008550201908752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fixedText: 
-  ShowTashkeel: 0
-  UseHinduNumbers: 0
 --- !u!1 &1727008550293725633
 GameObject:
   m_ObjectHideFlags: 0
