@@ -43,6 +43,7 @@ namespace FishGame.UI.GameUI.ShipMarketUI
             shipInfo.SetSellPrice(ship.GetSellPrice().ToString()); // we should add price in arabic  
             shipInfo.SetBuyPrice(ship.GetBuyPrice().ToString()); // we should add price in arabic  
 
+            shipInfo.ClearOldFishTypes();
             //start of fish types info
            foreach(Fish fish in ship.GetCanFishTypesList())
             {
