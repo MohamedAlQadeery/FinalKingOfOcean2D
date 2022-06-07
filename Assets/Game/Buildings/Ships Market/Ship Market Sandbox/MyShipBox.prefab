@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3309046251637502986}
   - component: {fileID: 1894010172046155718}
+  - component: {fileID: 4963726499967804342}
   - component: {fileID: 3393654367759463398}
+  - component: {fileID: 3906632199634839550}
   m_Layer: 5
   m_Name: shipName
   m_TagString: Untagged
@@ -46,6 +48,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433819262812138749}
   m_CullTransparentMesh: 1
+--- !u!114 &4963726499967804342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433819262812138749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
 --- !u!114 &3393654367759463398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,8 +85,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0627\uFEB3\uFEE2 \u0627\uFEDF\uFEB4\uFED4\uFEF4\uFEE8\uFE94"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 65bab27da1faf6242a5e30b820def29a, type: 2}
-  m_sharedMaterial: {fileID: -6160330081713963294, guid: 65bab27da1faf6242a5e30b820def29a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 00ef7d010b1fc1f4bbc996c3ec751391, type: 2}
+  m_sharedMaterial: {fileID: -3929025252646246233, guid: 00ef7d010b1fc1f4bbc996c3ec751391, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,7 +110,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.95
+  m_fontSize: 34.25
   m_fontSizeBase: 33.07
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -135,6 +152,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3906632199634839550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433819262812138749}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
 --- !u!1 &663175509368711822
 GameObject:
   m_ObjectHideFlags: 0
