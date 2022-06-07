@@ -17,7 +17,7 @@ MonoBehaviour:
     expiredDuration: 0
     expPoints: 0
   fishName: iron fish
-  fishIcon: {fileID: 21300000, guid: c9edab67bbc114bf5945753c219d3af7, type: 3}
+  fishIcon: {fileID: 21300000, guid: 3fdf41fccb58bf5458050d545cdf98bf, type: 3}
   maxPrice: 0
   minPrice: 0
   currentPrice: 300
