@@ -28,7 +28,7 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         public void OnClickShipInfo()
         {
             Ship ship = ResourcesUtil.Instance.FindScriptableObjectShip(shipName.text);
-            Debug.LogError(shipInfo);
+            Debug.LogError($"shipName.text = {shipName.text} And the found ship = {ship.GetShipName()}");
             FillShipInfo(ship);
             shipInfo.gameObject.SetActive(true);
             
