@@ -12,7 +12,11 @@ namespace FishGame.UI.GameUI.ShipMarketUI
     public class ShipBox : MonoBehaviour
     {
         [SerializeField] Image Image;
+        // shipname are displayed using Arabic fixer script
         [SerializeField] TMP_Text shipName;
+        // we use hidden name to compare with the ship name and gets the correct ship
+        [SerializeField] TMP_Text hiddenName;
+
         //[SerializeField] TMP_Text shipPrice;
         public Button sellButton;
         public Button buyButton;
@@ -27,8 +31,8 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         }
         public void OnClickShipInfo()
         {
-            Ship ship = ResourcesUtil.Instance.FindScriptableObjectShip(shipName.text);
-            Debug.LogError(shipInfo);
+            Ship ship = ResourcesUtil.Instance.FindScriptableObjectShip(hiddenName.text);
+            Debug.LogError($"shipName.text = {shipName.text} And the found ship = {ship.GetShipName()}");
             FillShipInfo(ship);
             shipInfo.gameObject.SetActive(true);
             
@@ -55,8 +59,10 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         public void SetShipBoxName(string name)
         {
             shipName.text = name;
+            hiddenName.text = name;
         }
 
+       
         //public void SetShipBoxPrice(string price)
         //{
         //    shipPrice.text = price;

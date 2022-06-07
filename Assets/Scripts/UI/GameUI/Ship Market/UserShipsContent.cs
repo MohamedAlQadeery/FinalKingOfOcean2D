@@ -47,7 +47,6 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         private void OwnedShipsUpdatedSuccess(string arg0)
         {
 
-            Debug.LogError($"Inside OnUpdatedOwnedShipsSuccess() in UserShipsContent.cs");
 
             DestroyAndClearShipBoxes();
             //get ownedShips is called again from GameManager.cs
@@ -70,7 +69,6 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         }
         private void GetOwnedShipsSuccess(List<SerializableShipData> ownedShipsSerializae)
         {
-            Debug.LogError($"Inside GetOwnedShipsSuccess() in UserShipsContent.cs");
 
             ownedShips = listUtilService.DeserialzeShipDataToShipList(ownedShipsSerializae);
             foreach (var ship in ownedShips)
@@ -84,7 +82,6 @@ namespace FishGame.UI.GameUI.ShipMarketUI
 
         private void OnGetAllShipsSuccess(List<SerializableShipData> ships)
         {
-            Debug.LogError($"Inside OnGetAllShipsSuccess() in UserShipsContent.cs");
             AllShips = listUtilService.DeserialzeShipDataToShipList(ships);
             foreach (var ship in AllShips)
             {

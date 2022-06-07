@@ -138,6 +138,8 @@ namespace FishGame.Core
 
         private void OnSuccessRegister(RegisterPlayFabUserResult result)
         {
+            Debug.Log($"Inside OnSuccessRegister in PlayFabAuth.cs");
+            UpdateAllShips();
 
             registerSuccessEvent?.Invoke("Registerd successfully and logged in");
           
