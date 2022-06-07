@@ -26,7 +26,13 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         }
 
        
-      
+        public void ClearOldFishTypes()
+        {
+            foreach(Transform transform in canFishTypeTransform)
+            {
+                Destroy(transform.gameObject);
+            }
+        }
         
 
         public void SetShipName(string nameText)
