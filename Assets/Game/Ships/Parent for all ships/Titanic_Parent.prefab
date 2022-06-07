@@ -1362,7 +1362,6 @@ MonoBehaviour:
   timeToFillCapacity: 0
   startFishing: 0
   completeButton: {fileID: 5177801935985924657}
-  shipIsFullButton: {fileID: 3362778556072967333}
 --- !u!114 &2571486511544017103
 MonoBehaviour:
   m_ObjectHideFlags: 0

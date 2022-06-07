@@ -20,7 +20,7 @@ namespace FishGame.UI
         [SerializeField] TMP_InputField registerUserNameInputField;
         [SerializeField] GameObject loginPanel;
         [SerializeField] GameObject giftRegister;
-
+        [SerializeField] GameObject errorRegisterMessage;
 
 
 
@@ -36,6 +36,7 @@ namespace FishGame.UI
             string username = registerUserNameInputField.text;
             Debug.Log($"{email},{password},{username}");
             PlayFabAuth.Instance.RegisterWithEmail(email, password,username);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
         }
 
 
@@ -62,6 +63,9 @@ namespace FishGame.UI
 
         public void OnErrorRegister(string message)
         {
+            GameObject errorLogin = Instantiate(errorRegisterMessage, transform.position, transform.rotation) as GameObject;
+            errorLogin.transform.SetParent(GameObject.FindGameObjectWithTag("UILogin").transform, false);
+            Destroy(errorLogin, 2);
             SoundManager.Instance.PlaySound(SoundManager.Sound.ErrorSound);
             Debug.Log(message);
         }

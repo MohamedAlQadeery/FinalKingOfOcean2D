@@ -8885,6 +8885,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7816084203175687644}
     m_Modifications:
+    - target: {fileID: 1044981316651097714, guid: 2e1e5e832e16f4667a51110684b91bec, type: 3}
+      propertyPath: succesBuyShip
+      value: 
+      objectReference: {fileID: 7881696952820092071, guid: e823b18d02994e541833e042c1a48e19, type: 3}
     - target: {fileID: 8279553272554169765, guid: 2e1e5e832e16f4667a51110684b91bec, type: 3}
       propertyPath: m_Name
       value: ConfirmSell
@@ -8996,6 +9000,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7816084203175687644}
     m_Modifications:
+    - target: {fileID: 6761163789042432641, guid: d08221c9932bf8c458a997ee8a773ffc, type: 3}
+      propertyPath: errorBuyShip
+      value: 
+      objectReference: {fileID: 7881696952820092071, guid: 9fd4c99ee7a687c47b1312868e976c4f, type: 3}
+    - target: {fileID: 6761163789042432641, guid: d08221c9932bf8c458a997ee8a773ffc, type: 3}
+      propertyPath: succesBuyShip
+      value: 
+      objectReference: {fileID: 7881696952820092071, guid: 1b2723fb638494f469d05eb8599b8e75, type: 3}
     - target: {fileID: 8279553272554169765, guid: d08221c9932bf8c458a997ee8a773ffc, type: 3}
       propertyPath: m_Name
       value: ConfirmBuy

@@ -19,7 +19,7 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         CurrencySystem currencySystem;
         PlayFabShipData shipService;
         PlayFabCurrency currencyService;
-
+        [SerializeField] GameObject succesBuyShip;
 
         private void Awake()
         {
@@ -53,6 +53,7 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         }
         public void ConfirmSell()
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
             Debug.Log($"Confirmed Sell for {selectedShip}");
             if(GameManager.GetOwnedShipsList().Count ==1)
             {
@@ -62,6 +63,11 @@ namespace FishGame.UI.GameUI.ShipMarketUI
             }
             else
             {
+                SoundManager.Instance.PlaySound(SoundManager.Sound.UpgradeBuildingSound);
+                GameObject succesBuyShipo = Instantiate(succesBuyShip, transform.position, transform.rotation) as GameObject;
+                succesBuyShipo.transform.SetParent(gameObject.transform, false);
+                Destroy(succesBuyShipo,1);
+                StartCoroutine("wait2");
                 currencySystem.AddCoins(selectedShip.GetSellPrice());
                 GameManager.GetOwnedShipsList().Remove(selectedShip);
                 GameManager.isOwnedShipsModifed = true;
@@ -69,17 +75,19 @@ namespace FishGame.UI.GameUI.ShipMarketUI
                 shipService.UpdateOwnedShips(GameManager.GetOwnedShipsList());
                 currencyService.GetUserCurrency();
                 Debug.Log($"{selectedShip} is sold !!");
-
+                
             }
-            gameObject.SetActive(false);
-
-
-
+            //gameObject.SetActive(false);
         }
-
+        IEnumerator wait2()
+        {
+            yield return new WaitForSeconds(1f);
+            gameObject.SetActive(false);
+        }
 
         public void Cancel()
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
             Debug.Log($"Sell Canceled !! for {selectedShip}");
 
             gameObject.SetActive(false);

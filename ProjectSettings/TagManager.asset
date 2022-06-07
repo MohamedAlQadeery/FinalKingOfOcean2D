@@ -14,6 +14,7 @@ TagManager:
   - all_ships_content
   - owned_ships_content
   - ship_box_ui
+  - ShipMarket
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ namespace FishGame.UI
         [SerializeField] GameObject signUpPanel;
         [SerializeField] GameObject signOutButton;
         [SerializeField] GameObject loadingGamePanel;
+        [SerializeField] GameObject errorLoginMessage;
         //End of login panel vars
         PlayFabAuth playFabAuthService ;
         private void Awake()
@@ -77,8 +78,12 @@ namespace FishGame.UI
 
         public void OnLoginError(string message)
         {
+            GameObject errorLogin = Instantiate(errorLoginMessage, transform.position, transform.rotation) as GameObject;
+            errorLogin.transform.SetParent(GameObject.FindGameObjectWithTag("UILogin").transform, false);
             SoundManager.Instance.PlaySound(SoundManager.Sound.ErrorSound);
+            Destroy(errorLogin,2);
             Debug.Log(message);
+
         }
 
         public void Close()
