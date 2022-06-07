@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using FishGame.Utilities;
 using FishGame.Ships;
+using FishGame.Fishes;
 
 namespace FishGame.UI.GameUI.ShipMarketUI
 {
@@ -43,13 +44,10 @@ namespace FishGame.UI.GameUI.ShipMarketUI
             shipInfo.SetBuyPrice(ship.GetBuyPrice().ToString()); // we should add price in arabic  
 
             //start of fish types info
-            shipInfo.SetFirstFishIcon(ship.GetCanFishTypesList()[0].GetFishIcon());
-            shipInfo.SetSecondFishIcon(ship.GetCanFishTypesList()[1].GetFishIcon());
-            shipInfo.SetThridFishIcon(ship.GetCanFishTypesList()[2].GetFishIcon());
-
-            shipInfo.SetFirstFishName(ship.GetCanFishTypesList()[0].GetName());
-            shipInfo.SetSecondFishName(ship.GetCanFishTypesList()[1].GetName());
-            shipInfo.SetThirdFishName(ship.GetCanFishTypesList()[2].GetName());
+           foreach(Fish fish in ship.GetCanFishTypesList())
+            {
+                shipInfo.InstantiateFishType(fish);
+            }
             //end of fish types info
         }
 
