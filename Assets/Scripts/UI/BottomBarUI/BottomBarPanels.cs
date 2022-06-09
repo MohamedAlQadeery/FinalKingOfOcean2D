@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class BottomBarPanels : MonoBehaviour
 {
     [SerializeField] private GameObject panelAnim;
+    [SerializeField] GameObject confirmPanel;
 
     public void OnEnable()
     {
@@ -19,6 +20,19 @@ public class BottomBarPanels : MonoBehaviour
 
     public void SignOut()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
+        confirmPanel.SetActive(true);
+    }
+
+    public void SignOutConfirm()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.CloseSonud);
         SceneManager.LoadScene(0);
+    }
+
+    public void CancelSignOut()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.CloseSonud);
+        confirmPanel.SetActive(false);
     }
 }
