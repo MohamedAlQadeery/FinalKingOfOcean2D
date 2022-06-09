@@ -16,7 +16,7 @@ namespace FishGame.UI
         [SerializeField] TMP_InputField loginPasswordInputField;
         [SerializeField] Toggle loginRememberMe;
         [SerializeField] GameObject signUpPanel;
-        [SerializeField] GameObject signOutButton;
+        //[SerializeField] GameObject signOutButton;
         [SerializeField] GameObject loadingGamePanel;
         [SerializeField] GameObject errorLoginMessage;
         //End of login panel vars

@@ -22,9 +22,6 @@ namespace FishGame.UI
         [SerializeField] GameObject giftRegister;
         [SerializeField] GameObject errorRegisterMessage;
 
-
-
-
         //End of register panel vars
 
         [SerializeField ]List<Ship> newPlayerShips;

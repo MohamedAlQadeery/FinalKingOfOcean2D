@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3060978217708253125}
   - component: {fileID: 8063158788071157568}
   - component: {fileID: 1591788698854269}
+  - component: {fileID: 1447179144860866865}
   m_Layer: 5
   m_Name: Text_Title
   m_TagString: Untagged
@@ -142,10 +143,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: "\u0627\u0644\u0625\u0639\u062F\u0627\u062F\u0627\u062A"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
-  m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 00ef7d010b1fc1f4bbc996c3ec751391, type: 2}
+  m_sharedMaterial: {fileID: -3929025252646246233, guid: 00ef7d010b1fc1f4bbc996c3ec751391, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -211,6 +212,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1447179144860866865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311007409900805999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedText: 
+  ShowTashkeel: 0
+  UseHinduNumbers: 0
 --- !u!1 &2502253393377197590
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,7 +4725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5477757636433138431}
-  - component: {fileID: 5477757636433138430}
+  - component: {fileID: 214241876644686992}
   m_Layer: 5
   m_Name: Panel_Settings
   m_TagString: Untagged
@@ -4735,10 +4751,10 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1074, y: 0}
   m_SizeDelta: {x: -0.00024414062, y: -0.00012207031}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5477757636433138430
+--- !u!114 &214241876644686992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4747,11 +4763,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5477757636433138428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a00128818eda43dfaa959b83527b255, type: 3}
+  m_Script: {fileID: 11500000, guid: d20ce21a5cf192541836114332108ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPanels: []
-  signUp: {fileID: 5477757636661516226}
   panelAnim: {fileID: 5477757636433138428}
 --- !u!1 &5477757636455950666
 GameObject:
@@ -5496,7 +5510,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5477757636661516239}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 214241876644686992}
+        m_TargetAssemblyTypeName: BottomBarPanels, Assembly-CSharp
+        m_MethodName: SignOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5477757636674795363
 GameObject:
   m_ObjectHideFlags: 0
@@ -8559,8 +8585,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5477757636433138430}
-        m_TargetAssemblyTypeName: LayerLab.FantasyRPG.PanelFantasyRPG, Assembly-CSharp
+      - m_Target: {fileID: 214241876644686992}
+        m_TargetAssemblyTypeName: BottomBarPanels, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:
