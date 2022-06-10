@@ -182,6 +182,23 @@ public class ShipFishing : MonoBehaviour
     }
 
     //Save Date Time On PlayerPrefs --
+    private void OnApplicationPause(bool pause)
+    {
+        if (!pause) return;
+        if (currentShip.isFishing)
+        {
+            DateTime quitDate = DateTime.Now;
+            PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", quitDate.ToString());
+            PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", timer.secondsLeft.ToString());
+            PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);
+            PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
+            PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
+        }
+    }
     private void OnApplicationQuit()
     {
         if (currentShip.isFishing)

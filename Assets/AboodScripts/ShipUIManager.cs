@@ -56,6 +56,24 @@ public class ShipUIManager : MonoBehaviour
     }
 
     //Save Date (Position , animations , active and not active Button ) On PlayerPrefs --
+    private void OnApplicationPause(bool pause)
+    {
+        if (!pause) return;
+        if (fishAnim.GetBool("isFishing"))
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
+        }
+        else
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
+        }
+    }
     private void OnApplicationQuit()
     {
         if (fishAnim.GetBool("isFishing"))
