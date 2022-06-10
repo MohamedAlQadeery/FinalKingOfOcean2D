@@ -23,6 +23,8 @@ public class ShipFishing : MonoBehaviour
 
     public void stopFishingButton()
     {
+        fishingTimeBar.timeSlider.value = 100;
+        fishingTimeBar.countdown = false;
         StoreCaughtFishButton();
         Debug.Log("Stopfishing");
         Destroy(timer);

@@ -11,7 +11,7 @@ public class FishingTimeBar : MonoBehaviour
     public Timer timer;
     public Ship ship;
 
-    [SerializeField] private Slider timeSlider;
+    [SerializeField] public Slider timeSlider;
     [SerializeField] private TMP_Text timerText;
     public bool countdown = false;
     public void ShowTimer(Timer caller)
@@ -36,7 +36,7 @@ public class FishingTimeBar : MonoBehaviour
         }
         else
         {
-            timerText.text = "Cancel";
+            timerText.text = "Stoped";
         }
 
     }
