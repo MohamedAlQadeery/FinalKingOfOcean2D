@@ -140,6 +140,7 @@ public class ShipFishing : MonoBehaviour
         {
             Debug.Log("In exit then back ");
             if (currentShip.isFishing == false) return;
+            Debug.Log("In exit then back 22");
             DateTime quitDate = DateTime.Parse(PlayerPrefs.GetString(currentShip.GetShipName() + "QuitTime"));
             float timeLift = float.Parse(PlayerPrefs.GetString(currentShip.GetShipName() + "TimeToFill"));
             timeToFillCapacity = timeLift / 60;
@@ -184,7 +185,7 @@ public class ShipFishing : MonoBehaviour
     }
 
     //Save Date Time On PlayerPrefs --
-    /*private void OnApplicationFocus(bool focus)
+    private void OnApplicationFocus(bool focus)
     {
         if (!focus) return;
         if (currentShip.isFishing)
@@ -202,7 +203,7 @@ public class ShipFishing : MonoBehaviour
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
         }
-    }*/
+    }
     private void OnApplicationPause(bool pause)
     {
         if (!pause) return;
@@ -226,6 +227,7 @@ public class ShipFishing : MonoBehaviour
     {
         if (currentShip.isFishing)
         {
+            Debug.Log("Quit and safe "+currentShip.name);
             DateTime quitDate = WorldTimeAPI.Instance.GetCurrentDateTime();
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", quitDate.ToString());
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", timer.secondsLeft.ToString());
@@ -233,6 +235,7 @@ public class ShipFishing : MonoBehaviour
         }
         else
         {
+            Debug.Log("Quit and Not safe " + currentShip.name);
             PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType" , randNum);
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
