@@ -40,12 +40,16 @@ public class WorldTimeAPI : MonoBehaviour
 
 	private DateTime _currentDateTime = DateTime.Now;
 
-	void Start()
+	/*void Start()
 	{
 		StartCoroutine(GetRealDateTimeFromAPI());
-	}
+	}*/
 
-	public DateTime GetCurrentDateTime()
+    private void Update()
+    {
+		StartCoroutine(GetRealDateTimeFromAPI());
+	}
+    public DateTime GetCurrentDateTime()
 	{
 		//here we don't need to get the datetime from the server again
 		// just add elapsed time since the game start to _currentDateTime
@@ -56,18 +60,18 @@ public class WorldTimeAPI : MonoBehaviour
 	IEnumerator GetRealDateTimeFromAPI()
 	{
 		UnityWebRequest webRequest = UnityWebRequest.Get(API_URL);
-		Debug.Log("getting real datetime...");
+		//Debug.Log("getting real datetime...");
 
 		yield return webRequest.SendWebRequest();
 
-		if (webRequest.isNetworkError || webRequest.isHttpError)
-		{
+		//if (webRequest.isNetworkError || webRequest.isHttpError)
+		//{
 			//error
-			Debug.Log("Error: " + webRequest.error);
+			//Debug.Log("Error: " + webRequest.error);
 
-		}
-		else
-		{
+		//}
+		//else
+		//{
 			//success
 			TimeData timeData = JsonUtility.FromJson<TimeData>(webRequest.downloadHandler.text);
 			//timeData.datetime value is : 2020-08-14T15:54:04+01:00
@@ -75,8 +79,8 @@ public class WorldTimeAPI : MonoBehaviour
 			_currentDateTime = ParseDateTime(timeData.datetime);
 			IsTimeLodaed = true;
 
-			Debug.Log("Success.");
-		}
+			//Debug.Log("Success.");
+		//}
 	}
 	//datetime format => 2020-08-14T15:54:04+01:00
 	DateTime ParseDateTime(string datetime)

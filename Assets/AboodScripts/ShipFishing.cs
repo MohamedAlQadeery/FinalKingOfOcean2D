@@ -34,7 +34,7 @@ public class ShipFishing : MonoBehaviour
     public void TimerMethod(float time)
     {
         timer = gameObject.AddComponent<Timer>();
-        timer.Initialize("Fisihng", DateTime.Now, TimeSpan.FromMinutes(time));
+        timer.Initialize("Fisihng", WorldTimeAPI.Instance.GetCurrentDateTime(), TimeSpan.FromMinutes(time));
         timer.startTimer();
         timer.TimerFinishedEvent.AddListener(delegate
         {
@@ -124,6 +124,7 @@ public class ShipFishing : MonoBehaviour
         }
         else
         {
+            Debug.Log("In start first time or back and start");
             StartCoroutine("putfish");
             timeToFillCapacity = currentShip.GetFishingDuration();
             TimerMethod(currentShip.GetFishingDuration());
@@ -137,11 +138,12 @@ public class ShipFishing : MonoBehaviour
         timeToFillCapacity = currentShip.GetFishingDuration();
         if (PlayerPrefs.GetString(currentShip.GetShipName() + "Fishing").Equals("true"))
         {
+            Debug.Log("In exit then back ");
             if (currentShip.isFishing == false) return;
             DateTime quitDate = DateTime.Parse(PlayerPrefs.GetString(currentShip.GetShipName() + "QuitTime"));
             float timeLift = float.Parse(PlayerPrefs.GetString(currentShip.GetShipName() + "TimeToFill"));
             timeToFillCapacity = timeLift / 60;
-            timeLift = ((float)(DateTime.Now - quitDate).TotalSeconds) - 43200;//+ 43200
+            timeLift = ((float)(WorldTimeAPI.Instance.GetCurrentDateTime() - quitDate).TotalSeconds) - 43200;//+ 43200
             float lastFishing = timeLift;
             timeLift = (timeToFillCapacity) - timeLift / 60;
             StartCoroutine("putfish");
@@ -182,18 +184,39 @@ public class ShipFishing : MonoBehaviour
     }
 
     //Save Date Time On PlayerPrefs --
-    private void OnApplicationPause(bool pause)
+    /*private void OnApplicationFocus(bool focus)
     {
-        if (!pause) return;
+        if (!focus) return;
         if (currentShip.isFishing)
         {
-            DateTime quitDate = DateTime.Now;
+            Debug.Log("pausssssssssssssssssssssssssssssss");
+            DateTime quitDate = WorldTimeAPI.Instance.GetCurrentDateTime();
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", quitDate.ToString());
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", timer.secondsLeft.ToString());
             PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);
         }
         else
         {
+            Debug.Log("pausssssssssssssssssssssssssssssss");
+            PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);
+            PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
+            PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
+        }
+    }*/
+    private void OnApplicationPause(bool pause)
+    {
+        if (!pause) return;
+        if (currentShip.isFishing)
+        {
+            Debug.Log("pausssssssssssssssssssssssssssssss");
+            DateTime quitDate = WorldTimeAPI.Instance.GetCurrentDateTime();
+            PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", quitDate.ToString());
+            PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", timer.secondsLeft.ToString());
+            PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);
+        }
+        else
+        {
+            Debug.Log("pausssssssssssssssssssssssssssssss");
             PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", "");
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", "");
@@ -203,7 +226,7 @@ public class ShipFishing : MonoBehaviour
     {
         if (currentShip.isFishing)
         {
-            DateTime quitDate = DateTime.Now;
+            DateTime quitDate = WorldTimeAPI.Instance.GetCurrentDateTime();
             PlayerPrefs.SetString(currentShip.GetShipName() + "QuitTime", quitDate.ToString());
             PlayerPrefs.SetString(currentShip.GetShipName() + "TimeToFill", timer.secondsLeft.ToString());
             PlayerPrefs.SetInt(currentShip.GetShipName() + "FishType", randNum);

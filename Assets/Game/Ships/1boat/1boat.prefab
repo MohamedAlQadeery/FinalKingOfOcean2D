@@ -107,6 +107,26 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 11400000, guid: c69c67d2448804e45a920f9aec63e039, type: 2}
+    - target: {fileID: 2571486511544017103, guid: af8317b960966254c8426d7905f3d53f, type: 3}
+      propertyPath: startFishingNavigation
+      value: 
+      objectReference: {fileID: 6620334226447983660, guid: 68ff56550d3a42b44b38616046a218b6, type: 3}
+    - target: {fileID: 2571486511693241587, guid: af8317b960966254c8426d7905f3d53f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571486511693241587, guid: af8317b960966254c8426d7905f3d53f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571486511703952157, guid: af8317b960966254c8426d7905f3d53f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571486511703952157, guid: af8317b960966254c8426d7905f3d53f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2571486512577442872, guid: af8317b960966254c8426d7905f3d53f, type: 3}
       propertyPath: ship
       value: 

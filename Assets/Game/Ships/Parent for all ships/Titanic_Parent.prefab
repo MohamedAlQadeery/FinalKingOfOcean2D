@@ -1379,6 +1379,7 @@ MonoBehaviour:
   fishingRuning: {fileID: 1589640185141628378}
   fishingStoped: {fileID: 6154866717605542222}
   infoPanel: {fileID: 4547865963935040989}
+  startFishingNavigation: {fileID: 6620334226447983660, guid: 68ff56550d3a42b44b38616046a218b6, type: 3}
   ship: {fileID: 11400000, guid: 5d40baa9d691cd748bf643af1dec2a6a, type: 2}
 --- !u!1 &2571486511693241586
 GameObject:
