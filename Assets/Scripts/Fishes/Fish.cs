@@ -13,9 +13,9 @@ namespace FishGame.Fishes
     {
 
         [SerializeField] SerializableFishData dataToJson;
-         [SerializeField] string fishName;
         [SerializeField] Sprite fishIcon;
-        [SerializeField] float maxPrice, minPrice, currentPrice;
+        public string FishName;
+        public float CurrentPrice;
         [SerializeField] float expiredDuration, apperanceRate;
         [SerializeField] float expPoints;
 
@@ -26,7 +26,7 @@ namespace FishGame.Fishes
 
        public string GetName()
         {
-            return fishName;
+            return FishName;
         }
 
         public Sprite GetFishIcon()
@@ -36,7 +36,7 @@ namespace FishGame.Fishes
 
         public float GetCurrentPrice()
         {
-            return currentPrice;
+            return CurrentPrice;
         }
     }
 
@@ -48,7 +48,7 @@ namespace FishGame.Fishes
     [Serializable]
     public class SerializableFishData
     {
-        public string fishName;
+        public string FishName;
         public float expiredDuration ;
         public float expPoints;
 

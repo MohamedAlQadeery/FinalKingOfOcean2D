@@ -181,13 +181,13 @@ namespace FishGame.Ships
             Debug.Log(fishJson);
             foreach(var fish in currentShip.GetCaughtFishList())
             {
-                if (currentFishStorage.ContainsKey(fish.fishName))
+                if (currentFishStorage.ContainsKey(fish.FishName))
                 {
-                    currentFishStorage[fish.fishName]++;
+                    currentFishStorage[fish.FishName]++;
                 }
                 else
                 {
-                    currentFishStorage.Add(fish.fishName, 1);
+                    currentFishStorage.Add(fish.FishName, 1);
                 }
             }
 
