@@ -502,6 +502,7 @@ MonoBehaviour:
   otherPanels:
   - {fileID: 8121253249464212558, guid: 3dcabc93179f541309b1afe4a8376480, type: 3}
   signUp: {fileID: 0}
+  panelAnim: {fileID: 0}
 --- !u!114 &2610545125426245455
 MonoBehaviour:
   m_ObjectHideFlags: 0
