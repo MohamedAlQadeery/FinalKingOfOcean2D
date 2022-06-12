@@ -71,13 +71,18 @@ namespace FishGame.Core
             string fishJsonData = res.Data[fishKey];
             List<Fish> updatedFishList = JsonConvert.DeserializeObject<List<Fish>>(fishJsonData);
             List<Fish> FishesFromResouces = ResourcesUtil.Instance.GetFishFromResourcesFolder();
+            UpdatingFishesPrices(updatedFishList, FishesFromResouces);
 
-            foreach(Fish fishR in FishesFromResouces)
+        }
+
+        private static void UpdatingFishesPrices(List<Fish> updatedFishList, List<Fish> FishesFromResouces)
+        {
+            foreach (Fish fishR in FishesFromResouces)
             {
                 string fishName = fishR.FishName;
                 foreach (Fish fishU in updatedFishList)
                 {
-                    if(fishU.FishName== fishName)
+                    if (fishU.FishName == fishName)
                     {
                         fishR.CurrentPrice = fishU.CurrentPrice;
                         Debug.Log($"{fishU.FishName} price has been updated to : {fishU.CurrentPrice}");
@@ -85,8 +90,6 @@ namespace FishGame.Core
                     }
                 }
             }
-
-
         }
     }
 
