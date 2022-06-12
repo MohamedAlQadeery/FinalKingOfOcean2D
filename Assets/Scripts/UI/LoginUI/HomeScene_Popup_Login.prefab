@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6508849081201759856
@@ -4328,6 +4328,7 @@ MonoBehaviour:
   signUpPanel: {fileID: 7703376674940264715, guid: 8f4bc29f986ad4d87823959075a1c24e, type: 3}
   signOutButton: {fileID: 0}
   loadingGamePanel: {fileID: 6518401984409771578}
+  errorLoginMessage: {fileID: 3729670541172008036, guid: 58e44843affbe4e4594adb952a572282, type: 3}
 --- !u!1 &6518401984141839565
 GameObject:
   m_ObjectHideFlags: 0

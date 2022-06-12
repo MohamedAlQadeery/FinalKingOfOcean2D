@@ -40251,6 +40251,7 @@ MonoBehaviour:
   registerUserNameInputField: {fileID: 1075000866957450241}
   loginPanel: {fileID: 6508849083252047861, guid: ae2063843b8584e1a8e9bbacf5b43677, type: 3}
   giftRegister: {fileID: 2427258862020482709}
+  errorRegisterMessage: {fileID: 3729670541172008036, guid: 1ec172156e20c9147bed2f38759bd6e9, type: 3}
   newPlayerShips:
   - {fileID: 11400000, guid: e5515dcaccae92446b70e5423eeeae7a, type: 2}
 --- !u!1 &8448189674423284222

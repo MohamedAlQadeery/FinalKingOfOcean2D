@@ -2,6 +2,7 @@ using FishGame.Ships;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShipUIManager : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class ShipUIManager : MonoBehaviour
     public GameObject fishingRuning;
     public GameObject fishingStoped;
     public GameObject infoPanel;
+    public GameObject startFishingNavigation;
     public Ship ship;
+    public GameObject confirmStopFishing;
+    public TMP_Text fishNumber;
 
     /*
      we need all this as playerPrefs
@@ -24,7 +28,7 @@ public class ShipUIManager : MonoBehaviour
      */
     private void Start()
     {
-        if (PlayerPrefs.GetFloat(ship.GetShipName()+"Xpos") != 0) {
+        if (PlayerPrefs.GetFloat(ship.GetShipName() + "Xpos") != 0) {
             float xPos = PlayerPrefs.GetFloat(ship.GetShipName() + "Xpos");
             float yPos = PlayerPrefs.GetFloat(ship.GetShipName() + "Ypos");
             transform.position = new Vector3(xPos, yPos, 0);
@@ -38,6 +42,10 @@ public class ShipUIManager : MonoBehaviour
     }
     public void StartFishing()
     {
+
+        GameObject startFishingNavigation1 = Instantiate(startFishingNavigation, transform.position, transform.rotation) as GameObject;
+        startFishingNavigation1.transform.SetParent(GameObject.FindGameObjectWithTag("GameUI").transform, false);
+        Destroy(startFishingNavigation1, 2);
         LeanTween.moveX(gameObject, transform.position.x + 300, 2);
         LeanTween.scaleX(gameObject, -4, 0.4f);
         fishingRuning.SetActive(true);
@@ -48,22 +56,56 @@ public class ShipUIManager : MonoBehaviour
     }
     public void StopFishing()
     {
-        LeanTween.moveX(gameObject, transform.position.x - 300, 2);
-        fishingRuning.SetActive(false);
-        fishingStoped.SetActive(true);
-        fishAnim.SetBool("isFishing", false);
-        Close();
+        confirmStopFishing.SetActive(true);
+        fishNumber.text = ship.GetCapacity().ToString();
+        Debug.Log("Are You Suer Stop Fishing You will Get :" + ship.GetCapacity());
     }
 
     //Save Date (Position , animations , active and not active Button ) On PlayerPrefs --
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus) return;
+        if (fishAnim.GetBool("isFishing"))
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
+        }
+        else
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
+        }
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (!pause) return;
+        if (fishAnim.GetBool("isFishing"))
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
+        }
+        else
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
+        }
+    }
     private void OnApplicationQuit()
     {
         if (fishAnim.GetBool("isFishing"))
         {
             PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
             PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos",transform.position.x);
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos",transform.position.y);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
         }
         else
         {
@@ -74,8 +116,8 @@ public class ShipUIManager : MonoBehaviour
         }
     }
 
-        // we dont need any off this down methods for save i think 
-        IEnumerator ShipRotate()
+    // we dont need any off this down methods for save i think 
+    IEnumerator ShipRotate()
     {
         yield return new WaitForSeconds(2);
         LeanTween.scaleX(gameObject, 4, 0.4f);
@@ -107,4 +149,21 @@ public class ShipUIManager : MonoBehaviour
     {
         infoPanel.SetActive(false);
     }
+
+    public void CloseConfirm()
+    {
+        confirmStopFishing.SetActive(false);
+    }
+
+    public void ConfirmStop()
+    {
+        confirmStopFishing.SetActive(false);
+        LeanTween.moveX(gameObject, transform.position.x - 300, 2);
+        fishingRuning.SetActive(false);
+        fishingStoped.SetActive(true);
+        fishAnim.SetBool("isFishing", false);
+        PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+        Close();
+    }
+
 }

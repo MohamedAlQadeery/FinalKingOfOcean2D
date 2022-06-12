@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 3011353478248620338, guid: e95508c4953241d48a367e8bf3f2ac85, type: 3}
   dataToJson:
-    shipName: 9ambush ship
+    shipName: "\u0633\u0641\u064A\u0646\u0629 \u0643\u0645\u064A\u0646"
     currentCapacity: 0
     currentHealth: 4500
-  shipName: 9ambush ship
+  shipName: "\u0633\u0641\u064A\u0646\u0629 \u0643\u0645\u064A\u0646"
   currentCapacity: 0
   maxCapacity: 4500
   unlockLevel: 0

@@ -684,9 +684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9b896c2f0ca8b4393386ba8056ca07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getPlayerShipsSuccessEvent:
-    m_PersistentCalls:
-      m_Calls: []
   errorEvent:
     m_PersistentCalls:
       m_Calls: []

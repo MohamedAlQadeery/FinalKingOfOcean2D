@@ -85,7 +85,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            text = "Finished";
+            text = "Stoped";
         }
 
         return text;

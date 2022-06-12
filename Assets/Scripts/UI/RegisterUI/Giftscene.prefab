@@ -12013,6 +12013,7 @@ MonoBehaviour:
   otherPanels:
   - {fileID: 0}
   signUp: {fileID: 0}
+  panelAnim: {fileID: 0}
 --- !u!1 &3149462505413017365
 GameObject:
   m_ObjectHideFlags: 0

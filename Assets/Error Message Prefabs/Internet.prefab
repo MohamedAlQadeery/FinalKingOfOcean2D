@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 2795013677186523754}
   - component: {fileID: 2795013677186523755}
   m_Layer: 5
-  m_Name: TitleScene_NetworkError
+  m_Name: Internet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

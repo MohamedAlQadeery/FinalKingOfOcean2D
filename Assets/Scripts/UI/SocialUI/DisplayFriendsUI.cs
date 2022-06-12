@@ -87,10 +87,6 @@ namespace FishGame.UI.SocialUI
             addFriendPrefab.SetActive(true);
         }
 
-        public void OnExitButton()
-        {
-            Destroy(gameObject);
-        }
     }
 
 }

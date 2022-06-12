@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 11400000, guid: e5515dcaccae92446b70e5423eeeae7a, type: 2}
+    - target: {fileID: 2571486511544017103, guid: af8317b960966254c8426d7905f3d53f, type: 3}
+      propertyPath: startFishingNavigation
+      value: 
+      objectReference: {fileID: 6620334226447983660, guid: 68ff56550d3a42b44b38616046a218b6, type: 3}
     - target: {fileID: 2571486512577442872, guid: af8317b960966254c8426d7905f3d53f, type: 3}
       propertyPath: ship
       value: 
