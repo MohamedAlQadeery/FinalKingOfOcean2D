@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: iron fish
   m_EditorClassIdentifier: 
   dataToJson:
-    fishName: iron fish
+    FishName: iron fish
     expiredDuration: 0
     expPoints: 0
-  fishName: iron fish
   fishIcon: {fileID: 21300000, guid: 3fdf41fccb58bf5458050d545cdf98bf, type: 3}
-  maxPrice: 0
-  minPrice: 0
-  currentPrice: 300
+  FishName: iron fish
+  CurrentPrice: 0
   expiredDuration: 0
   apperanceRate: 0
   expPoints: 0

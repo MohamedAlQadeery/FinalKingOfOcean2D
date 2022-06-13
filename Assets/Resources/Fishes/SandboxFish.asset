@@ -13,14 +13,12 @@ MonoBehaviour:
   m_Name: SandboxFish
   m_EditorClassIdentifier: 
   dataToJson:
-    fishName: SandboxFish
+    FishName: SandboxFish
     expiredDuration: 0
     expPoints: 0
-  fishName: SandboxFish
   fishIcon: {fileID: 21300000, guid: 22c378b978bff3949bc2a167bc4844c8, type: 3}
-  maxPrice: 0
-  minPrice: 0
-  currentPrice: 100
+  FishName: SandboxFish
+  CurrentPrice: 0
   expiredDuration: 0
   apperanceRate: 0
   expPoints: 0

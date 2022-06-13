@@ -13,6 +13,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
         [SerializeField] FishBox fishBoxPrefab;
         private Dictionary<Fish, int> displayedFishes;
         public static Action OnGetAllFishes;
+        public static Action OnGetLatestFishesPrices;
 
         private void Awake()
         {
@@ -30,6 +31,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
 
         private void Start()
         {
+            OnGetLatestFishesPrices?.Invoke();
             OnGetAllFishes?.Invoke();
         }
         private void HandleOnFishListUpdated(Dictionary<Fish, int> fishStorage)
