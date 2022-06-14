@@ -21,6 +21,7 @@ namespace FishGame.UI
         [SerializeField] GameObject errorLoginMessage;
         //End of login panel vars
         PlayFabAuth playFabAuthService ;
+        [SerializeField] Button loginButton;
         private void Awake()
         {
             playFabAuthService = PlayFabAuth.Instance;
@@ -46,12 +47,11 @@ namespace FishGame.UI
             playFabAuthService.ClearRememberMe();
         }
         public void OnClickLoginButton()
-        {
-            
+        {           
             string email = loginEmailInputField.text;
             string password = loginPasswordInputField.text;
             playFabAuthService.LoginWithEmail(email, password);
-           
+            loginButton.gameObject.SetActive(false);
         }
 
         public void OnLoginSuccess(string message)
@@ -65,6 +65,7 @@ namespace FishGame.UI
 
             
             StartCoroutine(LoadingGame());
+            loginButton.gameObject.SetActive(true);
         }
 
         IEnumerator LoadingGame()
@@ -83,6 +84,7 @@ namespace FishGame.UI
             SoundManager.Instance.PlaySound(SoundManager.Sound.ErrorSound);
             Destroy(errorLogin,2);
             Debug.Log(message);
+            loginButton.gameObject.SetActive(true);
 
         }
 

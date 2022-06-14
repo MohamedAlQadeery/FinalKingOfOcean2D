@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace FishGame.UI
 {
@@ -21,7 +22,7 @@ namespace FishGame.UI
         [SerializeField] GameObject loginPanel;
         [SerializeField] GameObject giftRegister;
         [SerializeField] GameObject errorRegisterMessage;
-
+        [SerializeField] Button registerButton;
         //End of register panel vars
 
         [SerializeField ]List<Ship> newPlayerShips;
@@ -34,6 +35,7 @@ namespace FishGame.UI
             Debug.Log($"{email},{password},{username}");
             PlayFabAuth.Instance.RegisterWithEmail(email, password,username);
             SoundManager.Instance.PlaySound(SoundManager.Sound.ButtonSonud);
+            registerButton.gameObject.SetActive(false);
         }
 
 
@@ -48,6 +50,7 @@ namespace FishGame.UI
 
 
             giftRegister.SetActive(true);
+            registerButton.gameObject.SetActive(true);
 
         }
 
@@ -65,6 +68,7 @@ namespace FishGame.UI
             Destroy(errorLogin, 2);
             SoundManager.Instance.PlaySound(SoundManager.Sound.ErrorSound);
             Debug.Log(message);
+            registerButton.gameObject.SetActive(true);
         }
 
         public void Close()

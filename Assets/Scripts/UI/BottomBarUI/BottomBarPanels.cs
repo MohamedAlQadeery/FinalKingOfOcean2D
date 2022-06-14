@@ -1,3 +1,5 @@
+using FishGame.Core;
+using PlayFab;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,6 @@ public class BottomBarPanels : MonoBehaviour
 {
     [SerializeField] private GameObject panelAnim;
     [SerializeField] GameObject confirmPanel;
-
     public void OnEnable()
     {
         LeanTween.moveX(panelAnim, 540, 0.5f);
