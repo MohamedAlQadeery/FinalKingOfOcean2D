@@ -132,10 +132,23 @@ namespace FishGame.Ships
     public class SerializableShipData
     {
         public string shipName;
-        public int currentCapacity;
         public float currentHealth;
 
+        public string QuitTime;
+        public string TimeToFill;
+        public int FishType;
+        public int currentCapacity;
+        public string Fishing;
+        public string Stop;
+        public float Xpos;
+        public float Ypos;
 
+
+
+        
+
+
+       
 
     }
 

@@ -8,6 +8,7 @@ using FishGame.Ships;
 using UnityEngine.Events;
 using Newtonsoft.Json;
 using FishGame.Fishes;
+using System.Linq;
 
 namespace FishGame.Core
 {
@@ -42,8 +43,8 @@ namespace FishGame.Core
         public PlayFabEvent GetFishJsonSuccess;
         public PlayFabEvent updateFishStorageSuccess;
 
-     
-
+        public static Action<SerializableShipData> OnUpdatedShipData;
+      
         public static PlayFabShipData Instance
         {
             get {
@@ -59,6 +60,49 @@ namespace FishGame.Core
         public PlayFabShipData()
         {
             _instance = this;
+        }
+
+
+        private void Awake()
+        {
+            ShipFishing.OnPaused += HandleShipFishingOnPaused;
+            ShipFishing.OnBack += HandleShipFishingOnBack;
+            ShipUIManager.OnPaused += HandleShipUIManagerOnPaused;
+            ShipUIManager.OnBack += HandleShipFishingOnBack;
+
+        }
+
+
+
+        private void OnDestroy()
+        {
+            ShipFishing.OnPaused -= HandleShipFishingOnPaused;
+            ShipFishing.OnBack -= HandleShipFishingOnBack;
+            ShipUIManager.OnPaused -= HandleShipUIManagerOnPaused;
+            ShipUIManager.OnBack -= HandleShipFishingOnBack;
+
+        }
+
+        private void HandleShipFishingOnBack(string name)
+        {
+            var request = new GetUserDataRequest
+            {
+                Keys = new List<string> { owned_ships_key }
+            };
+
+            PlayFabClientAPI.GetUserData(request,result => {
+                List<SerializableShipData> serializableShipDatas = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[owned_ships_key].Value);
+
+                foreach (var ship in serializableShipDatas)
+                {
+                    if(ship.shipName == name)
+                    {
+                        OnUpdatedShipData?.Invoke(ship);
+                        break;
+                    }
+                }
+
+            },OnError);
         }
         public void GetAllShips()
         {
@@ -196,9 +240,113 @@ namespace FishGame.Core
 
             }, OnError);
         }
-       
-    }
 
 
     
+
+        private  void HandleShipFishingOnPaused(SerializableShipData shipData)
+        {
+            List<SerializableShipData> ships;
+            var getShipsRequest = new GetUserDataRequest {Keys= new List<string> { owned_ships_key } };
+
+            PlayFabClientAPI.GetUserData(getShipsRequest, result =>
+            {
+                ships = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[owned_ships_key].Value);
+
+                string shipsToJson = UpdatingShipFishingInfo(shipData, ships);
+
+                var updateShipRequest = new UpdateUserDataRequest
+                {
+                    Data = new Dictionary<string, string> { { owned_ships_key, shipsToJson } },
+
+                };
+
+                PlayFabClientAPI.UpdateUserData(updateShipRequest, res =>
+                {
+
+                    Debug.Log(" HandleShipFishingOnPaused Ship data is updated");
+
+                }, OnError);
+
+
+            }, OnError);
+
+        
+
+        }
+
+        private static string UpdatingShipFishingInfo(SerializableShipData shipData, List<SerializableShipData> ships)
+        {
+            foreach (var ship in ships)
+            {
+                if (ship.shipName == shipData.shipName)
+                {
+                    ship.QuitTime = shipData.QuitTime;
+                    ship.TimeToFill = shipData.TimeToFill;
+                    ship.FishType = shipData.FishType;
+                    ship.currentCapacity = shipData.currentCapacity;
+                    break;
+                }
+            }
+
+
+            string shipsToJson = JsonConvert.SerializeObject(ships);
+            return shipsToJson;
+        }
+
+
+        private void HandleShipUIManagerOnPaused(SerializableShipData shipData)
+        {
+            List<SerializableShipData> ships;
+            var getShipsRequest = new GetUserDataRequest { Keys = new List<string> { owned_ships_key } };
+
+            PlayFabClientAPI.GetUserData(getShipsRequest, result =>
+            {
+                ships = JsonConvert.DeserializeObject<List<SerializableShipData>>(result.Data[owned_ships_key].Value);
+
+                string shipsToJson = UpdatingShipUIMangerInfo(shipData, ships);
+
+                var updateShipRequest = new UpdateUserDataRequest
+                {
+                    Data = new Dictionary<string, string> { { owned_ships_key, shipsToJson } },
+
+                };
+
+                PlayFabClientAPI.UpdateUserData(updateShipRequest, res =>
+                {
+
+                    Debug.Log(" HandleShipUIManagerOnPaused Ship data is updated");
+
+                }, OnError);
+
+
+            }, OnError);
+
+        }
+
+
+        private static string UpdatingShipUIMangerInfo(SerializableShipData shipData, List<SerializableShipData> ships)
+        {
+            foreach (var ship in ships)
+            {
+                if (ship.shipName == shipData.shipName)
+                {
+                    ship.Stop = shipData.Stop;
+                    ship.Fishing = shipData.Fishing;
+                    ship.Xpos = shipData.Xpos;
+                    ship.Ypos = shipData.Ypos;
+                    break;
+                }
+            }
+
+
+            string shipsToJson = JsonConvert.SerializeObject(ships);
+            return shipsToJson;
+        }
+
+
+    }
+
+
+
 }
