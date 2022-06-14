@@ -60,44 +60,6 @@ public class ShipUIManager : MonoBehaviour
         fishNumber.text = ship.GetCapacity().ToString();
         Debug.Log("Are You Suer Stop Fishing You will Get :" + ship.GetCapacity());
     }
-
-    //Save Date (Position , animations , active and not active Button ) On PlayerPrefs --
-    private void OnApplicationFocus(bool focus)
-    {
-        if (!focus) return;
-        if (fishAnim.GetBool("isFishing"))
-        {
-            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
-            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
-        }
-        else
-        {
-            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
-            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
-        }
-    }
-    private void OnApplicationPause(bool pause)
-    {
-        if (!pause) return;
-        if (fishAnim.GetBool("isFishing"))
-        {
-            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
-            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
-        }
-        else
-        {
-            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
-            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
-            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
-        }
-    }
     private void OnApplicationQuit()
     {
         if (fishAnim.GetBool("isFishing"))
@@ -115,6 +77,66 @@ public class ShipUIManager : MonoBehaviour
             PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
         }
     }
+    //Save Date (Position , animations , active and not active Button ) On PlayerPrefs --
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            if (fishAnim.GetBool("isFishing"))
+            {
+                PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
+                PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
+                PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
+                PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
+            }
+            else
+            {
+                PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
+                PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+                PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
+                PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
+            }
+        }
+    }
+
+    
+    /*private void OnApplicationPause(bool pause)
+    {
+        Debug.Log($"Pause = {pause} in ShipUIManaer.cs");
+        if (!pause) return;
+        if (fishAnim.GetBool("isFishing"))
+        {
+            
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
+        }
+        else
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
+        }
+    }*/
+    /*private void OnApplicationQuit()
+    {
+        if (fishAnim.GetBool("isFishing"))
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
+        }
+        else
+        {
+            PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
+            PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
+            PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
+        }
+    }*/
 
     // we dont need any off this down methods for save i think 
     IEnumerator ShipRotate()

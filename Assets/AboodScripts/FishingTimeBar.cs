@@ -27,7 +27,7 @@ public class FishingTimeBar : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (countdown) 
         {
