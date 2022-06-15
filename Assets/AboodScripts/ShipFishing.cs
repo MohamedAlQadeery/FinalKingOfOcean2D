@@ -1,6 +1,7 @@
 using FishGame.Core;
 using FishGame.Fishes;
 using FishGame.Ships;
+using FishGame.Systems;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -24,13 +25,14 @@ public class ShipFishing : MonoBehaviour
     #region Server Region
     public static Action<SerializableShipData> OnPaused;
     public static Action<string> OnBack;
+    private LevelSystem levelSystem;
     #endregion
 
     private void Awake()
     {
         shipDataService = PlayFabShipData.Instance;
         PlayFabShipData.OnUpdatedShipData += HandleUpdateShipData;
-      
+        levelSystem = LevelSystem.Instance;
     }
     private void Start()
     {
@@ -346,7 +348,10 @@ public class ShipFishing : MonoBehaviour
     public void OnUpdateFishStorageSuccess(string message)
     {
         if (currentShip.GetShipName() != clickedShipName) return;
-
+        for (int i = 0; i < currentShip.GetCapacity()/50; i++)
+        {
+            levelSystem.AddExperince(10);
+        }                          
         currentShip.ClearCapacity();
         Debug.Log(message);
     }
