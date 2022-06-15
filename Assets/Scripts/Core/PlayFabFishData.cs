@@ -15,19 +15,55 @@ namespace FishGame.Core
     {
         private const string fishKey = "fishes";
         public static Action<Dictionary<Fish, int>> OnFishListUpdated;
+        public static Action OnFishSoldSuccessfully;
 
         private void Awake()
         {
             DisplayFishesUI.OnGetAllFishes += GetAllFishes;
             DisplayFishesUI.OnGetLatestFishesPrices += HandleOnGetLatestFishPrices;
+            FishInfoUI.OnSellFish += HandleOnSellFish;
         }
 
-       
+        private void HandleOnSellFish(string fishName)
+        {
+            var request = new GetUserDataRequest
+            {
+                Keys = new List<string> { fishKey }
+            };
+
+            PlayFabClientAPI.GetUserData(request,result => {
+                string fishJson = result.Data[fishKey].Value;
+                Dictionary<string, int> fishes = JsonConvert.DeserializeObject<Dictionary<string, int>>(fishJson);
+
+                foreach (var fish in fishes)
+                {
+                    if(fish.Key == fishName)
+                    {
+                        fishes[fish.Key] = 0;
+                        break;
+                    }
+                }
+
+                string updatedFishJson = JsonConvert.SerializeObject(fishes);
+                var updateRequest = new UpdateUserDataRequest
+                {
+                    Data = new Dictionary<string, string> { { fishKey, updatedFishJson } },
+                };
+
+                PlayFabClientAPI.UpdateUserData(updateRequest, success => { 
+                    Debug.Log("Sold successfully");
+                    OnFishSoldSuccessfully?.Invoke();
+
+
+                }, error => { Debug.Log("Error in selling"); });
+            }, null);
+        }
 
         private void OnDestroy()
         {
             DisplayFishesUI.OnGetAllFishes -= GetAllFishes;
             DisplayFishesUI.OnGetLatestFishesPrices -= HandleOnGetLatestFishPrices;
+            FishInfoUI.OnSellFish += HandleOnSellFish;
 
         }
         public void GetAllFishes()
