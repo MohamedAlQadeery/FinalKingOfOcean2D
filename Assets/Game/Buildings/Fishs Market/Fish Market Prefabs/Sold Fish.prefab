@@ -721,8 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016714438642261936}
-  - component: {fileID: 9056375904771081112}
-  - component: {fileID: 4016714438642261943}
+  - component: {fileID: 1662463866954427304}
   m_Layer: 5
   m_Name: Sold Fish
   m_TagString: Untagged
@@ -757,7 +756,7 @@ RectTransform:
   m_AnchoredPosition: {x: 540, y: 996}
   m_SizeDelta: {x: 732.6501, y: 1082.2438}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9056375904771081112
+--- !u!114 &1662463866954427304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -766,26 +765,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4016714438642261937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a00128818eda43dfaa959b83527b255, type: 3}
+  m_Script: {fileID: 11500000, guid: c835b4be2bb66f64eae2305a8ad7b1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelAnim: {fileID: 0}
---- !u!114 &4016714438642261943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4016714438642261937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb881baea67f13e48a3ea094dbd7f88f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toolsScroll: {fileID: 0}
-  fishScroll: {fileID: 7499540677321155880}
-  upgradeButton: {fileID: 0}
-  toolInfo: {fileID: 0}
+  fishName: {fileID: 7499540677424693125}
+  totalPrice: {fileID: 7499540678613962204}
+  income: {fileID: 2679737155308030665}
+  fishGoodness: {fileID: 7594115396052477445}
+  fishIcon: {fileID: 7499540678289032046}
 --- !u!1 &4016714438991054875
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +895,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9056375904771081112}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LayerLab.FantasyRPG.PanelFantasyRPG, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
@@ -1143,7 +1130,7 @@ GameObject:
   - component: {fileID: 862568622596784478}
   - component: {fileID: 7594115396052477445}
   m_Layer: 5
-  m_Name: FishPrice
+  m_Name: Fish Goodness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1405,7 @@ GameObject:
   - component: {fileID: 2789643746312519312}
   - component: {fileID: 2679737155308030665}
   m_Layer: 5
-  m_Name: FishPrice
+  m_Name: Income
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2029,9 +2016,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7499540677424693127}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.26814762, y: 0.5272055, z: 0.36359}
+  m_LocalScale: {x: 0.26814765, y: 0.52720547, z: 0.36359012}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7499540678408539257}
@@ -2039,7 +2026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.3, y: -0.000013351}
+  m_AnchoredPosition: {x: 20.300007, y: 0.000061035156}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7499540677424693124
@@ -2151,7 +2138,7 @@ GameObject:
   - component: {fileID: 7499540677744666458}
   - component: {fileID: 7499540677744666459}
   m_Layer: 5
-  m_Name: FishIcon
+  m_Name: Fish Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2227,7 +2214,7 @@ GameObject:
   - component: {fileID: 7499540678289032045}
   - component: {fileID: 7499540678289032046}
   m_Layer: 5
-  m_Name: FishCase
+  m_Name: Fish Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2327,9 +2314,9 @@ RectTransform:
   m_Father: {fileID: 7499540678908455210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 99, y: -32}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7499540678408539263
@@ -2382,7 +2369,7 @@ GameObject:
   - component: {fileID: 7499540678613962179}
   - component: {fileID: 7499540678613962204}
   m_Layer: 5
-  m_Name: FishPrice
+  m_Name: Total Fish Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3052,7 +3039,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4016714438642261943}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: FishMarketPanel, Assembly-CSharp
         m_MethodName: ToolsButton
         m_Mode: 1
