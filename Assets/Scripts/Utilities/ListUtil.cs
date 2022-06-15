@@ -71,6 +71,7 @@ namespace FishGame.Utilities
             List<SerializableShipData> tmpList = new List<SerializableShipData>();
             foreach (Ship ship in list)
             {
+                ship.ClearDataToJsonValues();
                 tmpList.Add(ship.GetDataToJson());
             }
 
