@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using FishGame.Core;
+using UnityEngine.UI;
 
 public class ShipUIManager : MonoBehaviour
 {
@@ -70,29 +71,32 @@ public class ShipUIManager : MonoBehaviour
    5- isFishing !!
    6- numper off fish and how incresi it when game glosed hard as shit @@*/
     public void StartFishing()
-    {
-        
+    {        
         GameObject startFishingNavigation1 = Instantiate(startFishingNavigation, transform.position, transform.rotation) as GameObject;
         startFishingNavigation1.transform.SetParent(GameObject.FindGameObjectWithTag("GameUI").transform, false);
+        gameObject.GetComponent<Button>().enabled = false;
         Destroy(startFishingNavigation1, 2);
-        LeanTween.moveX(gameObject, transform.position.x + 300, 2);
+        LeanTween.moveX(gameObject, transform.position.x + 500, 3);
         LeanTween.scaleX(gameObject, -4, 0.4f);
         fishingRuning.SetActive(true);
         fishingStoped.SetActive(false);
         fishAnim.SetBool("isFishing", true);
         ship.isFishing = true;
         StartCoroutine("ShipRotate");
+        StartCoroutine("EnabledClick");
         Close();
     }
 
     public void ConfirmStop()
     {
+        gameObject.GetComponent<Button>().enabled = false;
         confirmStopFishing.SetActive(false);
-        LeanTween.moveX(gameObject, transform.position.x - 300, 2);
+        LeanTween.moveX(gameObject, transform.position.x - 500, 3);
         fishingRuning.SetActive(false);
         fishingStoped.SetActive(true);
         fishAnim.SetBool("isFishing", false);
         ship.isFishing = false;
+        StartCoroutine("EnabledClick");
         Close();
     }
 
@@ -101,71 +105,18 @@ public class ShipUIManager : MonoBehaviour
         confirmStopFishing.SetActive(true);
         fishNumber.text = ship.GetCapacity().ToString();
     }
-
-    //Save Date (Position , animations , active and not active Button ) On PlayerPrefs --
-    /*private void OnApplicationPause(bool pause)
-    {
-
-        if (!pause)
-        {
-            OnBack?.Invoke(ship.GetShipName());
-        }
-        if (pause)
-        {
-
-            if (ship.isFishing)
-            {
-                SetCurrentShipFishingOnPausedData();
-            }
-            else
-            {
-                SetCurrentShipNotFishingOnPausedData();
-            }
-        }
-    }*/
-
-
-    /*private void SetCurrentShipFishingOnPausedData()
-    {
-        Debug.Log("SetCurrentShipFishingOnPausedData in ShipUIManager.cs" + ship.name);
-
-        ship.GetDataToJson().Fishing = "true";
-        ship.GetDataToJson().Stop = "false";
-        ship.GetDataToJson().Xpos = transform.position.x;
-        ship.GetDataToJson().Ypos = transform.position.y;
-
-        OnPaused?.Invoke(ship.GetDataToJson());
-        //PlayerPrefs.SetString(ship.GetShipName() + "Stop", "false");
-        //PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "true");
-        //PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", transform.position.x);
-        //PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", transform.position.y);
-    }
-
-    private void SetCurrentShipNotFishingOnPausedData()
-    {
-        Debug.Log("SetCurrentShipNotFishingOnPausedData in ShipUIManager.cs" + ship.name);
-
-        ship.GetDataToJson().Fishing = "false";
-        ship.GetDataToJson().Stop ="true" ;
-        ship.GetDataToJson().Xpos = 0;
-        ship.GetDataToJson().Ypos = 0;
-        
-        OnPaused?.Invoke(ship.GetDataToJson());
-
-        //PlayerPrefs.SetString(ship.GetShipName() + "Stop", "true");
-        //PlayerPrefs.SetString(ship.GetShipName() + "Fishing", "flase");
-        //PlayerPrefs.SetFloat(ship.GetShipName() + "Xpos", 0);
-        //PlayerPrefs.SetFloat(ship.GetShipName() + "Ypos", 0);
-    }
-    */
     // we dont need any off this down methods for save i think 
     IEnumerator ShipRotate()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         LeanTween.scaleX(gameObject, 4, 0.4f);
     }
-
-    public void ShipsPanel()
+    IEnumerator EnabledClick()
+    {
+        yield return new WaitForSeconds(3);
+        gameObject.GetComponent<Button>().enabled = true;
+    }
+        public void ShipsPanel()
     {
         shipPopUpPanel.SetActive(true);
         LeanTween.scale(shipPopUpPanel, new Vector3(0.1f, 0.05f, 0f), 0.5f);
