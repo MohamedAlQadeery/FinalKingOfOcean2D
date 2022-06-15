@@ -21,9 +21,10 @@ namespace FishGame.Scenes
         private PlayFabShipData shipDataService;
         public static bool isOwnedShipsModifed = false;
         public static bool isOwnedShipsSpawned = false;
-
+        
         private void Awake()
         {
+           // DontDestroyOnLoad(this.gameObject);
             shipDataService = PlayFabShipData.Instance;
             shipFromResources = ResourcesUtil.Instance.GetShipsFromResourcesFolder();
             shipDataService.getOwnedShipsListEventSuccess.AddListener(OnGetPlayerOwnedShipsSuccess);

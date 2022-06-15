@@ -63,18 +63,19 @@ namespace FishGame.UI
 
 
 
-            
-            StartCoroutine(LoadingGame());
-            loginButton.gameObject.SetActive(true);
+            SceneManager.LoadSceneAsync(2);
+            //StartCoroutine(LoadingGame());
+            //loginButton.gameObject.SetActive(true);
         }
 
-        IEnumerator LoadingGame()
+        /*IEnumerator LoadingGame()
         {
+            
             loadingGamePanel.SetActive(true);
             yield return new WaitForSeconds(2);
-            SceneManager.LoadScene(1);
+            
            // SceneManager.LoadScene(2); // mohamed game scene
-        }
+        }*/
 
 
         public void OnLoginError(string message)
