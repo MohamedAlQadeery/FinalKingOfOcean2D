@@ -91,6 +91,7 @@ namespace FishGame.Core
 
         public void GetUserCurrency()
         {
+            Debug.Log("GetUserCurrency in PlayFabCurrnecy.cs");
             PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest(), OnSuccessGetUserCurrency, OnError);
         }
 
