@@ -38,20 +38,7 @@ namespace FishGame.Utilities
             {
                 if (resourcesUtil.FindScriptableObjectShip(ship.shipName) != null)
                 {
-                    var shipR = resourcesUtil.FindScriptableObjectShip(ship.shipName);
-                    shipR.GetDataToJson().currentCapacity = ship.currentCapacity;
-                    shipR.GetDataToJson().currentHealth = ship.currentHealth;
-                    shipR.GetDataToJson().QuitTime = ship.QuitTime;
-                    shipR.GetDataToJson().Stop = ship.Stop;
-                    shipR.GetDataToJson().Fishing = ship.Fishing;
-                    shipR.GetDataToJson().Xpos = ship.Xpos;
-                    shipR.GetDataToJson().Ypos = ship.Ypos;
-                    shipR.GetDataToJson().FishType = ship.FishType;
-                    shipR.GetDataToJson().TimeToFill = ship.TimeToFill;
-                    /////////////////
-                    shipR.SetCurrentCapacity(ship.currentCapacity);
-                    shipR.SetCurrentHealth(ship.currentHealth);
-                    shipR.isFishing = ship.Fishing == "true" ? true : false;
+                    Ship shipR = FillShipDataToJson(ship);
 
                     shipsFromResources.Add(shipR);
                 }
@@ -60,6 +47,24 @@ namespace FishGame.Utilities
             return shipsFromResources;
         }
 
+        private Ship FillShipDataToJson(SerializableShipData ship)
+        {
+            var shipR = resourcesUtil.FindScriptableObjectShip(ship.shipName);
+            shipR.GetDataToJson().currentCapacity = ship.currentCapacity;
+            shipR.GetDataToJson().currentHealth = ship.currentHealth;
+            shipR.GetDataToJson().QuitTime = ship.QuitTime;
+            shipR.GetDataToJson().Stop = ship.Stop;
+            shipR.GetDataToJson().Fishing = ship.Fishing;
+            shipR.GetDataToJson().Xpos = ship.Xpos;
+            shipR.GetDataToJson().Ypos = ship.Ypos;
+            shipR.GetDataToJson().FishType = ship.FishType;
+            shipR.GetDataToJson().TimeToFill = ship.TimeToFill;
+            /////////////////
+            shipR.SetCurrentCapacity(ship.currentCapacity);
+            shipR.SetCurrentHealth(ship.currentHealth);
+            shipR.isFishing = ship.Fishing == "true" ? true : false;
+            return shipR;
+        }
 
         public List<SerializableShipData> ConvertToSerializableShipList(List<Ship> list)
         {

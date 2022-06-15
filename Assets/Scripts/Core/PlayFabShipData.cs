@@ -65,7 +65,7 @@ namespace FishGame.Core
 
         private void Awake()
         {
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             ShipFishing.OnPaused += HandleShipFishingOnPaused;
             ShipFishing.OnBack += HandleShipFishingOnBack;
            // ShipUIManager.OnPaused += HandleShipUIManagerOnPaused;
@@ -86,6 +86,7 @@ namespace FishGame.Core
 
         private void HandleShipFishingOnBack(string name)
         {
+            Debug.Log($"HandleShipFishingOnBack() for name = {name}");
             var request = new GetUserDataRequest
             {
                 Keys = new List<string> { owned_ships_key }
