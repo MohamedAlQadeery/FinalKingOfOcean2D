@@ -63,7 +63,7 @@ namespace FishGame.UI
 
 
 
-            SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadSceneAsync(1);
             //StartCoroutine(LoadingGame());
             //loginButton.gameObject.SetActive(true);
         }
