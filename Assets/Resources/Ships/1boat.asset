@@ -15,10 +15,17 @@ MonoBehaviour:
   shipPrefab: {fileID: 3011353478248620338, guid: bfe940328bc6837468baef490243f37f, type: 3}
   dataToJson:
     shipName: "\u0642\u0627\u0631\u0628"
-    currentCapacity: 33
     currentHealth: 100
+    QuitTime: 
+    TimeToFill: 
+    FishType: 0
+    currentCapacity: 0
+    Fishing: 
+    Stop: 
+    Xpos: 0
+    Ypos: 0
   shipName: "\u0642\u0627\u0631\u0628"
-  currentCapacity: 33
+  currentCapacity: 0
   maxCapacity: 100
   unlockLevel: 0
   currentHealth: 100

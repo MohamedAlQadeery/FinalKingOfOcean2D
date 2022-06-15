@@ -65,10 +65,11 @@ namespace FishGame.Core
 
         private void Awake()
         {
+            DontDestroyOnLoad(this.gameObject);
             ShipFishing.OnPaused += HandleShipFishingOnPaused;
             ShipFishing.OnBack += HandleShipFishingOnBack;
-            ShipUIManager.OnPaused += HandleShipUIManagerOnPaused;
-            ShipUIManager.OnBack += HandleShipFishingOnBack;
+           // ShipUIManager.OnPaused += HandleShipUIManagerOnPaused;
+           // ShipUIManager.OnBack += HandleShipFishingOnBack;
 
         }
 
@@ -78,8 +79,8 @@ namespace FishGame.Core
         {
             ShipFishing.OnPaused -= HandleShipFishingOnPaused;
             ShipFishing.OnBack -= HandleShipFishingOnBack;
-            ShipUIManager.OnPaused -= HandleShipUIManagerOnPaused;
-            ShipUIManager.OnBack -= HandleShipFishingOnBack;
+           // ShipUIManager.OnPaused -= HandleShipUIManagerOnPaused;
+           // ShipUIManager.OnBack -= HandleShipFishingOnBack;
 
         }
 
@@ -264,7 +265,7 @@ namespace FishGame.Core
                 PlayFabClientAPI.UpdateUserData(updateShipRequest, res =>
                 {
 
-                    Debug.Log(" HandleShipFishingOnPaused Ship data is updated");
+                    Debug.Log(" PlayfabShipData.cs ShipFishing.cs Ship data is updated");
 
                 }, OnError);
 
@@ -285,6 +286,10 @@ namespace FishGame.Core
                     ship.TimeToFill = shipData.TimeToFill;
                     ship.FishType = shipData.FishType;
                     ship.currentCapacity = shipData.currentCapacity;
+                    ship.Stop = shipData.Stop;
+                    ship.Fishing = shipData.Fishing;
+                    ship.Xpos = shipData.Xpos;
+                    ship.Ypos = shipData.Ypos;
                     break;
                 }
             }
@@ -315,7 +320,7 @@ namespace FishGame.Core
                 PlayFabClientAPI.UpdateUserData(updateShipRequest, res =>
                 {
 
-                    Debug.Log(" HandleShipUIManagerOnPaused Ship data is updated");
+                    Debug.Log(" PlayfabShipData.cs ShipUIManger.cs Ship data is updated");
 
                 }, OnError);
 

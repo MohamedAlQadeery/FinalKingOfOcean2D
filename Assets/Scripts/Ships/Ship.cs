@@ -26,7 +26,25 @@ namespace FishGame.Ships
         //sell price is lower 
         [SerializeField] int sellPrice , buyPrice;
 
+        /*private void OnDisable()
+        {
+            currentCapacity = 0;
+            dataToJson.currentCapacity = 0;
+            dataToJson.currentHealth = 0;
+            dataToJson.Fishing = "";
+            dataToJson.Stop = "";
+            dataToJson.Xpos = 0 ;
+            dataToJson.Ypos = 0 ;
+            dataToJson.QuitTime = "";
+            dataToJson.TimeToFill = "";
+            dataToJson.FishType = -1;
+           }*/
 
+
+        public void SetCurrentCapacity(int cap)
+        {
+            currentCapacity = cap;
+        }
         public int GetSellPrice()
         {
             return sellPrice;
@@ -35,6 +53,11 @@ namespace FishGame.Ships
         public int GetBuyPrice()
         {
             return buyPrice;
+        }
+
+        public void SetCurrentHealth(float health)
+        {
+            currentHealth = health;
         }
 
         public float GetMaxHealth()
@@ -101,7 +124,7 @@ namespace FishGame.Ships
         public void UpdateCurrentCapacity()
         {
             currentCapacity = caughtFishes.Count;
-            dataToJson.currentCapacity = caughtFishes.Count;
+            //dataToJson.currentCapacity = caughtFishes.Count;
         }
 
         public SerializableShipData GetDataToJson()
