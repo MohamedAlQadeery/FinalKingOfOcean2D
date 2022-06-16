@@ -33,6 +33,7 @@ namespace FishGame.UI.GameUI.ShipMarketUI
         {
             Ship ship = ResourcesUtil.Instance.FindScriptableObjectShip(hiddenName.text);
             Debug.LogError($"shipName.text = {shipName.text} And the found ship = {ship.GetShipName()}");
+          
             FillShipInfo(ship);
             shipInfo.gameObject.SetActive(true);
             
@@ -40,6 +41,8 @@ namespace FishGame.UI.GameUI.ShipMarketUI
 
         private void FillShipInfo(Ship ship)
         {
+          //  shipInfo.ClearShipData();
+
             shipInfo.SetShipName(ship.GetShipName());
             shipInfo.SetCapacity(ship.GetMaxCapacity().ToString());
             shipInfo.SetHealth(ship.GetMaxHealth().ToString());

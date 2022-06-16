@@ -2553,8 +2553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a00128818eda43dfaa959b83527b255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPanels:
-  - {fileID: 8121253249464212558, guid: 3dcabc93179f541309b1afe4a8376480, type: 3}
+  panelAnim: {fileID: 0}
 --- !u!1 &6339118992124712403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,7 +2831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5638336785974635926}
   m_Layer: 5
-  m_Name: Panel_Guild
+  m_Name: Guild 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
