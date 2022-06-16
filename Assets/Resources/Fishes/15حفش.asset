@@ -16,7 +16,7 @@ MonoBehaviour:
     FishName: "\u062D\u0641\u0634"
     expiredDuration: 0
     expPoints: 0
-  fishIcon: {fileID: 0}
+  fishIcon: {fileID: 21300000, guid: 049e21e545ab96441b0a03652dadd694, type: 3}
   FishName: "\u062D\u0641\u0634"
   CurrentPrice: 0.3
   expiredDuration: 0

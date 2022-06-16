@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: "18\u062A\u0646\u064A\u0646"
   m_EditorClassIdentifier: 
   dataToJson:
-    FishName: 
+    FishName: "\u062A\u0646\u064A\u0646"
     expiredDuration: 0
     expPoints: 0
-  fishIcon: {fileID: 0}
-  FishName: 
-  CurrentPrice: 0
+  fishIcon: {fileID: 21300000, guid: 3723e480654d2974bab9224f6cb1510c, type: 3}
+  FishName: "\u062A\u0646\u064A\u0646"
+  CurrentPrice: 8.4
   expiredDuration: 0
   apperanceRate: 0
   expPoints: 0
