@@ -15,8 +15,15 @@ MonoBehaviour:
   shipPrefab: {fileID: 3011353478248620338, guid: 784c6979a1b1a014bb328e108a34749a, type: 3}
   dataToJson:
     shipName: "\u0633\u0641\u064A\u0646\u0629 \u062D\u0631\u0628\u064A\u0629"
-    currentCapacity: 27
     currentHealth: 4000
+    QuitTime: 
+    TimeToFill: 
+    FishType: 0
+    currentCapacity: 27
+    Fishing: 
+    Stop: 
+    Xpos: 0
+    Ypos: 0
   shipName: "\u0633\u0641\u064A\u0646\u0629 \u062D\u0631\u0628\u064A\u0629"
   currentCapacity: 27
   maxCapacity: 4000
@@ -34,89 +41,90 @@ MonoBehaviour:
   isFishing: 1
   onCooldown: 0
   canFishTypes:
-  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
-  - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
-  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  - {fileID: 11400000, guid: 1e3ce497ae7ab854bbb52beea5a837c1, type: 2}
+  - {fileID: 11400000, guid: 24f91132bbc008c489e5e35f57ce6f18, type: 2}
+  - {fileID: 11400000, guid: a22b9ce3c5d8c4a4cb4dc6d2024aca15, type: 2}
+  - {fileID: 11400000, guid: bf730b838ad1b3b4f9402e4344d33de8, type: 2}
   caughtFishes:
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
-  - fishName: iron fish
+  - FishName: 
     expiredDuration: 0
     expPoints: 0
   animatorOverrideController: {fileID: 0}
