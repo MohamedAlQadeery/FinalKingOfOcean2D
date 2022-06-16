@@ -55,7 +55,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
             fishInfo.SetFishIcon(fish.GetFishIcon());
             //////////
             DateTime dateTime = WorldTimeAPI.Instance.GetCurrentDateTime();
-            fishInfo.SetNextDeal("10");
+            fishInfo.SetNextDeal(("") + (60 - dateTime.Minute));
             ///////////////////
         }
 
