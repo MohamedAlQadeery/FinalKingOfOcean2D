@@ -25366,6 +25366,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2533618661720019228}
     m_Modifications:
+    - target: {fileID: 3249349316406935748, guid: 39364ae8954c70941a8ffaa60b108edd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 7582286992199814452}
     - target: {fileID: 5249811950429008885, guid: 39364ae8954c70941a8ffaa60b108edd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -25450,6 +25454,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8265660023945330902, guid: 39364ae8954c70941a8ffaa60b108edd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 7582286992199814452}
     - target: {fileID: 8341029939304468852, guid: 39364ae8954c70941a8ffaa60b108edd, type: 3}
       propertyPath: m_Name
       value: Fish Info

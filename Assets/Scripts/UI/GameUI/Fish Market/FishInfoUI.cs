@@ -35,12 +35,13 @@ namespace FishGame.UI.GameUI.FishMarketUI
         }
         private void HandleFishSoldSuccessfully()
         {
-            currencySystem.AddCoins(int.Parse(currentPrice.text));
+            int totalPrice = int.Parse(currentPrice.text) * int.Parse(fishQuantity.text);
+            currencySystem.AddCoins(totalPrice);
             currencyService.GetUserCurrency();
 
             soldFish.SetFishName(fishName.text);
             soldFish.SetFishIcon(fishIcon.sprite);
-            soldFish.SetTotalPrice(int.Parse(currentPrice.text));
+            soldFish.SetTotalPrice(totalPrice);
             soldFish.SetIncome(currencySystem.GetCoins());
             soldFish.SetFishGoodness(100);
 

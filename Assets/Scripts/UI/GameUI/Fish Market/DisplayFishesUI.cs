@@ -39,6 +39,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
             ClearCurrentFishStorage(fishStorage);
             foreach(var fish in fishStorage)
             {
+                if (fish.Value == 0) continue;
                 FillFishBox(fish);
             }
 
