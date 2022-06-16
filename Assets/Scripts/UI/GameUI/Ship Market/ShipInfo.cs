@@ -37,6 +37,7 @@ namespace FishGame.UI.GameUI.ShipMarketUI
 
         public void SetShipName(string nameText)
         {
+            Debug.Log($"SetShipName = {nameText}");
             shipName.text = nameText;
         }
 
@@ -52,6 +53,8 @@ namespace FishGame.UI.GameUI.ShipMarketUI
 
         public void SetBuyPrice(string price)
         {
+            Debug.Log($"SetBuyPrice = {price}");
+
             buyPrice.text = price;
         }
 

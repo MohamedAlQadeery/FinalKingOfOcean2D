@@ -6502,8 +6502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a00128818eda43dfaa959b83527b255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPanels:
-  - {fileID: 8121253249464212558, guid: 3dcabc93179f541309b1afe4a8376480, type: 3}
+  panelAnim: {fileID: 0}
 --- !u!1 &7816084203261242373
 GameObject:
   m_ObjectHideFlags: 0

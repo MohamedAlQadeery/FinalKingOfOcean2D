@@ -24,7 +24,6 @@ namespace FishGame.Scenes
         
         private void Awake()
         {
-           // DontDestroyOnLoad(this.gameObject);
             shipDataService = PlayFabShipData.Instance;
             shipFromResources = ResourcesUtil.Instance.GetShipsFromResourcesFolder();
             shipDataService.getOwnedShipsListEventSuccess.AddListener(OnGetPlayerOwnedShipsSuccess);

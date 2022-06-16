@@ -50,7 +50,7 @@ namespace FishGame.UI.SocialUI
 
         private void Start()
         {
-            OnGetClans?.Invoke();
+           // OnGetClans?.Invoke();
         }
 
     }
