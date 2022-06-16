@@ -15,8 +15,15 @@ MonoBehaviour:
   shipPrefab: {fileID: 3011353478248620338, guid: d4c23bbd3a5dc5a43be9329b471f852d, type: 3}
   dataToJson:
     shipName: "\u0645\u0631\u0643\u0628 \u0634\u0631\u0627\u0639\u064A"
-    currentCapacity: 0
     currentHealth: 950
+    QuitTime: 
+    TimeToFill: 
+    FishType: 0
+    currentCapacity: 0
+    Fishing: 
+    Stop: 
+    Xpos: 0
+    Ypos: 0
   shipName: "\u0645\u0631\u0643\u0628 \u0634\u0631\u0627\u0639\u064A"
   currentCapacity: 0
   maxCapacity: 950
@@ -34,9 +41,9 @@ MonoBehaviour:
   isFishing: 0
   onCooldown: 0
   canFishTypes:
-  - {fileID: 11400000, guid: 36f306557351dd841ada55970ce7f066, type: 2}
-  - {fileID: 11400000, guid: ad295164d11ba474e80d25644f5c1d3c, type: 2}
-  - {fileID: 11400000, guid: 7dd6bc19dd4397d45be93b1b9c775948, type: 2}
+  - {fileID: 11400000, guid: 9140ea82d0304b246a32036bdca4e669, type: 2}
+  - {fileID: 11400000, guid: fbb646bc60bfba7428a9f609622698bd, type: 2}
+  - {fileID: 11400000, guid: f77cff9156b14624d9ddf841f879028a, type: 2}
   caughtFishes: []
   animatorOverrideController: {fileID: 0}
   sellPrice: 15000
