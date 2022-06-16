@@ -39,6 +39,9 @@ namespace FishGame.UI.GameUI.FishMarketUI
         {
             income.text = amount.ToString();
         }
-
+        public void Close()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

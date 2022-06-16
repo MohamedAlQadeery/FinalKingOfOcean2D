@@ -50,7 +50,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
 
             fishInfo.SetFishName(fishName.text);
             fishInfo.SetFishQuantity(int.Parse(fishQuantity.text));
-            fishInfo.SetCurrentPrice(int.Parse(fishPrice.text) * int.Parse(fishQuantity.text));
+            fishInfo.SetCurrentPrice(int.Parse(fishPrice.text));
             fishInfo.SetFishGoodness(100);
             fishInfo.SetFishIcon(fish.GetFishIcon());
             //////////
