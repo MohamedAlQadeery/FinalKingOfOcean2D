@@ -20,8 +20,8 @@ namespace FishGame.Systems
                 return _instance;
             }
         }
-        
-        int coins, gems;
+
+        float coins, gems;
 
         //public UnityEvent OnCurrencyUpdated;
         public CurrencyEvent OnCoinsAdded = new CurrencyEvent();
@@ -40,28 +40,28 @@ namespace FishGame.Systems
         }
 
 
-        public void AddCoins(int amount)
+        public void AddCoins(float amount)
         {
             if (amount <= 0) return;
             coins += amount;
             OnCoinsAdded?.Invoke(amount);
         }
 
-        public void AddGems(int amount)
+        public void AddGems(float amount)
         {
             if (amount <= 0) return;
             gems += amount;
             OnGemsAdded?.Invoke(amount);
         }
 
-        public void SubtractCoins(int amount)
+        public void SubtractCoins(float amount)
         {
             if (amount > coins) return;
             coins -= amount;
             OnCoinSubtracted?.Invoke(amount);
         }
 
-        public void SubtractGems(int amount)
+        public void SubtractGems(float amount)
         {
             if (amount > gems) return;
             gems -= amount;
@@ -69,33 +69,33 @@ namespace FishGame.Systems
         }
 
         // used for initliaze the class
-        public void SetCoin(int coinsAmount)
+        public void SetCoin(float coinsAmount)
         {
             coins = coinsAmount;
         }
 
-        public void SetGems(int gemsAmount)
+        public void SetGems(float gemsAmount)
         {
             gems = gemsAmount;
         }
         //////////////////////////////
-        public int GetCoins()
+        public float GetCoins()
         {
             return coins;
         }
 
-        public int GetGems()
+        public float GetGems()
         {
             return gems;
         }
 
-        public void InitCurrencySystem(int cn,int gm)
+        public void InitCurrencySystem(float cn, float gm)
         {
             coins = cn;
             gems = gm;
         }
 
     }
-    public class CurrencyEvent : UnityEvent<int> { }
+    public class CurrencyEvent : UnityEvent<float> { }
 
 }

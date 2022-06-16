@@ -39,7 +39,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
         public void OnClickFishInfo()
         {
             Fish fish = ResourcesUtil.Instance.FindScriptableObjectFish(hiddenName.text);
-
+            Debug.Log($"OnClickFishInfo() and hidden name text = {hiddenName.text} and fish name = {fish.GetName()}");
             FillFishInfo(fish);
             fishInfo.gameObject.SetActive(true);
 
@@ -50,7 +50,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
 
             fishInfo.SetFishName(fishName.text);
             fishInfo.SetFishQuantity(int.Parse(fishQuantity.text));
-            fishInfo.SetCurrentPrice(int.Parse(fishPrice.text));
+            fishInfo.SetCurrentPrice(float.Parse(fishPrice.text));
             fishInfo.SetFishGoodness(100);
             fishInfo.SetFishIcon(fish.GetFishIcon());
             //////////

@@ -35,7 +35,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
         }
         private void HandleFishSoldSuccessfully()
         {
-            int totalPrice = int.Parse(currentPrice.text) * int.Parse(fishQuantity.text);
+            float totalPrice = float.Parse(currentPrice.text) * float.Parse(fishQuantity.text);
             currencySystem.AddCoins(totalPrice);
             currencyService.GetUserCurrency();
 
@@ -76,7 +76,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
             fishQuantity.text = quantity.ToString();
         }
 
-        public void SetCurrentPrice(int price)
+        public void SetCurrentPrice(float price)
         {
             currentPrice.text = price.ToString();
         }
