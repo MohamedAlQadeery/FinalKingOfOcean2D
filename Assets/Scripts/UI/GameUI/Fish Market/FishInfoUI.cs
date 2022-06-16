@@ -94,6 +94,11 @@ namespace FishGame.UI.GameUI.FishMarketUI
         {
             fishIcon.sprite = image;
         }
+
+        public void Close()
+        {
+            gameObject.SetActive(false);
+        }
     }
 
 }
