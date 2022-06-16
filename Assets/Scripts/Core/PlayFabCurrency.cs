@@ -106,12 +106,12 @@ namespace FishGame.Core
         }
 
         
-        public void AddUserCoinsCurrency(int amount)
+        public void AddUserCoinsCurrency(float amount)
         {
             var request = new AddUserVirtualCurrencyRequest
             {
                 VirtualCurrency = coinsKey,
-                Amount = amount
+                Amount = (int)amount
                 
             };
 
@@ -121,12 +121,12 @@ namespace FishGame.Core
             },OnError);
         }
 
-        public void SubtractUserCoinsCurrency(int amount)
+        public void SubtractUserCoinsCurrency(float amount)
         {
             var request = new SubtractUserVirtualCurrencyRequest
             {
                 VirtualCurrency = coinsKey,
-                Amount = amount
+                Amount = (int)amount
 
             };
 
@@ -137,12 +137,12 @@ namespace FishGame.Core
         }
 
 
-        public void AddUserGemsCurrency(int amount)
+        public void AddUserGemsCurrency(float amount)
         {
             var request = new AddUserVirtualCurrencyRequest
             {
                 VirtualCurrency = gemsKey,
-                Amount = amount
+                Amount = (int)amount
 
             };
 
@@ -153,12 +153,12 @@ namespace FishGame.Core
         }
 
 
-        public void SubtractUserGemsCurrency(int amount)
+        public void SubtractUserGemsCurrency(float amount)
         {
             var request = new SubtractUserVirtualCurrencyRequest
             {
                 VirtualCurrency = gemsKey,
-                Amount = amount
+                Amount = (int)amount
 
             };
 

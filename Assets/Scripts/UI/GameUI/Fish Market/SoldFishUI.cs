@@ -19,7 +19,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
             fishName.text = name;
         }
 
-        public void SetTotalPrice(int total)
+        public void SetTotalPrice(float total)
         {
             totalPrice.text = total.ToString();
         }
@@ -35,7 +35,7 @@ namespace FishGame.UI.GameUI.FishMarketUI
         }
 
 
-        public void SetIncome(int amount)
+        public void SetIncome(float amount)
         {
             income.text = amount.ToString();
         }
