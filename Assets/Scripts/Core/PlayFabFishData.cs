@@ -116,13 +116,15 @@ namespace FishGame.Core
             foreach (Fish fishR in FishesFromResouces)
             {
                 string fishName = fishR.FishName;
+                
                 foreach (Fish fishU in updatedFishList)
                 {
+                    if(fishU.FishName != fishName) continue;
                     if (fishU.FishName == fishName)
                     {
                         fishR.CurrentPrice = fishU.CurrentPrice;
                         Debug.Log($"{fishU.FishName} price has been updated to : {fishU.CurrentPrice}");
-                        continue;
+                        
                     }
                 }
             }
